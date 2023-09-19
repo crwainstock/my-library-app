@@ -83,7 +83,8 @@ const getItems = async (req, res) => {
 // GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
 router.get("/mylibrary", async (req, res) => {
   try {
-    let results = await db(`SELECT * FROM mylibrary;`);
+    // let results = await db(`SELECT * FROM mylibrary;`);
+    await getItems(req, res);
     console.log(results);
     res.send(results.data);
   } catch (err) {
