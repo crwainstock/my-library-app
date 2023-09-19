@@ -69,6 +69,23 @@ const searchGoogleById = async (req, res) => {
   }
 };
 
+const searchGoogleByTopic = async (req, res) => {
+  try {
+    const { topic } = req.body;
+    const result = await fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=${topic}`
+    );
+    if (!result.ok) {
+      setError(`An error has occured: ${response.status}`);
+    } else {
+      let data = await result.json();
+      res.send(data);
+    }
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
 // Get all items from database -- used in other router functions to update database content in front end
 const getItems = async (req, res) => {
   try {
@@ -98,7 +115,7 @@ router.get("/mylibrary", async (req, res) => {
 // SEARCH GOOGLE BOOKS API BY AUTHOR -- working in postman
 router.post("/mylibrary/searchByAuthor", async (req, res) => {
   try {
-    searchGoogleBooksByAuthor(req, res); //function written line 50
+    searchGoogleBooksByAuthor(req, res);
   } catch (err) {
     res.status(500).send(err);
   }
@@ -117,6 +134,14 @@ router.post("/mylibrary/searchByTitle", async (req, res) => {
 router.post("/mylibrary/searchById", async (req, res) => {
   try {
     searchGoogleById(req, res); //function written line 14
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+router.get("mylibrary/searchByTopic", async (req, res) => {
+  try {
+    searchGoogleByTopic(req, res);
   } catch (err) {
     res.status(500).send(err);
   }
