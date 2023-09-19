@@ -118,7 +118,7 @@ router.post("/mylibrary/searchById", async (req, res) => {
   }
 });
 
-//GET ITEM BY ID  -- FROM DATABASE -- used in BookDetailView with rendering reviews from database
+//GET ITEM BY ID FROM DATABASE -- used in BookDetailView with rendering reviews from database
 router.get("/mylibrary/:id", async (req, res) => {
   try {
     let results = await db(
