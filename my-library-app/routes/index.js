@@ -4,7 +4,7 @@ const db = require("../model/helper");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-/* GET home page. */
+/* GET home page in backend. */
 router.get("/", function (req, res, next) {
   // res.send({ title: "My Library App" });
   res.sendFile(path.join(__dirname, "../public/index.html"));
