@@ -144,7 +144,7 @@ router.post("/mylibrary", async (req, res) => {
   }
 });
 
-//UPDATE REVIEW -- Used in BookDetailView page
+//UPDATE REVIEW -- Used in BookDetailView page -- working in postman
 router.put("/mylibrary/:id", async (req, res) => {
   const { review } = req.body;
   const id = req.params.id;
@@ -158,7 +158,7 @@ router.put("/mylibrary/:id", async (req, res) => {
   }
 });
 
-// DELETE ITEM BY ID -- Used in MyLibrary page
+// DELETE ITEM BY ID -- Used in MyLibrary page -- working in postman
 router.delete("/mylibrary/:id", async (req, res) => {
   let id = Number(req.params.id);
   try {
