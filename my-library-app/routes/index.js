@@ -7,9 +7,10 @@ const db = require("../model/helper");
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
+
 require("dotenv").config();
 const apiKey = process.env.API_KEY;
-console.log(apiKey);
+
 /* GET home page in backend. */
 router.get("/", function (req, res, next) {
   // res.send({ title: "My Library App" });
@@ -23,7 +24,6 @@ const searchGoogleBooksByTitle = async (req, res) => {
   try {
     const { title } = req.body;
     const result = await fetch(
-      // `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}key=${apiKey}`
       `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}&key=${apiKey}`
     );
     if (!result.ok) {
@@ -42,7 +42,7 @@ const searchGoogleBooksByAuthor = async (req, res) => {
   try {
     const { author } = req.body;
     const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}`
+      `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&key=${apiKey}`
     );
     if (!result.ok) {
       setError(`An error has occured: ${response.status}`);
@@ -60,7 +60,7 @@ const searchGoogleById = async (req, res) => {
   try {
     const { id } = req.body;
     const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes/${id}`
+      `https://www.googleapis.com/books/v1/volumes/${id}&key=${apiKey}`
     );
     if (!result.ok) {
       setError(`An error has occured: ${response.status}`);
@@ -73,11 +73,12 @@ const searchGoogleById = async (req, res) => {
   }
 };
 
+// Not quite working yet. Not sure it's necessary for the app at this time.
 const searchGoogleByTopic = async (req, res) => {
   try {
     const { topic } = req.body;
     const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${topic}`
+      `https://www.googleapis.com/books/v1/volumes?q=${topic}&key=${apiKey}`
     );
     if (!result.ok) {
       setError(`An error has occured: ${response.status}`);
@@ -143,7 +144,7 @@ router.post("/mylibrary/searchById", async (req, res) => {
   }
 });
 
-router.get("mylibrary/searchByTopic", async (req, res) => {
+router.post("/mylibrary/searchByTopic", async (req, res) => {
   try {
     searchGoogleByTopic(req, res);
   } catch (err) {
