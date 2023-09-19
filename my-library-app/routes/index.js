@@ -131,7 +131,7 @@ router.get("/mylibrary/:id", async (req, res) => {
   }
 });
 
-// ADD ITEMS TO LIBRARY -- Used in Search component -- working in postman
+// ADD ITEMS TO LIBRARY BY BOOKID -- Used in Search component -- working in postman
 router.post("/mylibrary", async (req, res) => {
   const { bookId } = req.body;
   const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}")`;
