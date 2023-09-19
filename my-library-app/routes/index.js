@@ -42,7 +42,7 @@ const searchGoogleBooksByAuthor = async (req, res) => {
   }
 };
 
-// GET ALL ITEMS FROM DATABASE -- used in other router functions to update database content in front end
+// Get all items from database -- used in other router functions to update database content in front end
 const getItems = async (req, res) => {
   try {
     const result = await db(`SELECT * FROM mylibrary`);
@@ -76,8 +76,7 @@ router.post("/mylibrary/searchByAuthor", async (req, res) => {
   }
 });
 
-// GET BOOK DATA BASED ON SEARCH BY TITLE -- Used in Search component, search field -- FROM GOOGLE BOOKS API
-// working in postman
+// SEARCH GOOGLE BOOKS API BY TITLE -- working in postman
 router.post("/mylibrary/searchByTitle", async (req, res) => {
   try {
     searchGoogleBooksByTitle(req, res); //function written line 32
