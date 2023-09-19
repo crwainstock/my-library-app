@@ -56,7 +56,7 @@ const getItems = async (req, res) => {
 
 // ROUTER FUNCTIONS
 
-// GET ALL LIBRARY ITEMS -- FROM DATABASE -- working in postman
+// GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
 router.get("/mylibrary", async (req, res) => {
   try {
     let results = await db(`SELECT * FROM mylibrary;`);
@@ -67,6 +67,7 @@ router.get("/mylibrary", async (req, res) => {
   }
 });
 
+// SEARCH GOOGLE BOOKS API BY AUTHOR -- working in postman
 router.post("/mylibrary/searchByAuthor", async (req, res) => {
   try {
     searchGoogleBooksByAuthor(req, res); //function written line 50
