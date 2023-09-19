@@ -56,6 +56,25 @@ const getItems = async (req, res) => {
 
 // ROUTER FUNCTIONS
 
+// GET ALL LIBRARY ITEMS -- FROM DATABASE -- working in postman
+router.get("/mylibrary", async (req, res) => {
+  try {
+    let results = await db(`SELECT * FROM mylibrary;`);
+    console.log(results);
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+router.post("/mylibrary/searchByAuthor", async (req, res) => {
+  try {
+    searchGoogleBooksByAuthor(req, res); //function written line 50
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 // GET BOOK DATA BASED ON SEARCH BY TITLE -- Used in Search component, search field -- FROM GOOGLE BOOKS API
 // working in postman
 router.post("/mylibrary/searchByTitle", async (req, res) => {
