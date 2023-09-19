@@ -4,9 +4,12 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../model/helper");
+
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
-
+require("dotenv").config();
+const apiKey = process.env.API_KEY;
+console.log(apiKey);
 /* GET home page in backend. */
 router.get("/", function (req, res, next) {
   // res.send({ title: "My Library App" });
@@ -20,7 +23,8 @@ const searchGoogleBooksByTitle = async (req, res) => {
   try {
     const { title } = req.body;
     const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}`
+      // `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}key=${apiKey}`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}&key=${apiKey}`
     );
     if (!result.ok) {
       setError(`An error has occured: ${response.status}`);
