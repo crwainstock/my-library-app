@@ -4,7 +4,7 @@ const db = require("../model/helper");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.send({ title: "My Library App" });
+  // res.send({ title: "My Library App" });
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
