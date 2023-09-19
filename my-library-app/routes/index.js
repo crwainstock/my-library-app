@@ -4,7 +4,13 @@ const db = require("../model/helper");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-// Functions to fetch data from Google API and database -- USED IN ROUTER FUNCTIONS
+/* GET home page in backend. */
+router.get("/", function (req, res, next) {
+  // res.send({ title: "My Library App" });
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
+
+// 💡💡 Functions to fetch data from Google API and database -- USED IN ROUTER FUNCTIONS
 
 // Used for FE search input BY TITLE
 const searchGoogleBooksByTitle = async (req, res) => {
@@ -42,6 +48,24 @@ const searchGoogleBooksByAuthor = async (req, res) => {
   }
 };
 
+// Used for FE search input BY ID
+const searchGoogleById = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const result = await fetch(
+      `https://www.googleapis.com/books/v1/volumes/${id}`
+    );
+    if (!result.ok) {
+      setError(`An error has occured: ${response.status}`);
+    } else {
+      let data = await result.json();
+      res.send(data);
+    }
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
 // Get all items from database -- used in other router functions to update database content in front end
 const getItems = async (req, res) => {
   try {
@@ -54,7 +78,7 @@ const getItems = async (req, res) => {
   }
 };
 
-// ROUTER FUNCTIONS
+// 💡💡 ROUTER FUNCTIONS
 
 // GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
 router.get("/mylibrary", async (req, res) => {
@@ -85,10 +109,64 @@ router.post("/mylibrary/searchByTitle", async (req, res) => {
   }
 });
 
-/* GET home page in backend. */
-router.get("/", function (req, res, next) {
-  // res.send({ title: "My Library App" });
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+// GET BOOK DETAILS BASED ON ID SEARCH -- Used in MyLibrary component -- FROM GOOGLE BOOKS API
+router.post("/mylibrary/searchById", async (req, res) => {
+  try {
+    searchGoogleById(req, res); //function written line 14
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+//GET ITEM BY ID  -- FROM DATABASE -- used in BookDetailView with rendering reviews from database
+router.get("/mylibrary/:id", async (req, res) => {
+  try {
+    let results = await db(
+      `SELECT * FROM mylibrary WHERE id=${req.params.id} ORDER BY id ASC;`
+    );
+    res.send(results.data);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// ADD ITEMS TO LIBRARY -- Used in Search component
+// -- working in postman
+router.post("/mylibrary", async (req, res) => {
+  const { bookId } = req.body;
+  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}")`;
+
+  try {
+    await db(sql);
+    await getItems(req, res);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
+//UPDATE REVIEW -- Used in BookDetailView page
+router.put("/mylibrary/:id", async (req, res) => {
+  const { review } = req.body;
+  const id = req.params.id;
+  const sql = `UPDATE mylibrary SET review = "${review}" WHERE id = ${id}`;
+
+  try {
+    await db(sql);
+    getItems(req, res);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
+// DELETE ITEM BY ID -- Used in MyLibrary page
+router.delete("/mylibrary/:id", async (req, res) => {
+  let id = Number(req.params.id);
+  try {
+    await db(`DELETE FROM mylibrary WHERE id = ${id}`);
+    await getItems(req, res);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 module.exports = router;
