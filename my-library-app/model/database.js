@@ -1,3 +1,7 @@
+// ES6 import syntax -- haven't gotten it to work here yet, though.
+// import dotenv from "dotenv";
+// dotenv.config();
+
 require("dotenv").config();
 const mysql = require("mysql");
 
