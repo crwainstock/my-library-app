@@ -8,19 +8,20 @@ import {
 } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
-import MyLibrary, { loader as booksLoader } from "./Pages/MyLibrary";
+import NotFound from "./Pages/NotFound";
+// import MyLibrary, { loader as booksLoader } from "./Pages/MyLibrary";
 import "./App.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route
+      {/* <Route
         path="mylibrary"
         element={<MyLibrary />}
-        loader={booksLoader}
+        // loader={booksLoader}
         errorElement={<Error />}
-      />
+      /> */}
 
       <Route path="*" element={<NotFound />} />
     </Route>
