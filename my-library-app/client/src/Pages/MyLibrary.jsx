@@ -8,7 +8,7 @@ import {
   Await,
 } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
-import { fetchBooks } from "../Hooks/useGetBookData";
+import { useGetBookData } from "../Hooks/useGetBookData";
 
 export function loader() {
   const booksPromise = fetchBooks();

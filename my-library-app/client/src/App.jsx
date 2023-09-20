@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
-import MyLibrary from "./Pages/MyLibrary";
+import MyLibrary, { loader as booksLoader } from "./Pages/MyLibrary";
 import "./App.css";
 
 const router = createBrowserRouter(
@@ -29,10 +29,6 @@ const router = createBrowserRouter(
 
 function App() {
   return <RouterProvider router={router} />;
-}
-
-function App() {
-  return <Home />;
 }
 
 export default App;
