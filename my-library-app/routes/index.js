@@ -78,7 +78,7 @@ const searchGoogleByTopic = async (req, res) => {
   try {
     const { topic } = req.body;
     const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${topic}&key=${apiKey}`
+      `https://www.googleapis.com/books/v1/volumes?q=subject:${topic}&key=${apiKey}`
     );
     if (!result.ok) {
       setError(`An error has occured: ${response.status}`);
