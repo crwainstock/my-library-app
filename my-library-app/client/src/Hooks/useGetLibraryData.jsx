@@ -54,7 +54,7 @@ const useGetLibraryData = () => {
     };
 
     fetchBooks();
-    // console.log(books);
+    console.log(books);
   }, []);
 
   return { books, loading, error };

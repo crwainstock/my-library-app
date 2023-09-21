@@ -3,6 +3,7 @@ import { useDataContext } from "../Hooks/useDataContext";
 
 function Home() {
   const { books, loading } = useDataContext();
+  console.log(books); //returning empty array
   return (
     <div className="App">
       <h1>My Library App</h1>
