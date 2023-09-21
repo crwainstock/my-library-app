@@ -29,7 +29,8 @@ const useGetLibraryData = () => {
         console.log(books);
         setLoading(false);
       } catch (err) {
-        console.log(err);
+        setError(err);
+        setLoading(false);
       }
     };
 
@@ -51,12 +52,13 @@ const useGetLibraryData = () => {
         setLoading(false);
         // return books;
       } catch (err) {
-        console.log(err);
+        setError(err);
+        setLoading(false);
       }
     };
 
     fetchBooks();
-    console.log(books);
+    // console.log(books);
   }, []);
 
   return { books, loading, error };
