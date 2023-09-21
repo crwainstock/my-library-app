@@ -6,7 +6,7 @@ export const DataContext = createContext();
 export function DataProvider({ children }) {
   const { data, loading, error } = useGetLibraryData();
 
-  const value = { data, loading, error };
+  const value = { books, loading, error };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
 }
