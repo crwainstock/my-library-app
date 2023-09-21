@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 const useGetLibraryData = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Uses id to search Google books and return book details

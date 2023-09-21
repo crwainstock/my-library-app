@@ -4,7 +4,7 @@ import useGetLibraryData from "../Hooks/useGetLibraryData";
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  const { data, loading, error } = useGetLibraryData();
+  const { books, loading, error } = useGetLibraryData();
 
   const value = { books, loading, error };
 
