@@ -13,8 +13,8 @@ const apiKey = process.env.API_KEY;
 
 /* GET home page in backend. */
 router.get("/", function (req, res, next) {
-  // res.send({ title: "My Library App" });
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.send({ title: "My Library App" });
+  // res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 // 💡💡 Functions to fetch data from Google API and database -- USED IN ROUTER FUNCTIONS
