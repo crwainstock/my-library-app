@@ -60,7 +60,7 @@ const searchGoogleById = async (req, res) => {
   try {
     const { id } = req.body;
     const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes/${id}&key=${apiKey}`
+      `https://www.googleapis.com/books/v1/volumes/${id}`
     );
     console.log(result);
     if (!result.ok) {
