@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import useGetLandingData from "../hooks/useGetLandingData";
+import useGetLibraryData from "../Hooks/useGetLibraryData";
 
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  const { data, loading, error } = useGetLandingData();
+  const { data, loading, error } = useGetLibraryData();
 
   const value = { data, loading, error };
 
