@@ -1,10 +1,11 @@
 import React from "react";
 import { useDataContext } from "../Hooks/useDataContext";
 import Loading from "../Components/Loading/Loading";
+import MyLibrary from "../Pages/MyLibrary";
 
 function Home() {
   const { books, loading } = useDataContext();
-  console.log(books); //returning empty array
+  // console.log(books);
   return (
     <div className="App">
       <h1>My Library App</h1>
@@ -13,7 +14,7 @@ function Home() {
           <Loading />
         </div>
       )}
-      <Search />
+      {/* <Search /> */}
       <MyLibrary />
     </div>
   );
