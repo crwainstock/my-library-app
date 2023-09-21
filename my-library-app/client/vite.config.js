@@ -6,16 +6,16 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
+      "/mylibrary": {
         target: "http://localhost:5000",
         changeOrigin: true,
         secure: false,
       },
-      "/users": {
-        target: "http://localhost:5000",
-        changeOrigin: true,
-        secure: false,
-      },
+      // "/users": {
+      //   target: "http://localhost:5000",
+      //   changeOrigin: true,
+      //   secure: false,
+      // },
     },
   },
 });
