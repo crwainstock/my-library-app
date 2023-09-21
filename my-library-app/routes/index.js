@@ -62,10 +62,12 @@ const searchGoogleById = async (req, res) => {
     const result = await fetch(
       `https://www.googleapis.com/books/v1/volumes/${id}&key=${apiKey}`
     );
+    console.log(result);
     if (!result.ok) {
       setError(`An error has occured: ${response.status}`);
     } else {
       let data = await result.json();
+      console.log(data);
       res.send(data);
     }
   } catch (err) {
