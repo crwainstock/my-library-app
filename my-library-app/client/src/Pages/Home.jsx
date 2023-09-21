@@ -1,5 +1,6 @@
 import React from "react";
 import { useDataContext } from "../Hooks/useDataContext";
+import Loading from "../Components/Loading/Loading";
 
 function Home() {
   const { books, loading } = useDataContext();
@@ -9,7 +10,7 @@ function Home() {
       <h1>My Library App</h1>
       {loading == true && (
         <div className="loading">
-          <h2>Loading...</h2>
+          <Loading />
         </div>
       )}
     </div>
