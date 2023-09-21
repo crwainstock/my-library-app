@@ -40,7 +40,6 @@ const useGetLibraryData = () => {
         let results = await fetch("/mylibrary");
         console.log(results);
         let data = await results.json();
-        console.log(data);
         //Loop through books and search using bookId with the searchMyBooks function
         //Should return full book data from Google & set books as that data
         // for (let i = 0; i < data.length; i++) {
@@ -49,7 +48,7 @@ const useGetLibraryData = () => {
         // }
         // console.log(books);
         setLoading(false);
-        return books;
+        // return books;
       } catch (err) {
         console.log(err);
       }

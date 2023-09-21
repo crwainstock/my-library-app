@@ -12,10 +12,10 @@ require("dotenv").config();
 const apiKey = process.env.API_KEY;
 
 /* GET home page in backend. */
-router.get("/", function (req, res, next) {
-  res.send({ title: "My Library App" });
-  // res.sendFile(path.join(__dirname, "../public/index.html"));
-});
+// router.get("/", function (req, res, next) {
+//   res.send({ title: "My Library App" });
+//   // res.sendFile(path.join(__dirname, "../public/index.html"));
+// });
 
 // 💡💡 Functions to fetch data from Google API and database -- USED IN ROUTER FUNCTIONS
 
@@ -108,8 +108,8 @@ const getItems = async (req, res) => {
 // GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
 router.get("/mylibrary", async (req, res) => {
   try {
-    // let results = await db(`SELECT * FROM mylibrary;`);
-    await getItems(req, res);
+    let results = await db(`SELECT * FROM mylibrary;`);
+    // await getItems(req, res);
     console.log(results);
     res.send(results.data);
   } catch (err) {
@@ -138,7 +138,7 @@ router.post("/mylibrary/searchByTitle", async (req, res) => {
 // SEARCH GOOGLE BOOKS API BY ID -- working in postman
 router.post("/mylibrary/searchById", async (req, res) => {
   try {
-    searchGoogleById(req, res); //function written line 14
+    searchGoogleById(req, res);
   } catch (err) {
     res.status(500).send(err);
   }
