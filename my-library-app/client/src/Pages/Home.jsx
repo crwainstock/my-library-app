@@ -13,6 +13,8 @@ function Home() {
           <Loading />
         </div>
       )}
+      <Search />
+      <MyLibrary />
     </div>
   );
 }
