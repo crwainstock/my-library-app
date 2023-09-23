@@ -1,0 +1,8 @@
+Color Palette
+
+Delete button (red): #E84855
+See More button (yellow): #FEDC97
+
+Pink: #EAC4D5
+Blue: #89D2DC
+Black: #0C090D

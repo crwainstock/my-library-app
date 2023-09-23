@@ -1,9 +1,16 @@
+/* Default styling is for mobile */
+
 footer {
   font-family: "Inclusive Sans", sans-serif;
   margin-top: 3rem;
   text-align: center;
 }
-
 footer h3 {
-  font-size: 1vw;
+  font-size: 4vw;
+}
+/* For larger screens */
+@media only screen and (min-width: 660px) {
+  footer h3 {
+    font-size: 1vw;
+  }
 }

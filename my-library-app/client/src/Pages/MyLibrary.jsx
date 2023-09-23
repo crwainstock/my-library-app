@@ -25,8 +25,9 @@ function MyLibrary() {
                 See More
               </button>
             </Link>
-            <div id="deleteIcon" className="col" key={book.id}>
+            <div id="deleteIcon" className="" key={book.id}>
               <button
+                id="deleteBook"
                 className=""
                 onClick={(e) => {
                   deleteBook(book.id);

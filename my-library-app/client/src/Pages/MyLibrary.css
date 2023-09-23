@@ -1,4 +1,8 @@
 /* Default styling is for mobile screens */
+html,
+body {
+  color: #0c090d;
+}
 .App h1 {
   font-size: 11vw;
 }
@@ -12,6 +16,17 @@
   border-radius: 10px;
   padding: 1rem;
   box-sizing: border-box;
+}
+.book-card h5 {
+  font-size: 7vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+#seeMore {
+  background-color: #fedc97;
+}
+#deleteBook {
+  background-color: #e84855;
 }
 
 /* For larger screens  */
