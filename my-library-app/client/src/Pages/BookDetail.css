@@ -1,0 +1,16 @@
+/* Default styling is for mobile */
+
+.book-detail-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.navbar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.home-button {
+  background-color: #89d2dc;
+}
+.mylibrary-button {
+  background-color: #eac4d5;
+}

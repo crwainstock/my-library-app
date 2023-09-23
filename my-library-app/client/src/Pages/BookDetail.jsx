@@ -25,14 +25,14 @@ function BookDetail() {
         </div>
       )}
 
-      <div id="nav" className="">
+      <div id="nav" className="navbar-container">
         <Link to="/">
-          <button className="">
+          <button className="home-button">
             <h5>Home</h5>
           </button>
         </Link>
         <Link to="/myLibrary">
-          <button className="">
+          <button className="mylibrary-button">
             <h5>My Library</h5>
           </button>
         </Link>
