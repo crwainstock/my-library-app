@@ -60,7 +60,7 @@ function BookDetail() {
 
           {bookData.review ? (
             <div className="review-container">
-              <h5>{bookData.review}</h5>
+              <p>{bookData.review}</p>
             </div>
           ) : null}
         </div>
