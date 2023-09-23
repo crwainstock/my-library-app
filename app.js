@@ -15,12 +15,13 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "/client/dist"))); //Added per CodeOp instructions
 app.use(cors());
 
 app.use("/", indexRouter);
 // app.use("/users", usersRouter); //Not used in this iteration of the app
+
 // Added per CodeOp instructions for heroku deployment
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "/client/dist/index.html"));
