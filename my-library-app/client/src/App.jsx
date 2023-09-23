@@ -11,7 +11,8 @@ import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import MyLibrary from "./Pages/MyLibrary";
 // , { loader as booksLoader }
-// import BookDetail, { loader as detailLoader } from "./Pages/BookDetail";
+import BookDetail from "./Pages/BookDetail";
+// , { loader as detailLoader }
 import "./App.css";
 
 const router = createBrowserRouter(
@@ -24,11 +25,11 @@ const router = createBrowserRouter(
         // loader={booksLoader}
         errorElement={<Error />}
       />
-      {/* <Route
+      <Route
         path="mylibrary/:id"
         element={<BookDetail />}
         errorElement={<Error />}
-      /> */}
+      />
 
       <Route path="*" element={<NotFound />} />
     </Route>
