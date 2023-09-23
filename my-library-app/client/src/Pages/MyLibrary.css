@@ -12,10 +12,11 @@ body {
   gap: 1rem;
 }
 .book-card {
-  border: 1px solid gray;
   border-radius: 10px;
   padding: 1rem;
   box-sizing: border-box;
+  background-color: #89d2dc2c;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .book-card h5 {
   font-size: 7vw;
