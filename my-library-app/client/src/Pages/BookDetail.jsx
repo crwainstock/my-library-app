@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "../Components/Loading/Loading";
 import { useGetBookDetails } from "../Hooks/useGetBookDetails";
+import "./BookDetail.css";
 
 function BookDetail() {
   const {
