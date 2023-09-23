@@ -9,7 +9,9 @@ import {
 import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
-// import MyLibrary, { loader as booksLoader } from "./Pages/MyLibrary";
+import MyLibrary from "./Pages/MyLibrary";
+// , { loader as booksLoader }
+// import BookDetail, { loader as detailLoader } from "./Pages/BookDetail";
 import "./App.css";
 
 const router = createBrowserRouter(
@@ -22,11 +24,11 @@ const router = createBrowserRouter(
         // loader={booksLoader}
         errorElement={<Error />}
       />
-      <Route
+      {/* <Route
         path="mylibrary/:id"
         element={<BookDetail />}
         errorElement={<Error />}
-      />
+      /> */}
 
       <Route path="*" element={<NotFound />} />
     </Route>
