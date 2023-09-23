@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Loading from "../Components/Loading/Loading";
-// import { useDataContext } from "../Hooks/useDataContext";
-// import { Link, useParams } from "react-router-dom";
 import { useGetBookDetails } from "../Hooks/useGetBookDetails";
 
 function BookDetail() {
@@ -28,7 +26,6 @@ function BookDetail() {
       )}
 
       <div id="nav" className="">
-        {/* The styling for the buttons here could be better...kind of weird at different screen sizes */}
         <Link to="/">
           <button className="">
             <h5>Home</h5>
@@ -40,32 +37,29 @@ function BookDetail() {
           </button>
         </Link>
       </div>
-      <div id="bookDetails" className="col w-75 mt-6 mb-6">
+      <div id="bookDetails" className="">
         {success ? (
-          <div id="success" className="rounded bg-info mb-4">
+          <div id="success" className="">
             <h3>Your review has been updated!</h3>
           </div>
         ) : (
           <div></div>
         )}
-        <div className="row md-9">
-          <div className="col">
-            <img
-              className="rounded mx-auto d-block mb-3"
-              src={book.volumeInfo?.imageLinks?.thumbnail}
-            />
+        <div className="">
+          <div className="">
+            <img className="" src={book.volumeInfo?.imageLinks?.thumbnail} />
             <h5>{book?.volumeInfo?.title}</h5>
             <h6>
               {book.volumeInfo?.authors?.[0]} {book.volumeInfo?.authors?.[1]}{" "}
             </h6>
           </div>
-          <div className="col-md-8">
+          <div className="">
             <p>{book?.volumeInfo?.description}</p>
           </div>
 
           {bookData.review ? (
-            <div className="row mt-4">
-              <div className="col">
+            <div className="">
+              <div className="">
                 <h5>{bookData.review}</h5>
               </div>
             </div>
@@ -73,7 +67,7 @@ function BookDetail() {
         </div>
       </div>
 
-      <div id="ratings" className="offset-md-3 col-md-6 mb-3 mt-4">
+      <div id="ratings" className="">
         <form onSubmit={handleSubmit}>
           <label htmlFor="review" className="form-label">
             {bookData.review ? (
@@ -84,7 +78,7 @@ function BookDetail() {
           </label>
           <input
             type="textarea"
-            className="form-control"
+            className=""
             placeholder="Write your review here"
             value={review}
             onChange={handleChange}
