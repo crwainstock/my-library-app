@@ -26,8 +26,16 @@
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
-/* .mylibrary-button h5 {
-  font-size: 1em;
+
+.book-detail-info h5 {
+  font-size: 7vw;
   margin-top: 1rem;
   margin-bottom: 1rem;
-} */
+}
+.book-description-container {
+  margin-bottom: 3rem;
+}
+.review-container h5 {
+  font-size: 4vw;
+  margin-top: 1rem;
+}

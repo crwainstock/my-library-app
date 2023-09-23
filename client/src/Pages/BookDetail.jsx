@@ -46,23 +46,21 @@ function BookDetail() {
         ) : (
           <div></div>
         )}
-        <div className="">
+        <div className="book-detail-info">
           <div className="">
             <img className="" src={book.volumeInfo?.imageLinks?.thumbnail} />
             <h5>{book?.volumeInfo?.title}</h5>
-            <h6>
+            <p>
               {book.volumeInfo?.authors?.[0]} {book.volumeInfo?.authors?.[1]}{" "}
-            </h6>
+            </p>
           </div>
-          <div className="">
+          <div className="book-description-container">
             <p>{book?.volumeInfo?.description}</p>
           </div>
 
           {bookData.review ? (
-            <div className="">
-              <div className="">
-                <h5>{bookData.review}</h5>
-              </div>
+            <div className="review-container">
+              <h5>{bookData.review}</h5>
             </div>
           ) : null}
         </div>
