@@ -23,10 +23,10 @@ const useGetLibraryData = () => {
         //Search Google using bookId from database
         let results = await fetch(`/mylibrary/searchById`, options);
         let data = await results.json();
-        console.log(data); //Search is working, but rendering is not. -- individual objects with book details
+        // console.log(data); //Search is working, but rendering is not. -- individual objects with book details
 
         setBooks((book) => [...book, data]); // Adding object of data to books array
-        console.log(books);
+        // console.log(books);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -48,7 +48,7 @@ const useGetLibraryData = () => {
           // console.log(data[i].bookId); //Seems to be accessing the bookId here
           await searchMyBooksById(data[i].bookId); //Use search function to look up book details using bookId
         }
-        console.log(books);
+        // console.log(books);
         setLoading(false);
         // return books;
       } catch (err) {
