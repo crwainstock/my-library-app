@@ -9,7 +9,11 @@ function MyLibrary() {
   return (
     <div className="my-library-container">
       {books.map((book) => (
-        <div className="" id="book" key={book.id + book.volumeInfo.title}>
+        <div
+          className="book-card"
+          id="book"
+          key={book.id + book.volumeInfo.title}
+        >
           <h5>{book.volumeInfo.title}</h5>
           <p>
             {book.volumeInfo?.authors?.[0]} {book.volumeInfo.authors?.[1]}{" "}

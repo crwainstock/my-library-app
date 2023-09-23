@@ -1,4 +1,11 @@
 .my-library-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+.book-card {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 1rem;
+  box-sizing: border-box;
 }
