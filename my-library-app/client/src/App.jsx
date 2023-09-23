@@ -16,12 +16,17 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      {/* <Route
+      <Route
         path="mylibrary"
         element={<MyLibrary />}
         // loader={booksLoader}
         errorElement={<Error />}
-      /> */}
+      />
+      <Route
+        path="mylibrary/:id"
+        element={<BookDetail />}
+        errorElement={<Error />}
+      />
 
       <Route path="*" element={<NotFound />} />
     </Route>
