@@ -25,6 +25,7 @@ body {
 }
 button {
   margin: 0.5rem;
+  margin-top: 1rem;
 }
 #seeMore {
   background-color: #fedc97;
@@ -39,6 +40,9 @@ button {
 
 /* For larger screens  */
 @media only screen and (min-width: 660px) {
+  .App h1 {
+    font-size: 4vw;
+  }
   .my-library-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
