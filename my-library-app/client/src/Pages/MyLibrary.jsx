@@ -19,7 +19,7 @@ function MyLibrary() {
             {book.volumeInfo?.authors?.[0]} {book.volumeInfo.authors?.[1]}{" "}
           </p>
           <img src={book.volumeInfo.imageLinks?.thumbnail} />
-          <div className="">
+          <div className="button-container">
             <Link to={`/myLibrary/${book.id}`}>
               <button id="seeMore" className="">
                 See More

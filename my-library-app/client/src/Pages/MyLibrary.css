@@ -22,11 +22,18 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+button {
+  margin: 0.5rem;
+}
 #seeMore {
   background-color: #fedc97;
 }
 #deleteBook {
   background-color: #e84855;
+}
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 /* For larger screens  */
