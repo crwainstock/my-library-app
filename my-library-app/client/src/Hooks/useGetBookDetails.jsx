@@ -112,5 +112,14 @@ export const useGetBookDetails = () => {
     // console.log(params);
   }, []);
 
-  return { book, loading, error };
+  return {
+    book,
+    loading,
+    error,
+    success,
+    review,
+    bookData,
+    handleChange,
+    handleSubmit,
+  };
 };
