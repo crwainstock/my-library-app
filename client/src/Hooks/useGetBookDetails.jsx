@@ -123,30 +123,6 @@ export const useGetBookDetails = () => {
     }
   };
 
-  //For rating input field
-  const handleRatingChange = (e) => {
-    const newRating = Number(e.target.value);
-    setRating(newRating);
-    console.log(rating);
-
-    updateRating(newRating);
-  };
-
-  //For review input field
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (review !== "") {
-      updateReview(review);
-    } else console.log("review empty");
-
-    if (rating !== 0) {
-      updateRating(rating);
-    } else console.log("rating empty");
-    //setReview("");
-    console.log(review);
-  };
-
   useEffect(() => {
     searchMyBooksById(ID);
     fetchDBBooks(ID);
@@ -157,12 +133,9 @@ export const useGetBookDetails = () => {
     loading,
     error,
     success,
-    rating,
     review,
     bookData,
     handleReviewChange,
-    handleSubmit,
-    // handleRatingSubmit,
-    handleRatingChange,
+    handleReviewSubmit,
   };
 };
