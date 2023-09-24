@@ -47,13 +47,49 @@
   font-size: 4vw;
   margin-top: 1rem;
 }
+
+#ratings {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  margin-top: 2rem;
+}
+/* Star rating styling from https://uiverse.io/andrew-demchenk0/clever-elephant-35 */
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  color: #666;
+}
+.rating:not(:checked) > label:before {
+  content: "★";
+}
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
+
 .review-form-container {
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
 }
 .form-label h3 {
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 .review-form-container button {
   background-color: #eac4d5;
