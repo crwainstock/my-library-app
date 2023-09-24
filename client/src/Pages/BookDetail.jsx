@@ -15,7 +15,7 @@ function BookDetail() {
     bookData,
     handleReviewChange,
     handleReviewSubmit,
-    handleRatingSubmit,
+    // handleRatingSubmit,
     handleRatingChange,
   } = useGetBookDetails();
 
@@ -80,15 +80,43 @@ function BookDetail() {
               checked={rating === 5}
               onChange={handleRatingChange}
             />
-            <label title="text" for="star5"></label>
-            <input value="4" name="rate" id="star4" type="radio" />
-            <label title="text" for="star4"></label>
-            <input value="3" name="rate" id="star3" type="radio" checked="" />
-            <label title="text" for="star3"></label>
-            <input value="2" name="rate" id="star2" type="radio" />
-            <label title="text" for="star2"></label>
-            <input value="1" name="rate" id="star1" type="radio" />
-            <label title="text" for="star1"></label>
+            <label title="text" htmlFor="star5"></label>
+            <input
+              value="4"
+              name="rate"
+              id="star4"
+              type="radio"
+              checked={rating === 4}
+              onChange={handleRatingChange}
+            />
+            <label title="text" htmlFor="star4"></label>
+            <input
+              value="3"
+              name="rate"
+              id="star3"
+              type="radio"
+              checked={rating === 3}
+              onChange={handleRatingChange}
+            />
+            <label title="text" htmlFor="star3"></label>
+            <input
+              value="2"
+              name="rate"
+              id="star2"
+              type="radio"
+              checked={rating === 2}
+              onChange={handleRatingChange}
+            />
+            <label title="text" htmlFor="star2"></label>
+            <input
+              value="1"
+              name="rate"
+              id="star1"
+              type="radio"
+              checked={rating === 1}
+              onChange={handleRatingChange}
+            />
+            <label title="text" htmlFor="star1"></label>
           </div>
         </form>
         <form onSubmit={handleReviewSubmit} className="review-form-container">

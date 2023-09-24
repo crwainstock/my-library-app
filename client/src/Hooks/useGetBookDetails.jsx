@@ -5,7 +5,7 @@ export const useGetBookDetails = () => {
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(null);
+  const [rating, setRating] = useState(book.rating);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState();
@@ -125,27 +125,30 @@ export const useGetBookDetails = () => {
 
       setLoading(false);
       // setSuccess(true); //To show success message
-      setTimeout(function () {
-        window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
-      }, 1000);
+      // setTimeout(function () {
+      //   window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
+      // }, 1000);
     } catch (err) {
       setError(err);
+      console.log(err);
       setLoading(false);
     }
   };
 
   //For rating input field
   const handleRatingChange = (e) => {
-    setRating(e.target.value);
-    updateRating(rating);
+    const newRating = e.target.value;
+    setRating(newRating);
+
+    updateRating(newRating);
   };
 
   //For rating input field
-  const handleRatingSubmit = (e) => {
-    e.preventDefault();
-    updateRating(rating);
-    setRating(rating);
-  };
+  // const handleRatingSubmit = (e) => {
+  //   e.preventDefault();
+  //   updateRating(rating);
+  //   setRating(rating);
+  // };
 
   useEffect(() => {
     searchMyBooksById(ID);
@@ -162,7 +165,7 @@ export const useGetBookDetails = () => {
     bookData,
     handleReviewChange,
     handleReviewSubmit,
-    handleRatingSubmit,
+    // handleRatingSubmit,
     handleRatingChange,
   };
 };
