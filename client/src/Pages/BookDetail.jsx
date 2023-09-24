@@ -14,6 +14,7 @@ function BookDetail() {
     bookData,
     handleChange,
     handleSubmit,
+    updateReview,
   } = useGetBookDetails();
 
   console.log(book);

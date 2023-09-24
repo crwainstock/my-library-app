@@ -75,7 +75,8 @@ export const useGetBookDetails = () => {
       body: JSON.stringify({ review: review }),
     };
     try {
-      let results = await fetch(`/myLibrary/${bookToUpdate}`, options);
+      let results = await fetch(`/mylibrary/${bookToUpdate}`, options);
+      console.log(results);
       let data = await results.json();
       console.log(data);
 
@@ -90,7 +91,6 @@ export const useGetBookDetails = () => {
     }
   };
   //For review input field
-  // Having trouble rendering review conditionally below because this updates immediately.
   const handleChange = (e) => {
     setReview(e.target.value);
   };
@@ -108,8 +108,6 @@ export const useGetBookDetails = () => {
   useEffect(() => {
     searchMyBooksById(ID);
     fetchDBBooks(ID);
-    // console.log(book);
-    // console.log(params);
   }, []);
 
   return {
@@ -121,5 +119,7 @@ export const useGetBookDetails = () => {
     bookData,
     handleChange,
     handleSubmit,
+    setReview,
+    updateReview,
   };
 };
