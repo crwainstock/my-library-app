@@ -67,7 +67,7 @@ function BookDetail() {
       </div>
 
       <div id="ratings" className="">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="review-form-container">
           <label htmlFor="review" className="form-label">
             {bookData.review ? (
               <h3>Update your review here.</h3>

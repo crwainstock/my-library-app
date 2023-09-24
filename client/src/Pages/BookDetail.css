@@ -47,6 +47,11 @@
   font-size: 4vw;
   margin-top: 1rem;
 }
+.review-form-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+}
 .form-label h3 {
   margin-top: 2rem;
 }
