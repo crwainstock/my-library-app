@@ -38,7 +38,7 @@
 .review-container {
   padding: 1rem;
   box-sizing: border-box;
-  background-color: #89d2dc;
+  background-color: #89d2dc68;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-top: 2rem;
@@ -53,7 +53,10 @@
   place-items: center;
 }
 .form-label h3 {
-  margin-top: 2rem;
+  margin-top: 3rem;
+}
+.review-form-container button {
+  background-color: #eac4d5;
 }
 /* Input styling from https://uiverse.io/ErzenXz/horrible-rattlesnake-14 */
 .input {
