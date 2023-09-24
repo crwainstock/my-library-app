@@ -134,6 +134,19 @@ export const useGetBookDetails = () => {
     }
   };
 
+  //For rating input field
+  const handleRatingChange = (e) => {
+    setRating(e.target.value);
+    updateRating(rating);
+  };
+
+  //For rating input field
+  const handleRatingSubmit = (e) => {
+    e.preventDefault();
+    updateRating(rating);
+    setRating(rating);
+  };
+
   useEffect(() => {
     searchMyBooksById(ID);
     fetchDBBooks(ID);
@@ -144,9 +157,12 @@ export const useGetBookDetails = () => {
     loading,
     error,
     success,
+    rating,
     review,
     bookData,
     handleReviewChange,
     handleReviewSubmit,
+    handleRatingSubmit,
+    handleRatingChange,
   };
 };

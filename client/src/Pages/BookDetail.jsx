@@ -10,10 +10,13 @@ function BookDetail() {
     loading,
     error,
     success,
+    rating,
     review,
     bookData,
     handleReviewChange,
     handleReviewSubmit,
+    handleRatingSubmit,
+    handleRatingChange,
   } = useGetBookDetails();
 
   // console.log(book);
@@ -69,7 +72,14 @@ function BookDetail() {
       <div id="ratings" className="">
         <form>
           <div className="rating">
-            <input value="5" name="rate" id="star5" type="radio" />
+            <input
+              value="5"
+              name="rate"
+              id="star5"
+              type="radio"
+              checked={rating === 5}
+              onChange={handleRatingChange}
+            />
             <label title="text" for="star5"></label>
             <input value="4" name="rate" id="star4" type="radio" />
             <label title="text" for="star4"></label>
