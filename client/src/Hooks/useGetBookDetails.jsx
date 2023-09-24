@@ -119,7 +119,5 @@ export const useGetBookDetails = () => {
     bookData,
     handleChange,
     handleSubmit,
-    setReview,
-    updateReview,
   };
 };

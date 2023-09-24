@@ -14,7 +14,6 @@ function BookDetail() {
     bookData,
     handleChange,
     handleSubmit,
-    updateReview,
   } = useGetBookDetails();
 
   console.log(book);
@@ -56,7 +55,7 @@ function BookDetail() {
             </p>
           </div>
           <div className="book-description-container">
-            <p>{book?.volumeInfo?.description}</p>
+            <p>{book?.volumeInfo?.description.replace(/(<([^>]+)>)/gi, "")}</p>
           </div>
 
           {bookData.review ? (
