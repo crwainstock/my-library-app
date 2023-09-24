@@ -5,7 +5,7 @@ export const useGetBookDetails = () => {
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState();
+  const [rating, setRating] = useState(0);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -96,42 +96,30 @@ export const useGetBookDetails = () => {
     setReview(e.target.value);
   };
 
-  //For review input field
-  const handleReviewSubmit = (e) => {
-    e.preventDefault();
-
-    updateReview(review);
-    setReview("");
-
-    console.log(review); // Ok, setting review works.
-  };
-
   // TO UPDATE RATING FOR BOOK
   const updateRating = async () => {
     let bookToUpdate = await fetchDBBooks(book.id);
     // console.log(bookToUpdate);
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ rating: rating }),
     };
     try {
-      let results = await fetch(`/mylibrary/${bookToUpdate}`, options);
-      // console.log(results);
+      let results = await fetch(`/myLibrary/${bookToUpdate}`, options);
+      console.log(results);
       let data = await results.json();
       console.log(data);
 
       setLoading(false);
-      // setSuccess(true); //To show success message
-      // setTimeout(function () {
-      //   window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
-      // }, 1000);
+      setSuccess(true); //To show success message
+      setTimeout(function () {
+        window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
+      }, 5000);
     } catch (err) {
-      setError(err);
       console.log(err);
-      setLoading(false);
     }
   };
 
@@ -144,12 +132,20 @@ export const useGetBookDetails = () => {
     updateRating(newRating);
   };
 
-  //For rating input field
-  // const handleRatingSubmit = (e) => {
-  //   e.preventDefault();
-  //   updateRating(rating);
-  //   setRating(rating);
-  // };
+  //For review input field
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (review !== "") {
+      updateReview(review);
+    } else console.log("review empty");
+
+    if (rating !== 0) {
+      updateRating(rating);
+    } else console.log("rating empty");
+    //setReview("");
+    console.log(review);
+  };
 
   useEffect(() => {
     searchMyBooksById(ID);
@@ -165,7 +161,7 @@ export const useGetBookDetails = () => {
     review,
     bookData,
     handleReviewChange,
-    handleReviewSubmit,
+    handleSubmit,
     // handleRatingSubmit,
     handleRatingChange,
   };

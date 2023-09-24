@@ -14,7 +14,7 @@ function BookDetail() {
     review,
     bookData,
     handleReviewChange,
-    handleReviewSubmit,
+    handleSubmit,
     // handleRatingSubmit,
     handleRatingChange,
   } = useGetBookDetails();
@@ -71,14 +71,14 @@ function BookDetail() {
       </div>
 
       <div id="ratings" className="">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="rating">
             <input
               value="5"
               name="rate"
               id="star5"
               type="radio"
-              checked={rating === 5}
+              // checked={rating === 5}
               onChange={handleRatingChange}
             />
             <label title="text" htmlFor="star5"></label>
@@ -87,7 +87,7 @@ function BookDetail() {
               name="rate"
               id="star4"
               type="radio"
-              checked={rating === 4}
+              // checked={rating === 4}
               onChange={handleRatingChange}
             />
             <label title="text" htmlFor="star4"></label>
@@ -96,7 +96,7 @@ function BookDetail() {
               name="rate"
               id="star3"
               type="radio"
-              checked={rating === 3}
+              // checked={rating === 3}
               onChange={handleRatingChange}
             />
             <label title="text" htmlFor="star3"></label>
@@ -105,7 +105,7 @@ function BookDetail() {
               name="rate"
               id="star2"
               type="radio"
-              checked={rating === 2}
+              // checked={rating === 2}
               onChange={handleRatingChange}
             />
             <label title="text" htmlFor="star2"></label>
@@ -114,28 +114,29 @@ function BookDetail() {
               name="rate"
               id="star1"
               type="radio"
-              checked={rating === 1}
+              // checked={rating === 1}
               onChange={handleRatingChange}
             />
             <label title="text" htmlFor="star1"></label>
           </div>
-        </form>
-        <form onSubmit={handleReviewSubmit} className="review-form-container">
-          <label htmlFor="review" className="form-label">
-            {bookData.review ? (
-              <h3>Update your review here.</h3>
-            ) : (
-              <h3>Write your review here.</h3>
-            )}
-          </label>
-          <input
-            type="textarea"
-            className="input"
-            placeholder="What do you think about this book?"
-            value={review}
-            onChange={handleReviewChange}
-          ></input>
-          <button type="submit">Save your review</button>
+
+          <div className="review-form-container">
+            <label htmlFor="review" className="form-label">
+              {bookData.review ? (
+                <h3>Update your review here.</h3>
+              ) : (
+                <h3>Write your review here.</h3>
+              )}
+            </label>
+            <input
+              type="textarea"
+              className="input"
+              placeholder="What do you think about this book?"
+              value={review}
+              onChange={handleReviewChange}
+            ></input>
+            <button type="submit">Save your review</button>
+          </div>
         </form>
       </div>
     </div>

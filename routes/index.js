@@ -194,7 +194,7 @@ router.put("/mylibrary/:id", async (req, res) => {
 });
 
 //UPDATE RATING -- used in BookDetail page -- working in postman
-router.post("/mylibrary/:id", async (req, res) => {
+router.put("/mylibrary/rating/:id", async (req, res) => {
   const { rating } = req.body;
   const id = req.params.id;
   const sql = `UPDATE mylibrary SET rating = ${rating} WHERE id = ${id}`;
