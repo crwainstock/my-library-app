@@ -194,10 +194,10 @@ router.put("/mylibrary/:id", async (req, res) => {
 });
 
 //UPDATE RATING -- used in BookDetail page
-router.put("/mylibrary/:id", async (req, res) => {
+router.post("/mylibrary/:id", async (req, res) => {
   const { rating } = req.body;
   const id = req.params.id;
-  const sql = `UPDATE mylibrary SET rating = "${rating}" WHERE id = ${id}`;
+  const sql = `UPDATE mylibrary SET rating = ${rating} WHERE id = ${id}`;
 
   try {
     await db(sql);
