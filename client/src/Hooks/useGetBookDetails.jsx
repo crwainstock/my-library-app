@@ -92,12 +92,12 @@ export const useGetBookDetails = () => {
     }
   };
   //For review input field
-  const handleChange = (e) => {
+  const handleReviewChange = (e) => {
     setReview(e.target.value);
   };
 
   //For review input field
-  const handleSubmit = (e) => {
+  const handleReviewSubmit = (e) => {
     e.preventDefault();
 
     updateReview(review);
@@ -118,7 +118,7 @@ export const useGetBookDetails = () => {
     success,
     review,
     bookData,
-    handleChange,
-    handleSubmit,
+    handleReviewChange,
+    handleReviewSubmit,
   };
 };

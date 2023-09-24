@@ -12,11 +12,11 @@ function BookDetail() {
     success,
     review,
     bookData,
-    handleChange,
-    handleSubmit,
+    handleReviewChange,
+    handleReviewSubmit,
   } = useGetBookDetails();
 
-  console.log(book);
+  // console.log(book);
 
   return (
     <div className="book-detail-container">
@@ -81,7 +81,7 @@ function BookDetail() {
             <label title="text" for="star1"></label>
           </div>
         </form>
-        <form onSubmit={handleSubmit} className="review-form-container">
+        <form onSubmit={handleReviewSubmit} className="review-form-container">
           <label htmlFor="review" className="form-label">
             {bookData.review ? (
               <h3>Update your review here.</h3>
@@ -94,7 +94,7 @@ function BookDetail() {
             className="input"
             placeholder="What do you think about this book?"
             value={review}
-            onChange={handleChange}
+            onChange={handleReviewChange}
           ></input>
           <button type="submit">Save your review</button>
         </form>
