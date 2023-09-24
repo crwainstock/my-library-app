@@ -5,6 +5,7 @@ export const useGetBookDetails = () => {
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database
   const [review, setReview] = useState("");
+  const [rating, setRating] = useState(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState();

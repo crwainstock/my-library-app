@@ -193,6 +193,20 @@ router.put("/mylibrary/:id", async (req, res) => {
   }
 });
 
+//UPDATE RATING -- used in BookDetail page
+router.put("/mylibrary/:id", async (req, res) => {
+  const { rating } = req.body;
+  const id = req.params.id;
+  const sql = `UPDATE mylibrary SET rating = "${rating}" WHERE id = ${id}`;
+
+  try {
+    await db(sql);
+    getItems(req, res);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
 // DELETE ITEM BY ID -- Used in MyLibrary page -- working in postman
 router.delete("/mylibrary/:id", async (req, res) => {
   let id = Number(req.params.id);
