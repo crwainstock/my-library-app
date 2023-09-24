@@ -77,8 +77,8 @@ function BookDetail() {
           </label>
           <input
             type="textarea"
-            className=""
-            placeholder="Write your review here"
+            className="input"
+            placeholder="What do you think about this book?"
             value={review}
             onChange={handleChange}
           ></input>
