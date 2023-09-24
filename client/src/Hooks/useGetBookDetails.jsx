@@ -77,9 +77,9 @@ export const useGetBookDetails = () => {
     };
     try {
       let results = await fetch(`/mylibrary/${bookToUpdate}`, options);
-      console.log(results);
+      // console.log(results);
       let data = await results.json();
-      console.log(data);
+      // console.log(data);
 
       setLoading(false);
       setSuccess(true); //To show success message
@@ -104,6 +104,34 @@ export const useGetBookDetails = () => {
     setReview("");
 
     console.log(review); // Ok, setting review works.
+  };
+
+  // TO UPDATE RATING FOR BOOK
+  const updateRating = async () => {
+    let bookToUpdate = await fetchDBBooks(book.id);
+    // console.log(bookToUpdate);
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ rating: rating }),
+    };
+    try {
+      let results = await fetch(`/mylibrary/${bookToUpdate}`, options);
+      // console.log(results);
+      let data = await results.json();
+      // console.log(data);
+
+      setLoading(false);
+      // setSuccess(true); //To show success message
+      setTimeout(function () {
+        window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
+      }, 1000);
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
