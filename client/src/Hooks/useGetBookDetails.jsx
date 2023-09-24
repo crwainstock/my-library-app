@@ -96,6 +96,13 @@ export const useGetBookDetails = () => {
     setReview(e.target.value);
   };
 
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
+    updateReview(review);
+    setReview("");
+    // console.log(review); // Ok, setting review works.
+  };
+
   // TO UPDATE RATING FOR BOOK
   const updateRating = async () => {
     let bookToUpdate = await fetchDBBooks(book.id);
