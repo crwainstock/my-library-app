@@ -20,6 +20,7 @@ function BookDetail() {
   } = useGetBookDetails();
 
   // console.log(book);
+  console.log(error);
 
   return (
     <div className="book-detail-container">

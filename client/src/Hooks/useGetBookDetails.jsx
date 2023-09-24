@@ -5,10 +5,10 @@ export const useGetBookDetails = () => {
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(book.rating);
+  const [rating, setRating] = useState();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(null);
 
   const params = useParams(); //A part of react-router
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
@@ -121,7 +121,7 @@ export const useGetBookDetails = () => {
       let results = await fetch(`/mylibrary/${bookToUpdate}`, options);
       // console.log(results);
       let data = await results.json();
-      // console.log(data);
+      console.log(data);
 
       setLoading(false);
       // setSuccess(true); //To show success message
@@ -137,8 +137,9 @@ export const useGetBookDetails = () => {
 
   //For rating input field
   const handleRatingChange = (e) => {
-    const newRating = e.target.value;
+    const newRating = Number(e.target.value);
     setRating(newRating);
+    console.log(rating);
 
     updateRating(newRating);
   };
