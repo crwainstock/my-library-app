@@ -72,7 +72,7 @@ function BookDetail() {
             {bookData.review ? (
               <h3>Update your review here.</h3>
             ) : (
-              <h3>What did you think about this book?</h3>
+              <h3>Write your review here.</h3>
             )}
           </label>
           <input
@@ -82,6 +82,7 @@ function BookDetail() {
             value={review}
             onChange={handleChange}
           ></input>
+          <button type="submit">Save your review</button>
         </form>
       </div>
     </div>
