@@ -4,25 +4,3 @@
   display: grid;
   grid-template-columns: 1fr;
 }
-.navbar-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-bottom: 1.5rem;
-}
-
-.home-button {
-  background-color: #89d2dc;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-.home-button h5,
-.mylibrary-button h5 {
-  font-size: 1em;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.mylibrary-button {
-  background-color: #fedc97;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
