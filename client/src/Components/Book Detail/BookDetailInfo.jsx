@@ -1,8 +1,8 @@
 import React from "react";
-import { useGetBookDetails } from "../Hooks/useGetBookDetails";
+import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import "./BookDetailInfo.css";
 
-function BookDetailInfo() {
+export default function BookDetailInfo() {
   const { book, loading, error, success, review, bookData } =
     useGetBookDetails();
 
