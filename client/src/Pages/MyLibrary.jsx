@@ -1,13 +1,20 @@
 import React from "react";
 import { useDataContext } from "../Hooks/useDataContext";
-import { Link } from "react-router-dom";
+
 import NavBar from "../Components/NavBar/NavBar";
 import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
-import "./MyLibrary.css";
+import Loading from "../Components/Loading/Loading";
 
 function MyLibrary() {
+  const { loading } = useDataContext();
+
   return (
     <div>
+      {loading == true && (
+        <div className="loading">
+          <Loading />
+        </div>
+      )}
       <NavBar />
       <MyLibraryComponent />
     </div>
