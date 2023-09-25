@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetBookDetails } from "../Hooks/useGetBookDetails";
+import "./BookDetailInfo.css";
 
 function BookDetailInfo() {
   const { book, loading, error, success, review, bookData } =

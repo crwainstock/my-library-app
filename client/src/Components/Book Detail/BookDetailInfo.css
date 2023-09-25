@@ -1,0 +1,21 @@
+.book-detail-info h5 {
+  font-size: 7vw;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.book-description-container {
+  margin-bottom: 2rem;
+}
+
+.review-container {
+  padding: 1rem;
+  box-sizing: border-box;
+  background-color: #89d2dc68;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin-top: 2rem;
+}
+.review-container h5 {
+  font-size: 4vw;
+  margin-top: 1rem;
+}
