@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import "./BookRatings.css";
 

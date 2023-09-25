@@ -8,14 +8,7 @@ import BookRatings from "../Components/Book Detail/BookRatings";
 import "./BookDetail.css";
 
 function BookDetail() {
-  const {
-    loading,
-    error,
-    review,
-    bookData,
-    handleReviewChange,
-    handleReviewSubmit,
-  } = useGetBookDetails();
+  const { loading, error } = useGetBookDetails();
 
   // console.log(book);
   // console.log(error);
