@@ -4,6 +4,7 @@ import Loading from "../Components/Loading/Loading";
 import Error from "../Components/Error";
 import BookDetailInfo from "../Components/Book Detail/BookDetailInfo";
 import BookRatings from "../Components/Book Detail/BookRatings";
+import NavBar from "../Components/NavBar/NavBar";
 import "./BookDetail.css";
 
 function BookDetail() {
@@ -24,7 +25,7 @@ function BookDetail() {
           <Error />
         </div>
       )}
-
+      <NavBar />
       <BookDetailInfo />
       <BookRatings />
     </div>
