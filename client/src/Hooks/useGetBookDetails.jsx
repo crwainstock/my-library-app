@@ -141,6 +141,7 @@ export const useGetBookDetails = () => {
     error,
     success,
     review,
+    rating,
     bookData,
     handleReviewChange,
     handleReviewSubmit,
