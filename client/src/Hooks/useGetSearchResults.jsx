@@ -104,10 +104,13 @@ export const useGetSearchResults = () => {
   };
   return {
     searchTerm,
+    setSearchTerm,
     selected,
+    setSelected,
     searchResults,
     loading,
     success,
     handleSubmit,
+    addBook,
   };
 };

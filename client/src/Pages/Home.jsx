@@ -1,8 +1,8 @@
 import React from "react";
 import { useDataContext } from "../Hooks/useDataContext";
 import Loading from "../Components/Loading/Loading";
-import MyLibrary from "../Pages/MyLibrary";
 import NavBar from "../Components/NavBar/NavBar";
+import Search from "../Components/Search/Search";
 
 function Home() {
   //This is needed so it knows whether the data is loading or not.
@@ -17,7 +17,7 @@ function Home() {
           <Loading />
         </div>
       )}
-      {/* <Search /> */}
+      <Search />
       {/* <MyLibrary /> */}
     </div>
   );
