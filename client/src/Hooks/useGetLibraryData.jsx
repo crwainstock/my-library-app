@@ -28,8 +28,8 @@ const useGetLibraryData = () => {
         setBooks((book) => [...book, data]); // Adding object of data to books array
         // console.log(books);
         setLoading(false);
-      } catch (err) {
-        setError(err);
+      } catch (error) {
+        setError(error);
         setLoading(false);
       }
     };
