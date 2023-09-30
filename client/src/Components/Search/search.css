@@ -32,3 +32,11 @@
 .add-to-library-button {
   background-color: #eac4d5;
 }
+
+/* For larger screens  */
+@media only screen and (min-width: 660px) {
+  .search-results-container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
