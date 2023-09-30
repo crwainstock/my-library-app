@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const useGetSearchResults = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState(true); // State variable for radio buttons -- true = search by title, false = search by author
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([0]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
 

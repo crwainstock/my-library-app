@@ -1,9 +1,11 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
+import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import * as Toast from "@radix-ui/react-toast";
 import "./toast.css";
 
-const Toast = () => {
+const addBookToast = () => {
+  const { searchResults, addBook } = useGetSearchResults();
   const [open, setOpen] = useState(false);
   const eventDateRef = useRef(new Date());
   const timerRef = useRef(0);
@@ -17,19 +19,25 @@ const Toast = () => {
       <button
         className="Button large violet"
         onClick={() => {
+          // Toast function
           setOpen(false);
           window.clearTimeout(timerRef.current);
           timerRef.current = window.setTimeout(() => {
             eventDateRef.current = oneWeekAway();
             setOpen(true);
           }, 100);
+
+          //Adds book to database
+          addBook(result.id);
         }}
       >
-        Add to calendar
+        Add book to my library
       </button>
 
       <Toast.Root className="ToastRoot" open={open} onOpenChange={setOpen}>
-        <Toast.Title className="ToastTitle">Scheduled: Catch up</Toast.Title>
+        <Toast.Title className="ToastTitle">
+          A book was added to your library
+        </Toast.Title>
         <Toast.Description asChild>
           <time
             className="ToastDescription"
@@ -64,4 +72,4 @@ function prettyDate(date) {
   }).format(date);
 }
 
-export default Toast;
+export default addBookToast;

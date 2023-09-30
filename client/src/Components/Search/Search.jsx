@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import Loading from "../../Components/Loading/Loading";
+import addBookToast from "../../Components/Toast/addBookToast";
 import "./search.css";
 
 export default function Search() {
@@ -92,14 +93,13 @@ export default function Search() {
                     {result.volumeInfo.authors?.[1]}
                   </p>
                   <p>{result.volumeInfo.description}</p>
-
                   <button
                     className="add-to-library-button"
                     onClick={(e) => {
                       addBook(result.id);
                     }}
                   >
-                    Add Book to my Library
+                    Add book to my library
                   </button>
                 </div>
               ))}
