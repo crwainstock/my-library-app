@@ -50,5 +50,6 @@
   .search-results-container {
     max-width: 70%;
     margin: 0 auto;
+    margin-top: 2rem;
   }
 }
