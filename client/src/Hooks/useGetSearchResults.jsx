@@ -35,7 +35,7 @@ export const useGetSearchResults = () => {
       let data = await results.json();
       // console.log(data.items);
       getJuvenileBooks(data.items);
-      console.log(searchResults); //returning array of objects
+      // console.log(searchResults); //returning array of objects
       setLoading(false);
     } catch (err) {
       console.log(err);

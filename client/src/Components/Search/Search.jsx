@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
+import "./search.css";
 
 export default function Search() {
   const {
@@ -24,11 +25,12 @@ export default function Search() {
             </label>
             <input
               type="text"
-              className="form-control"
-              placeholder="Type the name of a children's book here"
+              className="input"
+              placeholder="Search for a book here"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
+
             <div className="row mt-3">
               <div className="col form-check">
                 <label>
@@ -61,6 +63,7 @@ export default function Search() {
                 </label>
               </div>
             </div>
+            <button type="submit">Search</button>
           </form>
         </div>
       </div>
