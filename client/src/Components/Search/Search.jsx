@@ -82,7 +82,7 @@ export default function Search() {
           <div className="row">
             {searchResults.map((result) => (
               <div
-                className="col-lg-4 col-md-6 col-12 ps-3 pe-3"
+                className="book-result-container"
                 id="result"
                 key={result.id}
               >
@@ -95,7 +95,7 @@ export default function Search() {
                 <p>{result.volumeInfo.description}</p>
 
                 <button
-                  className="rounded btn btn-success"
+                  className="add-to-library-button"
                   onClick={(e) => {
                     addBook(result.id);
                   }}

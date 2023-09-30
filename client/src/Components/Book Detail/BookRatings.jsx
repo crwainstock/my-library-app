@@ -16,7 +16,7 @@ export default function BookRatings() {
 
   return (
     <div id="ratings" className="">
-      <form>
+      {/* <form>
         <div className="rating">
           <input
             value="5"
@@ -64,7 +64,7 @@ export default function BookRatings() {
           />
           <label title="text" htmlFor="star1"></label>
         </div>
-      </form>
+      </form> */}
       <form onSubmit={handleReviewSubmit} className="review-form-container">
         <label htmlFor="review" className="form-label">
           {bookData.review ? (

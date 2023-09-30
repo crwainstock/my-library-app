@@ -26,3 +26,9 @@
 .search-results-container {
   margin-top: 2rem;
 }
+.book-result-container {
+  margin-bottom: 2rem;
+}
+.add-to-library-button {
+  background-color: #eac4d5;
+}
