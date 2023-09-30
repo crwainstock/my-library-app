@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
+import Loading from "../../Components/Loading/Loading";
 import "./search.css";
 
 export default function Search() {
@@ -31,8 +32,8 @@ export default function Search() {
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
 
-            <div className="row mt-3">
-              <div className="col form-check">
+            <div className="search-type-container">
+              <div className="">
                 <label>
                   <input
                     type="radio"
@@ -47,7 +48,7 @@ export default function Search() {
                   Search by Book Title
                 </label>
               </div>
-              <div className="col form-check">
+              <div className="">
                 <label>
                   <input
                     type="radio"
@@ -75,11 +76,9 @@ export default function Search() {
         <div></div>
       )}
       {loading ? (
-        <div className="spinner-border text-warning mb-5" role="status">
-          <span className="visually-hidden">Loading...</span>
-        </div>
+        <Loading />
       ) : (
-        <div id="searchResults" className="container mt-2 mb-4">
+        <div id="searchResults" className="search-results-container">
           <div className="row">
             {searchResults.map((result) => (
               <div

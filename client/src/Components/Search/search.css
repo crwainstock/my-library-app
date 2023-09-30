@@ -19,3 +19,7 @@
 .input:focus {
   border: 2px solid grey;
 }
+
+.search-type-container {
+  margin-top: 1rem;
+}
