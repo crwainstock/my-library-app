@@ -5,7 +5,6 @@ import Error from "../Components/Error";
 import BookDetailInfo from "../Components/Book Detail/BookDetailInfo";
 import BookRatings from "../Components/Book Detail/BookRatings";
 import NavBar from "../Components/NavBar/NavBar";
-import "./BookDetail.css";
 
 function BookDetail() {
   const { loading, error } = useGetBookDetails();

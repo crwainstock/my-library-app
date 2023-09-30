@@ -30,4 +30,12 @@
   .book-detail-info h5 {
     font-size: 3vw;
   }
+  .book-description-container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  .review-container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
 }
