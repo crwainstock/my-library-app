@@ -45,7 +45,7 @@ export default function Search() {
                     }}
                     value="titleSearch"
                   />
-                  Search by Book Title
+                  Search by Title
                 </label>
               </div>
               <div className="">

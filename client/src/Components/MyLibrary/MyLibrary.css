@@ -29,9 +29,11 @@ button {
 }
 #seeMore {
   background-color: #fedc97;
+  font-size: 0.9em;
 }
 #deleteBook {
   background-color: #e84855;
+  font-size: 0.9em;
 }
 .button-container {
   display: grid;
