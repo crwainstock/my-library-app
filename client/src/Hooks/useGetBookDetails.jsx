@@ -74,7 +74,7 @@ export const useGetBookDetails = () => {
       method: "DELETE",
     };
     try {
-      let results = await fetch(`/myLibrary/${bookToDelete}`, options);
+      let results = await fetch(`/mylibrary/${bookToDelete}`, options);
       let data = await results.json();
 
       setLoading(false);
