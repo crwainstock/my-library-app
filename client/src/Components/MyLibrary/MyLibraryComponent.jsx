@@ -11,8 +11,8 @@ export default function MyLibraryComponent() {
   return (
     <div className="my-library-container">
       {books.length === 0 ? (
-        <div>
-          <p>Your library is empty.</p>
+        <div className="empty-library-container">
+          <h3>Your library is empty.</h3>
           <Link to="/" className="link-button">
             Search for books on the home page
           </Link>

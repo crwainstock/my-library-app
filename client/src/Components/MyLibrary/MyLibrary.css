@@ -11,6 +11,9 @@ body {
   grid-template-columns: 1fr;
   gap: 1rem;
 }
+.empty-library-container {
+  grid-column: 1 / 4;
+}
 .book-card {
   border-radius: 10px;
   padding: 1rem;
