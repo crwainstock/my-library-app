@@ -11,7 +11,7 @@ function Home() {
   return (
     <div className="App">
       <NavBar />
-      <h1>My Library App</h1>
+      <h1>My Library</h1>
       {loading == true && (
         <div className="loading">
           <Loading />
