@@ -18,7 +18,7 @@ const addBookToast = () => {
     <Toast.Provider swipeDirection="right">
       <button
         className="Button large violet"
-        onClick={() => {
+        onClick={(e) => {
           // Toast function
           setOpen(false);
           window.clearTimeout(timerRef.current);
