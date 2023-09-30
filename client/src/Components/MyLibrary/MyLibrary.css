@@ -48,6 +48,8 @@ button {
   .my-library-container {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
+    max-width: 80%;
+    margin: 0 auto;
   }
   .book-card h5 {
     font-size: 2vw;
@@ -59,5 +61,11 @@ button {
   }
   .button-container {
     margin-top: 3rem;
+  }
+  #seeMore {
+    font-size: 0.8em;
+  }
+  #deleteBook {
+    font-size: 0.8em;
   }
 }
