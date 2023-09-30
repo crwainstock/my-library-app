@@ -65,7 +65,7 @@ export default function Search() {
               </div>
             </div>
             <button type="submit" id="submit-search-button">
-              Search
+              <h5>Search</h5>
             </button>
           </form>
         </div>
