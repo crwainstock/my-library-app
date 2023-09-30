@@ -64,8 +64,12 @@ button {
   }
   #seeMore {
     font-size: 0.8em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
   #deleteBook {
     font-size: 0.8em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
