@@ -106,10 +106,9 @@ export const useGetBookDetails = () => {
       // console.log(data);
 
       setLoading(false);
+
+      window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
       setSuccess(true); //To show success message
-      setTimeout(function () {
-        window.location.reload(); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
-      }, 2000);
     } catch (err) {
       setError(err);
       setLoading(false);
