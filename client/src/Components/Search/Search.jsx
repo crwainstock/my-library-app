@@ -17,7 +17,7 @@ export default function Search() {
   } = useGetSearchResults();
 
   return (
-    <div id="searchArea" className="container ">
+    <div id="searchArea" className="search-component-container">
       <div className="row">
         <div id="searchBox" className="offset-md-3 col-md-6 mb-3">
           <form onSubmit={handleSubmit}>
@@ -64,7 +64,9 @@ export default function Search() {
                 </label>
               </div>
             </div>
-            <button type="submit">Search</button>
+            <button type="submit" id="submit-search-button">
+              Search
+            </button>
           </form>
         </div>
       </div>

@@ -1,4 +1,8 @@
 /* Default styling is for mobile */
+#submit-search-button {
+  background-color: #2cf6b3;
+  /* color: #fefefa; */
+}
 
 /* Input styling from https://uiverse.io/ErzenXz/horrible-rattlesnake-14 */
 .input {
