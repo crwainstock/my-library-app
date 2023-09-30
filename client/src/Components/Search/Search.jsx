@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import Loading from "../../Components/Loading/Loading";
 import "./search.css";
@@ -21,21 +22,7 @@ export default function Search() {
   } = useGetSearchResults();
 
   const [open, setOpen] = useState(false);
-  const eventDateRef = useRef(new Date());
   const timerRef = useRef(0);
-
-  function oneWeekAway(date) {
-    const now = new Date();
-    const inOneWeek = now.setDate(now.getDate() + 7);
-    return new Date(inOneWeek);
-  }
-
-  function prettyDate(date) {
-    return new Intl.DateTimeFormat("en-US", {
-      dateStyle: "full",
-      timeStyle: "short",
-    }).format(date);
-  }
 
   useEffect(() => {
     return () => clearTimeout(timerRef.current);
@@ -119,13 +106,12 @@ export default function Search() {
                   <p>{result.volumeInfo.description}</p>
                   <Toast.Provider swipeDirection="right">
                     <button
-                      className="Button large violet"
+                      className="add-to-library-button"
                       onClick={(e) => {
                         // Toast function
                         setOpen(false);
                         window.clearTimeout(timerRef.current);
                         timerRef.current = window.setTimeout(() => {
-                          eventDateRef.current = oneWeekAway();
                           setOpen(true);
                         }, 100);
 
@@ -143,20 +129,17 @@ export default function Search() {
                       <Toast.Title className="ToastTitle">
                         A book was added to your library
                       </Toast.Title>
-                      <Toast.Description asChild>
-                        <time
-                          className="ToastDescription"
-                          dateTime={eventDateRef.current.toISOString()}
-                        >
-                          {prettyDate(eventDateRef.current)}
-                        </time>
-                      </Toast.Description>
+                      {/* <Toast.Description asChild>
+                        
+                      </Toast.Description> */}
                       <Toast.Action
                         className="ToastAction"
                         asChild
-                        altText="Goto schedule to undo"
+                        altText="Go to my library"
                       >
-                        <button className="Button small green">Undo</button>
+                        <button className="Button small green">
+                          <Link to="/mylibrary">Visit my library</Link>
+                        </button>
                       </Toast.Action>
                     </Toast.Root>
                     <Toast.Viewport className="ToastViewport" />

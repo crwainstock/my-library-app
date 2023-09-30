@@ -11,7 +11,7 @@ export default function NavBar() {
         </button>
       </Link>
       <Link to="/myLibrary">
-        <button className="mylibrary-button">
+        <button className="mylibrary-button" onClick="window.location.reload()">
           <h5>My Library</h5>
         </button>
       </Link>

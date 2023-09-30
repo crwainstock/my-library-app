@@ -1,3 +1,5 @@
+// I had trouble getting this component to work as its own thing, so this same code is in the Search component.
+
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
@@ -5,7 +7,6 @@ import * as Toast from "@radix-ui/react-toast";
 import "./toast.css";
 
 const addBookToast = () => {
-  const { searchResults, addBook } = useGetSearchResults();
   const [open, setOpen] = useState(false);
   const eventDateRef = useRef(new Date());
   const timerRef = useRef(0);
