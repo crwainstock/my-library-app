@@ -6,6 +6,7 @@ export const useGetSearchResults = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   // I need this to limit results to books for kids,
   // but it's creating problems with search results (other categories exist that might be relevant)
@@ -18,6 +19,7 @@ export const useGetSearchResults = () => {
       );
     });
     setSearchResults(juvenileBooks);
+    setSearchPerformed(true);
   };
 
   //Function to use Google Books API and search BY TITLES -- POST function in index.js uses API and searches titles with searchTerm in body
@@ -109,6 +111,7 @@ export const useGetSearchResults = () => {
     searchResults,
     loading,
     success,
+    searchPerformed,
     handleSubmit,
     addBook,
   };

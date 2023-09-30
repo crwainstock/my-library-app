@@ -17,6 +17,7 @@ export default function Search() {
     searchResults,
     loading,
     success,
+    searchPerformed,
     handleSubmit,
     addBook,
   } = useGetSearchResults();
@@ -87,7 +88,7 @@ export default function Search() {
         <Loading />
       ) : (
         <div id="searchResults" className="search-results-container">
-          {searchResults.length === 0 ? (
+          {searchResults.length === 0 && searchPerformed == true ? (
             <p>No results found.</p>
           ) : (
             <div className="row">
