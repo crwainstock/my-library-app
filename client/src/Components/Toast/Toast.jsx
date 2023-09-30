@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import * as Toast from "@radix-ui/react-toast";
 import "./toast.css";
 
-const ToastDemo = () => {
+const Toast = () => {
   const [open, setOpen] = useState(false);
   const eventDateRef = useRef(new Date());
   const timerRef = useRef(0);
@@ -64,4 +64,4 @@ function prettyDate(date) {
   }).format(date);
 }
 
-export default ToastDemo;
+export default Toast;

@@ -1,5 +1,4 @@
 import React from "react";
-import ToastDemo from "../Components/Toast/Toast";
 import { Link } from "react-router-dom";
 
 export default function NotFound() {
@@ -9,7 +8,6 @@ export default function NotFound() {
       <Link to="/" className="link-button">
         Return home
       </Link>
-      <ToastDemo />
     </div>
   );
 }

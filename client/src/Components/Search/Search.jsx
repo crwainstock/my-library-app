@@ -70,43 +70,41 @@ export default function Search() {
           </form>
         </div>
       </div>
-      {success ? (
-        <div className="rounded bg-info mb-4">
-          <h3>A book was added to your library!</h3>
-        </div>
-      ) : (
-        <div></div>
-      )}
+
       {loading ? (
         <Loading />
       ) : (
         <div id="searchResults" className="search-results-container">
-          <div className="row">
-            {searchResults.map((result) => (
-              <div
-                className="book-result-container"
-                id="result"
-                key={result.id}
-              >
-                <img src={result.volumeInfo.imageLinks?.thumbnail} />
-                <h5>{result.volumeInfo.title}</h5>
-                <p>
-                  {result.volumeInfo.authors?.[0]}{" "}
-                  {result.volumeInfo.authors?.[1]}
-                </p>
-                <p>{result.volumeInfo.description}</p>
-
-                <button
-                  className="add-to-library-button"
-                  onClick={(e) => {
-                    addBook(result.id);
-                  }}
+          {searchResults.length === 0 ? (
+            <p>No results found.</p>
+          ) : (
+            <div className="row">
+              {searchResults.map((result) => (
+                <div
+                  className="book-result-container"
+                  id="result"
+                  key={result.id}
                 >
-                  Add Book to my Library
-                </button>
-              </div>
-            ))}
-          </div>
+                  <img src={result.volumeInfo.imageLinks?.thumbnail} />
+                  <h5>{result.volumeInfo.title}</h5>
+                  <p>
+                    {result.volumeInfo.authors?.[0]}{" "}
+                    {result.volumeInfo.authors?.[1]}
+                  </p>
+                  <p>{result.volumeInfo.description}</p>
+
+                  <button
+                    className="add-to-library-button"
+                    onClick={(e) => {
+                      addBook(result.id);
+                    }}
+                  >
+                    Add Book to my Library
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>
