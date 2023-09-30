@@ -1,10 +1,12 @@
 import React from "react";
 import { useDataContext } from "../../Hooks/useDataContext";
+import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import { Link } from "react-router-dom";
 import "./MyLibrary.css";
 
 export default function MyLibraryComponent() {
   const { books, loading } = useDataContext();
+  const { deleteBook } = useGetBookDetails();
 
   return (
     <div className="my-library-container">
