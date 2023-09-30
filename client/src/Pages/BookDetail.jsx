@@ -10,9 +10,6 @@ import "./BookDetail.css";
 function BookDetail() {
   const { loading, error } = useGetBookDetails();
 
-  // console.log(book);
-  // console.log(error);
-
   return (
     <div className="book-detail-container">
       {loading == true && (

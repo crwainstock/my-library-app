@@ -1,6 +1,0 @@
-/* Default styling is for mobile */
-
-.book-detail-container {
-  display: grid;
-  grid-template-columns: 1fr;
-}

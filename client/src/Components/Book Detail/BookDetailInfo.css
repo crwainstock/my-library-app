@@ -1,3 +1,5 @@
+/* Default styling is for mobile */
+
 .book-detail-info h5 {
   font-size: 7vw;
   margin-top: 1rem;
@@ -18,4 +20,14 @@
 .review-container h5 {
   font-size: 4vw;
   margin-top: 1rem;
+}
+
+/* For larger screens  */
+@media only screen and (min-width: 660px) {
+  .book-detail-info img {
+    width: 15%;
+  }
+  .book-detail-info h5 {
+    font-size: 3vw;
+  }
 }

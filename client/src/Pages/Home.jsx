@@ -18,7 +18,6 @@ function Home() {
         </div>
       )}
       <Search />
-      {/* <MyLibrary /> */}
     </div>
   );
 }
