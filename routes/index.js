@@ -4,6 +4,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../model/helper");
+const ensureUserExists = require("../guards/ensureUserExists");
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
