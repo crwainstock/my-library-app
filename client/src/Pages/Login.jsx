@@ -8,6 +8,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 // import { loginUser } from "../api";
+import "./login.css";
 
 export function loader({ request }) {
   return new URL(request.url).searchParams.get("message");
@@ -42,8 +43,18 @@ export default function Login() {
       {errorMessage && <h3 className="red">{errorMessage}</h3>}
 
       <Form method="post" className="login-form" replace>
-        <input name="email" type="email" placeholder="Email address" />
-        <input name="password" type="password" placeholder="Password" />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email address"
+          className="input"
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          className="input"
+        />
         <button disabled={navigation.state === "submitting"}>
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
