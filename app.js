@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "/client/dist"))); //Added per CodeO
 app.use(cors());
 
 app.use("/", indexRouter);
-// app.use("/users", usersRouter); //Not used in this iteration of the app
+app.use("/users", usersRouter);
 
 // Added per CodeOp instructions for heroku deployment
 app.get("*", (req, res) => {
