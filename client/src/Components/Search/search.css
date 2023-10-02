@@ -10,6 +10,15 @@
   margin-bottom: 1rem;
 }
 
+.book-result-container {
+  border-radius: 10px;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  background-color: #fefefa;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 #search-book-description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -61,12 +70,5 @@
     margin-top: 2rem;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
-  }
-  .book-result-container {
-    border-radius: 10px;
-    padding: 1rem;
-    box-sizing: border-box;
-    background-color: #fefefa;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 }
