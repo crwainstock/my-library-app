@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 7;
 const supersecret = process.env.SUPER_SECRET;
 
-/********* REGISTER - done through postman, no frontend form provided *********/
+/********* REGISTER - done through postman, no frontend form provided yet*********/
 
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
 });
 
 /*********  PRIVATE ROUTE FOR LOGGED IN USERS ONLY *********/
-router.get("/private", userShouldBeLoggedIn, (req, res) => {
+router.get("/private", ensureUserLoggedIn, (req, res) => {
   res.status(200).send({
     message: "Here is the PROTECTED data for user " + req.user_id,
   });
@@ -158,101 +158,101 @@ router.get("/private", ensureUserLoggedIn, (req, res) => {
 //
 
 /* GET all users. For testing */
-router.get("/all", function (req, res, next) {
-  try {
-    sendAllUsers(res);
-  } catch (err) {
-    res.status(500).send({ err: err.message });
-  }
-});
+// router.get("/all", function (req, res, next) {
+//   try {
+//     sendAllUsers(res);
+//   } catch (err) {
+//     res.status(500).send({ err: err.message });
+//   }
+// });
 
 /*GET all info from junction table books_users. For testing*/
-router.get("/books", async (req, res) => {
-  try {
-    const results = await db("SELECT * FROM books_users;");
-    res.status(200).send(results.data);
-  } catch (err) {
-    res.status(500).send({ err: err.message });
-  }
-});
+// router.get("/books", async (req, res) => {
+//   try {
+//     const results = await db("SELECT * FROM books_users;");
+//     res.status(200).send(results.data);
+//   } catch (err) {
+//     res.status(500).send({ err: err.message });
+//   }
+// });
 
-/*GET all info from junction table books_users. For testing*/
-const getUserItems = async (req, res) => {
-  try {
-    const results = await db("SELECT * FROM books_users;");
-    res.status(200).send(results.data);
-  } catch (err) {
-    res.status(500).send({ err: err.message });
-  }
-};
+// /*GET all info from junction table books_users. For testing*/
+// const getUserItems = async (req, res) => {
+//   try {
+//     const results = await db("SELECT * FROM books_users;");
+//     res.status(200).send(results.data);
+//   } catch (err) {
+//     res.status(500).send({ err: err.message });
+//   }
+// };
 
 // GET user-specific library info. Used in UserLibraryView Page.
-router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
-  // check user exists via ensureUserExists guard
-  // & store user id in res.locals.user
-  // get book data via LEFT JOIN to junction books_users and mylibrary table
-  try {
-    let user = res.locals.user;
-    let sql = `SELECT users.*, mylibrary.*, 
-        users.id AS userId, 
-        mylibrary.id AS libraryId
-        FROM users
-        LEFT JOIN books_users
-        ON users.id = books_users.uId
-        LEFT JOIN mylibrary
-        ON books_users.bId = mylibrary.id
-        WHERE users.id = ${user};`;
+// router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
+//   // check user exists via ensureUserExists guard
+//   // & store user id in res.locals.user
+//   // get book data via LEFT JOIN to junction books_users and mylibrary table
+//   try {
+//     let user = res.locals.user;
+//     let sql = `SELECT users.*, mylibrary.*,
+//         users.id AS userId,
+//         mylibrary.id AS libraryId
+//         FROM users
+//         LEFT JOIN books_users
+//         ON users.id = books_users.uId
+//         LEFT JOIN mylibrary
+//         ON books_users.bId = mylibrary.id
+//         WHERE users.id = ${user};`;
 
-    let results = await db(sql);
-    userlib = joinToJson(results);
-    res.status(200).send(userlib);
-    //console.log(`results: ${JSON.stringify(results)}`)
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+//     let results = await db(sql);
+//     userlib = joinToJson(results);
+//     res.status(200).send(userlib);
+//     //console.log(`results: ${JSON.stringify(results)}`)
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
 // ADD ITEMS TO LIBRARY PER USER.
 // Used in Search component.
 // Adds books to overal mylibrary and books_users, but only for 1 user.
 // if another user wants to add, shows duplicate entry error. How avoid?
 // NB - Need to pass userId when calling function on front-end
-router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
-  const { bookId } = req.body;
-  let uId = res.locals.user;
-  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
-  SELECT LAST_INSERT_ID();`;
-  try {
-    let results = await db(sql);
-    let newBookId = results.data[0].insertId;
-    if (uId) {
-      let vals = [];
-      vals.push(`(${newBookId}, ${uId})`);
-      let sql = `INSERT INTO books_users (bId, uId)
-      VALUES ${vals.join(",")}`;
-      await db(sql);
-    }
-    await getUserItems(req, res);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+// router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
+//   const { bookId } = req.body;
+//   let uId = res.locals.user;
+//   const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
+//   SELECT LAST_INSERT_ID();`;
+//   try {
+//     let results = await db(sql);
+//     let newBookId = results.data[0].insertId;
+//     if (uId) {
+//       let vals = [];
+//       vals.push(`(${newBookId}, ${uId})`);
+//       let sql = `INSERT INTO books_users (bId, uId)
+//       VALUES ${vals.join(",")}`;
+//       await db(sql);
+//     }
+//     await getUserItems(req, res);
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
-// DELETE ITEM BY ID PER USER -- Used in MyUsersLibrary page.
-// Working on postman. Removing book via libraryId. NotGoogleBookId.
-// NB - Need to pass uId on front-end
-router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
-  let uId = res.locals.user;
-  //const { bookToDelete } = req.body;
-  let bookToDelete = 31;
-  try {
-    await db(
-      `DELETE FROM books_users WHERE bId = ${bookToDelete} AND uId = ${uId};`
-    );
-    await getUserItems(req, res);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+// // DELETE ITEM BY ID PER USER -- Used in MyUsersLibrary page.
+// // Working on postman. Removing book via libraryId. NotGoogleBookId.
+// // NB - Need to pass uId on front-end
+// router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
+//   let uId = res.locals.user;
+//   //const { bookToDelete } = req.body;
+//   let bookToDelete = 31;
+//   try {
+//     await db(
+//       `DELETE FROM books_users WHERE bId = ${bookToDelete} AND uId = ${uId};`
+//     );
+//     await getUserItems(req, res);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
 
 module.exports = router;
