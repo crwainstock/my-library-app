@@ -1,13 +1,13 @@
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
-// var usersRouter = require("./routes/users");
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
 
-var app = express();
+const app = express();
 
 app.use(cors()); // add after 'app' is created
 
@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, "/client/dist"))); //Added per CodeO
 app.use(cors());
 
 app.use("/", indexRouter);
-// app.use("/users", usersRouter); //Not used in this iteration of the app
+app.use("/users", usersRouter);
 
 // Added per CodeOp instructions for heroku deployment
 app.get("*", (req, res) => {

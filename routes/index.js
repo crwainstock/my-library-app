@@ -4,6 +4,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../model/helper");
+const ensureUserExists = require("../guards/ensureUserExists");
 
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
@@ -105,6 +106,16 @@ const getItems = async (req, res) => {
   }
 };
 
+/*GET all info from junction table books_users.*/
+const getUserItems = async (req, res) => {
+  try {
+    const results = await db("SELECT * FROM books_users;");
+    res.status(200).send(results.data);
+  } catch (err) {
+    res.status(500).send({ err: err.message });
+  }
+};
+
 // 💡💡 ROUTER FUNCTIONS
 
 // GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
@@ -116,6 +127,29 @@ router.get("/mylibrary", async (req, res) => {
     res.send(results.data);
   } catch (err) {
     res.status(500).send(err);
+  }
+});
+
+// ADD ITEMS TO LIBRARY PER USER. Move to Users.js?
+
+router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
+  const { bookId } = req.body;
+  let uId = res.locals.user;
+  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
+  SELECT LAST_INSERT_ID();`;
+  try {
+    let results = await db(sql);
+    let newBookId = results.data[0].insertId;
+    if (uId) {
+      let vals = [];
+      vals.push(`(${newBookId}, ${uId})`);
+      let sql = `INSERT INTO books_users (bId, uId)
+      VALUES ${vals.join(",")}`;
+      await db(sql);
+    }
+    await getUserItems(req, res);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
   }
 });
 

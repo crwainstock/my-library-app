@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 1fr;
   margin-bottom: 1.5rem;
 }
+/* The navbar-container could use a little more styling. Right now, it changes size and configuration a bit
+based on the content below. When the content is wider, for example with the search results, the navbar buttons fan
+out to wider positions. */
 
 .home-button {
   background-color: #89d2dc;
