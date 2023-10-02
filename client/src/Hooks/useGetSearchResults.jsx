@@ -7,6 +7,7 @@ export const useGetSearchResults = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [bookAdded, setBookAdded] = useState(false);
 
   // I need this to limit results to books for kids,
   // but it's creating problems with search results (other categories exist that might be relevant)
@@ -99,6 +100,7 @@ export const useGetSearchResults = () => {
       setLoading(false);
 
       setSuccess(true);
+      setBookAdded(true);
     } catch (err) {
       console.log(err);
     }
@@ -114,5 +116,7 @@ export const useGetSearchResults = () => {
     searchPerformed,
     handleSubmit,
     addBook,
+    bookAdded,
+    setBookAdded,
   };
 };

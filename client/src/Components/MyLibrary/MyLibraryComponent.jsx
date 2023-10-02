@@ -1,13 +1,21 @@
 import React from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useDataContext } from "../../Hooks/useDataContext";
 import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
+import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import { Link } from "react-router-dom";
 import "./MyLibrary.css";
 
 export default function MyLibraryComponent() {
   const { books, loading } = useDataContext();
   const { deleteBook } = useGetBookDetails();
+  const { bookAdded, setBookAdded } = useGetSearchResults();
+
+  //I need the MyLibrary component to re-render with new book data if a new book is added. So far, it's not working.
+  if (bookAdded == true) {
+    window.location.reload();
+    setBookAdded(false);
+  }
 
   return (
     <div className="my-library-container">
