@@ -13,10 +13,8 @@ import MyLibrary from "./Pages/MyLibrary";
 // , { loader as booksLoader }
 import BookDetail from "./Pages/BookDetail";
 // , { loader as detailLoader }
-import Login, {
-  loader as loginLoader,
-  action as loginAction,
-} from "./Pages/Login";
+import Login from // action as loginAction, // loader as loginLoader,
+"./Pages/Login";
 import "./App.css";
 
 const router = createBrowserRouter(
@@ -26,8 +24,8 @@ const router = createBrowserRouter(
       <Route
         path="login"
         element={<Login />}
-        loader={loginLoader}
-        action={loginAction}
+        // loader={loginLoader}
+        // action={loginAction}
       />
       <Route
         path="mylibrary"

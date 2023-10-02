@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Form } from "react-router-dom";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -37,31 +37,29 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h1>Sign in to your account</h1>
-      {message && <h3 className="">{message}</h3>}
-      {errorMessage && <h3 className="">{errorMessage}</h3>}
-
-      <Form method="post" className="login-form" replace>
+    <div>
+      <div>
         <input
-          name="email"
-          type="email"
-          placeholder="Email address"
+          value={credentials.username}
+          onChange={handleChange}
+          name="username"
+          type="text"
           className="input"
         />
         <input
+          value={credentials.password}
+          onChange={handleChange}
           name="password"
           type="password"
-          placeholder="Password"
           className="input"
         />
-        <button
-          disabled={navigation.state === "submitting"}
-          id="login-submit-button"
-        >
-          {navigation.state === "submitting" ? "Logging in..." : "Log in"}
+        <button id="login-submit-button" onClick={login}>
+          Log in
         </button>
-      </Form>
+      </div>
+      {error}
     </div>
   );
 }
+
+export default Login;
