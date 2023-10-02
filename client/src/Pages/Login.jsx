@@ -55,7 +55,10 @@ export default function Login() {
           placeholder="Password"
           className="input"
         />
-        <button disabled={navigation.state === "submitting"}>
+        <button
+          disabled={navigation.state === "submitting"}
+          id="login-submit-button"
+        >
           {navigation.state === "submitting" ? "Logging in..." : "Log in"}
         </button>
       </Form>
