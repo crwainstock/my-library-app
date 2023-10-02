@@ -21,7 +21,6 @@ function BookDetail() {
           <Error />
         </div>
       )}
-      <NavBar />
       <BookDetailInfo />
       <BookRatings />
     </div>
