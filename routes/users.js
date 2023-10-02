@@ -9,8 +9,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 7;
 const supersecret = process.env.SUPER_SECRET;
 
-/********* REGISTER - done through postman, no frontend form provided yet*********/
-
+// REGISTER NEW USERS -- working in postman, no frontend yet
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
 
@@ -30,7 +29,7 @@ router.post("/register", async (req, res) => {
 });
 
 /*********  LOGIN  *********/
-
+// LOGIN -- working in postman, not quite working in front end yet
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
