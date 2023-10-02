@@ -10,7 +10,6 @@ function Home() {
   // console.log(books);
   return (
     <div className="App">
-      <NavBar />
       <h1>My Library</h1>
       {loading == true && (
         <div className="loading">
