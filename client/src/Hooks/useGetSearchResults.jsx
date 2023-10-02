@@ -84,6 +84,8 @@ export const useGetSearchResults = () => {
   };
 
   // Function to add book to database
+  // This function works, but the part that tries to set the bookAdded state variable (so the component will know
+  // to reload if a book has been added) isn't working as planned. Needs more work.
   const addBook = async (e) => {
     setLoading(true);
     let options = {
@@ -96,7 +98,7 @@ export const useGetSearchResults = () => {
     try {
       let results = await fetch(`/mylibrary`, options);
       let data = await results.json();
-      console.log(data);
+      // console.log(data);
       setLoading(false);
 
       setSuccess(true);

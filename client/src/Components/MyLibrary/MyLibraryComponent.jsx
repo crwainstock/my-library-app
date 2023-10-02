@@ -11,6 +11,7 @@ export default function MyLibraryComponent() {
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
 
+  console.log(bookAdded);
   //I need the MyLibrary component to re-render with new book data if a new book is added. So far, it's not working.
   if (bookAdded == true) {
     window.location.reload();
