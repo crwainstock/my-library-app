@@ -9,7 +9,9 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-
+#by-Google {
+  /* This image styling could use a little work, scoot it down a bit. */
+}
 .book-result-container {
   border-radius: 10px;
   padding: 1rem;

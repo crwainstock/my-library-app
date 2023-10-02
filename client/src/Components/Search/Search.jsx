@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import Loading from "../../Components/Loading/Loading";
 import "./search.css";
+import Google from "../../Assets/poweredby.png";
 
 import { useEffect, useState, useRef } from "react";
 import * as Toast from "@radix-ui/react-toast";
@@ -44,6 +45,7 @@ export default function Search() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             ></input>
+            <img src={Google} id="by-Google" />
 
             <div className="search-type-container">
               <div className="">
