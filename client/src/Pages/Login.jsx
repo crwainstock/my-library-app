@@ -1,46 +1,46 @@
-import React from "react";
-import {
-  useLoaderData,
-  useNavigate,
-  Form,
-  redirect,
-  useActionData,
-  useNavigation,
-} from "react-router-dom";
-// import { loginUser } from "../api";
-import "./login.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export function loader({ request }) {
-  return new URL(request.url).searchParams.get("message");
-}
+function Login() {
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
 
-export async function action({ request }) {
-  const formData = await request.formData();
-  const email = formData.get("email");
-  const password = formData.get("password");
-
-  try {
-    const data = await loginUser({ email, password });
-    localStorage.setItem("loggedin", true);
-    const pathname =
-      new URL(request.url).searchParams.get("redirectTo") || "/mylibrary";
-    return redirect(pathname);
-  } catch (err) {
-    return err.message;
-  }
-}
-
-export default function Login() {
-  const message = useLoaderData();
   const navigate = useNavigate();
-  const errorMessage = useActionData();
-  const navigation = useNavigation(); // Returns object with data about navigation status of app
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCredentials({ ...credentials, [name]: value });
+  };
+
+  const login = async () => {
+    try {
+      let options = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      };
+      const result = await fetch("/users/login", options);
+      const data = await result.json();
+      if (!result.ok) setError(data.error);
+      else {
+        //store token locally
+        localStorage.setItem("token", data.token);
+        //redirect to private page
+        navigate("/private");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="login-container">
       <h1>Sign in to your account</h1>
-      {message && <h3 className="red">{message}</h3>}
-      {errorMessage && <h3 className="red">{errorMessage}</h3>}
+      {message && <h3 className="">{message}</h3>}
+      {errorMessage && <h3 className="">{errorMessage}</h3>}
 
       <Form method="post" className="login-form" replace>
         <input
