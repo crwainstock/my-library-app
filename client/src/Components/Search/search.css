@@ -9,6 +9,19 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.book-result-container {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 14;
+  overflow: hidden;
+}
+#search-book-description {
+  overflow: hidden;
+  max-width: 100%;
+  text-overflow: ellipsis;
+  width: fit-content;
+  white-space: nowrap;
+}
 
 /* Input styling from https://uiverse.io/ErzenXz/horrible-rattlesnake-14 */
 .input {
@@ -48,8 +61,18 @@
 /* For larger screens  */
 @media only screen and (min-width: 660px) {
   .search-results-container {
-    max-width: 70%;
+    display: grid;
+    max-width: 90%;
     margin: 0 auto;
     margin-top: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .book-result-container {
+    border-radius: 10px;
+    padding: 1rem;
+    box-sizing: border-box;
+    background-color: #fefefa;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 }

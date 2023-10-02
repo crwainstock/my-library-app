@@ -87,11 +87,11 @@ export default function Search() {
       {loading ? (
         <Loading />
       ) : (
-        <div id="searchResults" className="search-results-container">
+        <div id="searchResults" className="">
           {searchResults.length === 0 && searchPerformed == true ? (
             <p>No results found.</p>
           ) : (
-            <div className="row">
+            <div className="search-results-container">
               {searchResults.map((result) => (
                 <div
                   className="book-result-container"
@@ -104,7 +104,11 @@ export default function Search() {
                     {result.volumeInfo.authors?.[0]}{" "}
                     {result.volumeInfo.authors?.[1]}
                   </p>
-                  <p>{result.volumeInfo.description}</p>
+                  <div id="book-description-container">
+                    <p id="search-book-description">
+                      {result.volumeInfo.description}
+                    </p>
+                  </div>
                   <Toast.Provider swipeDirection="right">
                     <button
                       className="add-to-library-button"
