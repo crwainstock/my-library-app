@@ -15,7 +15,7 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
-      <NavBar />
+
       <MyLibraryComponent />
     </div>
   );
