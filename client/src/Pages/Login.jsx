@@ -23,7 +23,7 @@ export async function action({ request }) {
     const data = await loginUser({ email, password });
     localStorage.setItem("loggedin", true);
     const pathname =
-      new URL(request.url).searchParams.get("redirectTo") || "/host";
+      new URL(request.url).searchParams.get("redirectTo") || "/mylibrary";
     return redirect(pathname);
   } catch (err) {
     return err.message;
