@@ -13,12 +13,22 @@ import MyLibrary from "./Pages/MyLibrary";
 // , { loader as booksLoader }
 import BookDetail from "./Pages/BookDetail";
 // , { loader as detailLoader }
+import Login, {
+  loader as loginLoader,
+  action as loginAction,
+} from "./Pages/Login";
 import "./App.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
+      <Route
+        path="login"
+        element={<Login />}
+        loader={loginLoader}
+        action={loginAction}
+      />
       <Route
         path="mylibrary"
         element={<MyLibrary />}
