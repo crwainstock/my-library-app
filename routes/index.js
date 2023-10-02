@@ -105,6 +105,16 @@ const getItems = async (req, res) => {
   }
 };
 
+/*GET all info from junction table books_users.*/
+const getUserItems = async (req, res) => {
+  try {
+    const results = await db("SELECT * FROM books_users;");
+    res.status(200).send(results.data);
+  } catch (err) {
+    res.status(500).send({ err: err.message });
+  }
+};
+
 // 💡💡 ROUTER FUNCTIONS
 
 // GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
