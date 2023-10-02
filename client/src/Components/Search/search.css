@@ -9,18 +9,12 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.book-result-container {
+
+#search-book-description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 14;
+  -webkit-line-clamp: 8;
   overflow: hidden;
-}
-#search-book-description {
-  overflow: hidden;
-  max-width: 100%;
-  text-overflow: ellipsis;
-  width: fit-content;
-  white-space: nowrap;
 }
 
 /* Input styling from https://uiverse.io/ErzenXz/horrible-rattlesnake-14 */
