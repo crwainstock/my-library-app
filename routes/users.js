@@ -27,6 +27,16 @@ router.get("/all", function (req, res, next) {
   }
 });
 
+/*GET all info from junction table books_users. For testing*/
+router.get("/books", async (req, res) => {
+  try {
+    const results = await db("SELECT * FROM user_books;");
+    res.status(200).send(results.data);
+  } catch (err) {
+    res.status(500).send({ err: err.message });
+  }
+});
+
 // REGISTER NEW USERS -- working in postman, no frontend yet
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
