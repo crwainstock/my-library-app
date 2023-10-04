@@ -15,13 +15,14 @@ export const useGetUserData = () => {
   };
 
   const login = async () => {
+    console.log(credentials); //Object with username & password
     try {
       let options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       };
-      const result = await fetch("/users/login", options);
+      const result = await fetch("/users/login", options); //Error is happening here 404 not found
       const data = await result.json();
       if (!result.ok) setError(data.error);
       else {
