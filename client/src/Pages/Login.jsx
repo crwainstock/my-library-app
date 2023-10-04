@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGetUserData } from "../Hooks/useGetUserData";
 
 function Login() {
+  const {
+    credentials,
+    setCredentials,
+    error,
+    setError,
+    login,
+    handleChange,
+    navigate,
+  } = useGetUserData();
+
   return (
     <div>
       <div>

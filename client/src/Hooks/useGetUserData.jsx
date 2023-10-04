@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Form } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const useGetUserData = () => {
   const [credentials, setCredentials] = useState({
@@ -33,5 +33,14 @@ export const useGetUserData = () => {
     } catch (error) {
       setError(error);
     }
+  };
+  return {
+    credentials,
+    setCredentials,
+    error,
+    setError,
+    login,
+    handleChange,
+    navigate,
   };
 };
