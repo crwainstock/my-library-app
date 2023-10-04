@@ -29,10 +29,10 @@ function Login() {
         //store token locally
         localStorage.setItem("token", data.token);
         //redirect to private page
-        navigate("/private");
+        navigate("/mylibrary");
       }
     } catch (error) {
-      console.log(error);
+      setError(error);
     }
   };
 
@@ -57,7 +57,7 @@ function Login() {
           Log in
         </button>
       </div>
-      {error}
+      {error.message}
     </div>
   );
 }
