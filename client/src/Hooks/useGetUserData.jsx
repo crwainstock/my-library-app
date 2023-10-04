@@ -1,7 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const useGetUserData = () => {
+  //   const params = useParams(); //A part of react-router
+  //   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
+  //   // this bookId is also used in the URL for this page
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
