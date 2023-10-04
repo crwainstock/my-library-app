@@ -13,8 +13,8 @@ import MyLibrary from "./Pages/MyLibrary";
 // , { loader as booksLoader }
 import BookDetail from "./Pages/BookDetail";
 // , { loader as detailLoader }
-import Login from // action as loginAction, // loader as loginLoader,
-"./Pages/Login";
+import Login from "./Pages/Login"; // action as loginAction, // loader as loginLoader,
+import Error from "./Components/Error";
 import "./App.css";
 
 const router = createBrowserRouter(
@@ -24,6 +24,7 @@ const router = createBrowserRouter(
       <Route
         path="login"
         element={<Login />}
+        errorElement={<Error />}
         // loader={loginLoader}
         // action={loginAction}
       />
