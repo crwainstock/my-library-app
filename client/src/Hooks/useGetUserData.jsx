@@ -23,16 +23,21 @@ export const useGetUserData = () => {
         body: JSON.stringify(credentials),
       };
       const result = await fetch("/users/login", options); //Error is happening here 404 not found
+      console.log(result);
       const data = await result.json();
-      if (!result.ok) setError(data.error);
-      else {
-        //store token locally
+      if (!result.ok) {
+        console.error(
+          `Error in request to ${url}: ${result.status} - ${result.statusText}`
+        );
+        const data = await result.json();
+        setError(data.error);
+      } else {
         localStorage.setItem("token", data.token);
-        //redirect to private page
         navigate("/mylibrary");
       }
     } catch (error) {
-      setError(error);
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
     }
   };
   return {
