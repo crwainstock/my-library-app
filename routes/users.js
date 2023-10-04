@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
 });
 
 /*********  PRIVATE ROUTE FOR LOGGED IN USERS ONLY *********/
-router.get("/private", ensureUserLoggedIn, (req, res) => {
+router.get("/mylibrary", ensureUserLoggedIn, (req, res) => {
   res.status(200).send({
     message: "Here is the PROTECTED data for user " + req.user_id,
   });
@@ -109,39 +109,39 @@ function joinToJson(results) {
 //   }
 // });
 
-/* POST username and password to login user */
-router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  try {
-    const results = await db(
-      `SELECT * FROM users WHERE username = "${username}";`
-    );
-    const user = results.data[0];
-    //if user found, compare pw
-    if (user) {
-      const user_id = user.id;
-      const correctPassword = await bcrypt.compare(password, user.password);
-      // compare pw req body to db pw. returns boolean. bcrypt method
+// /* POST username and password to login user */
+// router.post("/login", async (req, res) => {
+//   const { username, password } = req.body;
+//   try {
+//     const results = await db(
+//       `SELECT * FROM users WHERE username = "${username}";`
+//     );
+//     const user = results.data[0];
+//     //if user found, compare pw
+//     if (user) {
+//       const user_id = user.id;
+//       const correctPassword = await bcrypt.compare(password, user.password);
+//       // compare pw req body to db pw. returns boolean. bcrypt method
 
-      if (!correctPassword) throw new Error("Incorrect password");
-      //if pw patches create token
-      const token = jwt.sign({ user_id: user.id }, supersecret);
-      //jwt method, takes param user_id as payload and supersecret key .env
-      //send token and user id to user
-      console.log(token);
+//       if (!correctPassword) throw new Error("Incorrect password");
+//       //if pw patches create token
+//       const token = jwt.sign({ user_id: user.id }, supersecret);
+//       //jwt method, takes param user_id as payload and supersecret key .env
+//       //send token and user id to user
+//       console.log(token);
 
-      res.send({
-        message: "Login successful, here is your token and id",
-        token,
-        user_id,
-      });
-    } else {
-      throw new Error("User does not exist");
-    }
-  } catch (err) {
-    res.status(400).send({ message: err.message });
-  }
-});
+//       res.send({
+//         message: "Login successful, here is your token and id",
+//         token,
+//         user_id,
+//       });
+//     } else {
+//       throw new Error("User does not exist");
+//     }
+//   } catch (err) {
+//     res.status(400).send({ message: err.message });
+//   }
+// });
 
 //Private route for logged in users only
 router.get("/private", ensureUserLoggedIn, (req, res) => {

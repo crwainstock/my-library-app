@@ -15,7 +15,6 @@ import BookDetail from "./Pages/BookDetail";
 // , { loader as detailLoader }
 import Login from "./Pages/Login"; // action as loginAction, // loader as loginLoader,
 import Error from "./Components/Error";
-import ensureUserLoggedIn from "../../guards/ensureUserLoggedIn";
 import "./App.css";
 
 const router = createBrowserRouter(
