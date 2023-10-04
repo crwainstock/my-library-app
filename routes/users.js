@@ -1,3 +1,6 @@
+// This is the more modern syntax for importing express, but I couldn't get it to work here yet.
+// import express from "express";
+
 const express = require("express");
 const router = express.Router();
 const db = require("../model/helper");
