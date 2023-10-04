@@ -8,7 +8,8 @@ async function ensureUserExists(req, res, next) {
       //user was found; save user.id in response obj for the route function to use
       res.locals.user = results.data[0].id;
       let user = JSON.stringify(res.locals.user);
-      // res.send({ message: `${user}` }); //This is running in Postman
+      // res.send({ message: `${user}` }); //This is running in Postman -- causes problems with the
+      // subsequent code if this isn't commented out, though. :)
       //Let next middleware function run
       next();
     } else {
