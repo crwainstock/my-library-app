@@ -12,6 +12,21 @@ const bcrypt = require("bcrypt");
 const saltRounds = 7;
 const supersecret = process.env.SUPER_SECRET;
 
+// To get all users for testing
+async function sendAllUsers(res) {
+  let results = await db("SELECT * FROM users ORDER BY id");
+  res.send(results.data);
+}
+
+/* GET all users. For testing  -- working in postman */
+router.get("/all", function (req, res, next) {
+  try {
+    sendAllUsers(res);
+  } catch (err) {
+    res.status(500).send({ err: err.message });
+  }
+});
+
 // REGISTER NEW USERS -- working in postman, no frontend yet
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
