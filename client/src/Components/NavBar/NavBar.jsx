@@ -10,6 +10,8 @@ export default function NavBar() {
           <h5>Home</h5>
         </button>
       </Link>
+      {/* Conditionally render user library if logged in or navigate to login page
+      if not logged in */}
       <Link to="/myLibrary">
         <button className="mylibrary-button" onClick="window.location.reload()">
           <h5>My Library</h5>
