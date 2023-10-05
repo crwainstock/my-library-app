@@ -9,6 +9,11 @@
   margin-bottom: 1rem;
 }
 
+.login-input-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 /* Input styling from https://uiverse.io/ErzenXz/horrible-rattlesnake-14 */
 .input {
   width: 100%;

@@ -20,24 +20,35 @@ export const useGetUserLibrary = () => {
     // searchUserBooksById(); // Get book details based on book ids in user library
   }, []);
 
+  // GET ALL BOOKS FROM USER'S LIBRARY -- this function works in Postman (the backend part),
+  // but it's returning undefined here.
   const getUserLibrary = async () => {
     setLoading(true);
     try {
       //Get books from database for userId
-      let id = userId;
+      let id = userId; // from useGetLoginStatus
       let results = await fetch(`users/userlibrary/${id}`);
+      console.log(results);
       let data = await results.json();
-      console.log(data.books); //undefined
+      console.log(data.books); //undefined sometimes
       let books = data.books;
-      console.log(books); //undefined
+      console.log(books); //undefined sometimes
       //Loop through books and search using bookId with the searchMyBooks function
       //Should return full book data from Google & set books as that data
-      for (let i = 0; i < books.length; i++) {
-        //console.log(books[i].bookId); //Seems to be accessing the bookId here
-        await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-        console.log(books[i].bookId); //working!
+
+      // Adding this if/else statement here made the data rendering more predictable. Without it,
+      // sometimes the data was loading and other times it was returning undefined. I'm not sure why exactly,
+      // but this seems to have resolved the issue for now.
+      if (books.length == 0) {
+        return <p>Your library is empty.</p>;
+      } else {
+        for (let i = 0; i < books.length; i++) {
+          //console.log(books[i].bookId); //Seems to be accessing the bookId here
+          await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
+          console.log(books[i].bookId); //working!
+        }
       }
-      console.log(userBooks);
+      // console.log(userBooks);
       setLoading(false);
       return userBooks;
     } catch (error) {

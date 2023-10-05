@@ -14,7 +14,7 @@ function Login() {
 
   return (
     <div>
-      <div>
+      <div className="login-input-container">
         <input
           value={credentials.username}
           onChange={handleChange}

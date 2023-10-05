@@ -15,16 +15,6 @@ export default function MyLibraryComponent() {
   const { userBooks } = useGetUserLibrary();
   const { isLoggedIn } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
 
-  useEffect(() => {
-    console.log(userBooks);
-  }, []);
-  //I need the MyLibrary component to re-render with new book data if a new book is added.
-  // So far, it's not working.
-  // if (bookAdded == true) {
-  //   window.location.reload();
-  //   setBookAdded(false);
-  // }
-
   return (
     <div className="my-library-container">
       {userBooks.length === 0 ? (

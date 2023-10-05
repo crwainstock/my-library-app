@@ -176,7 +176,7 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
     if (uId) {
       let vals = [];
       vals.push(`(${newBookId}, ${uId})`);
-      let sql = `INSERT INTO books_users (bId, uId)
+      let sql = `INSERT INTO user_books (bId, uId)
       VALUES ${vals.join(",")}`;
       await db(sql);
     }
