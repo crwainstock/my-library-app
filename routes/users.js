@@ -151,13 +151,11 @@ router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
     console.log(`results: ${JSON.stringify(results)}`);
     return;
   } catch (err) {
-    console.error("Error occurred in /userlibrary/:id route:", err); // Log the error for debugging
-
-    // Send an error response with additional information
+    console.error("Error occurred in /userlibrary/:id route:", err);
     res.status(500).send({
       error: "An error occurred while processing your request.",
-      errorMessage: err.message, // Include the error message
-      errorStack: err.stack, // Include the stack trace
+      errorMessage: err.message,
+      errorStack: err.stack,
     });
   }
 });

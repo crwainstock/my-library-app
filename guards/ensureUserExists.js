@@ -10,7 +10,6 @@ async function ensureUserExists(req, res, next) {
       let user = JSON.stringify(res.locals.user);
       // res.send({ message: `${user}` }); //This is running in Postman -- causes problems with the
       // subsequent code if this isn't commented out, though. :)
-      //Let next middleware function run
       next();
     } else {
       res.status(404).send({ error: "User not found" });
