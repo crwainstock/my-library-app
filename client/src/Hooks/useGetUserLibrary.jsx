@@ -9,6 +9,7 @@ export const useGetUserLibrary = () => {
   //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus();
   const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
@@ -32,7 +33,7 @@ export const useGetUserLibrary = () => {
       for (let i = 0; i < books.length; i++) {
         //console.log(books[i].bookId); //Seems to be accessing the bookId here
         await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-        console.log(books[i].bookId);
+        console.log(books[i].bookId); //working!
       }
       console.log(userBooks);
       setLoading(false);
@@ -40,6 +41,7 @@ export const useGetUserLibrary = () => {
     } catch (error) {
       console.error("An error occurred during the request:", error);
       setError("An error occurred during the request.");
+      setLoading(false);
     }
   };
 
@@ -90,8 +92,10 @@ export const useGetUserLibrary = () => {
       //Could add something here to alphabatize the books?
       console.log(userBooks);
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
+      setLoading(false);
     }
   };
 
@@ -100,5 +104,7 @@ export const useGetUserLibrary = () => {
     setUserBooks,
     loading,
     setLoading,
+    error,
+    setError,
   };
 };
