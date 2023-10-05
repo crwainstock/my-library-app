@@ -14,7 +14,7 @@ export const useGetUserLibrary = () => {
 
   useEffect(() => {
     getUserLibrary(); //Get all book from specific user
-    fetchUserBooksbyID();
+    searchUserBooksById(); // Get book details based on book ids in user library
     console.log(userBooks, userId);
   }, []);
 
@@ -28,6 +28,7 @@ export const useGetUserLibrary = () => {
       const result = await fetch("/users/userlibrary/:id", options);
 
       const data = await result.json();
+      console.log(data);
       if (!result.ok) {
         console.error(
           `Error in request to ${url}: ${result.status} - ${result.statusText}`
@@ -37,7 +38,7 @@ export const useGetUserLibrary = () => {
       } else {
         localStorage.setItem("token", data.token);
         console.log(localStorage.token);
-        // navigate("/mylibrary");
+        navigate("/mylibrary");
       }
     } catch (error) {
       console.error("An error occurred during the request:", error);

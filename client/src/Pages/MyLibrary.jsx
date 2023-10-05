@@ -1,5 +1,6 @@
 import React from "react";
-import { useDataContext } from "../Hooks/useDataContext";
+// import { useDataContext } from "../Hooks/useDataContext";
+import { useGetUserLibrary } from "../Hooks/useGetUserLibrary";
 import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
 import Loading from "../Components/Loading/Loading";
 
@@ -11,7 +12,7 @@ import Loading from "../Components/Loading/Loading";
 // }
 
 function MyLibrary() {
-  const { loading } = useDataContext();
+  const { loading } = useGetUserLibrary();
 
   return (
     <div>

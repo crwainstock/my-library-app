@@ -10,7 +10,8 @@ export default function MyLibraryComponent() {
   // const { books, loading } = useDataContext(); // This can be used in version of app without multiple users
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
-  const { userBooks, setUserBooks, loading } = useGetUserLibrary();
+  const { userBooks, setUserBooks, loading, useGetUserLibrary } =
+    useGetUserLibrary();
 
   // console.log(bookAdded);
   //I need the MyLibrary component to re-render with new book data if a new book is added.
