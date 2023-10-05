@@ -134,10 +134,10 @@ const getUserItems = async (req, res) => {
 
 // ADD ITEMS TO LIBRARY PER USER. Move to Users.js?
 
-router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
+router.post("/mylibrary/:id", ensureUserExists, async (req, res) => {
   const { bookId } = req.body;
   let uId = res.locals.user;
-  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
+  const sql = `INSERT INTO books (bookId) VALUES ("${bookId}");
   SELECT LAST_INSERT_ID();`;
   try {
     let results = await db(sql);
@@ -145,7 +145,7 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
     if (uId) {
       let vals = [];
       vals.push(`(${newBookId}, ${uId})`);
-      let sql = `INSERT INTO books_users (bId, uId)
+      let sql = `INSERT INTO user_books (bId, uId)
       VALUES ${vals.join(",")}`;
       await db(sql);
     }
@@ -191,10 +191,11 @@ router.post("/mylibrary/searchByTopic", async (req, res) => {
 });
 
 //GET ITEM BY ID FROM DATABASE -- used in BookDetailView with rendering reviews from database
+// NEEDS TO BE UPDATED FOR AUTH VERSION
 router.get("/mylibrary/:id", async (req, res) => {
   try {
     let results = await db(
-      `SELECT * FROM mylibrary WHERE id=${req.params.id} ORDER BY id ASC;`
+      `SELECT * FROM books WHERE id=${req.params.id} ORDER BY id ASC;`
     );
     res.send(results.data);
   } catch (err) {
