@@ -33,7 +33,7 @@ export const useGetUserData = () => {
       } else {
         localStorage.setItem("token", data.token);
         console.log(localStorage.token);
-        // navigate("/mylibrary");
+        navigate("/mylibrary");
       }
     } catch (error) {
       console.error("An error occurred during the request:", error);
