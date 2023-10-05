@@ -12,12 +12,9 @@ export const useGetUserLibrary = () => {
   const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus();
-  const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
 
   useEffect(() => {
     getUserLibrary(); //Get all book from specific user
-
-    // searchUserBooksById(); // Get book details based on book ids in user library
   }, []);
 
   // GET ALL BOOKS FROM USER'S LIBRARY -- this function works in Postman (the backend part),
@@ -28,11 +25,11 @@ export const useGetUserLibrary = () => {
       //Get books from database for userId
       let id = userId; // from useGetLoginStatus
       let results = await fetch(`users/userlibrary/${id}`);
-      console.log(results);
+      // console.log(results);
       let data = await results.json();
-      console.log(data.books); //undefined sometimes
+      // console.log(data.books); //undefined sometimes
       let books = data.books;
-      console.log(books); //undefined sometimes
+      // console.log(books); //undefined sometimes
       //Loop through books and search using bookId with the searchMyBooks function
       //Should return full book data from Google & set books as that data
 
@@ -40,12 +37,13 @@ export const useGetUserLibrary = () => {
       // sometimes the data was loading and other times it was returning undefined. I'm not sure why exactly,
       // but this seems to have resolved the issue for now. Just kidding. The same thing is happening.
       if (books.length == 0) {
-        return <p>Your library is empty.</p>;
+        console.log("Your library is empty.");
+        return;
       } else {
         for (let i = 0; i < books.length; i++) {
           //console.log(books[i].bookId); //Seems to be accessing the bookId here
           await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-          console.log(books[i].bookId); //working!
+          // console.log(books[i].bookId); //working!
         }
       }
       // console.log(userBooks);
