@@ -173,7 +173,7 @@ router.post("/mylibrary/searchByTitle", async (req, res) => {
   }
 });
 
-// SEARCH GOOGLE BOOKS API BY ID -- working in postman
+// SEARCH GOOGLE BOOKS API BY ID -- getting error: "error": "ER_BAD_FIELD_ERROR: Unknown column 'searchById' in 'where clause'"
 router.post("/mylibrary/searchById", async (req, res) => {
   try {
     searchGoogleById(req, res);
@@ -182,13 +182,13 @@ router.post("/mylibrary/searchById", async (req, res) => {
   }
 });
 
-router.post("/mylibrary/searchByTopic", async (req, res) => {
-  try {
-    searchGoogleByTopic(req, res);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+// router.post("/mylibrary/searchByTopic", async (req, res) => {
+//   try {
+//     searchGoogleByTopic(req, res);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
 
 //GET ITEM BY ID FROM DATABASE -- used in BookDetailView with rendering reviews from database
 // NEEDS TO BE UPDATED FOR AUTH VERSION

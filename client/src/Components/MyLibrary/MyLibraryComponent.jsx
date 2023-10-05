@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 // import { useDataContext } from "../../Hooks/useDataContext";
 import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
@@ -12,9 +13,11 @@ export default function MyLibraryComponent() {
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
   const { userBooks } = useGetUserLibrary();
+  const { isLoggedIn } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
 
-  // console.log(bookAdded);
-  console.log(userBooks);
+  useEffect(() => {
+    console.log(userBooks);
+  }, []);
   //I need the MyLibrary component to re-render with new book data if a new book is added.
   // So far, it's not working.
   // if (bookAdded == true) {

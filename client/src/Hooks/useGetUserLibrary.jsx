@@ -89,7 +89,7 @@ export const useGetUserLibrary = () => {
       //Search Google using bookId from database
       let results = await fetch(`/mylibrary/searchById`, options);
       let data = await results.json();
-      console.log(data); //individual objects with book details
+      // console.log(data); //individual objects with book details
       setUserBooks((book) => [...book, data]); // Adding object of data to books array
       //Could add something here to alphabatize the books?
       // console.log(userBooks);
