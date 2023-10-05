@@ -132,8 +132,8 @@ const getUserItems = async (req, res) => {
 //   }
 // });
 
-// ADD ITEMS TO LIBRARY PER USER. Move to Users.js?
-
+// ADD ITEMS TO LIBRARY PER USER.
+// NEEDS TO BE UPDATED FOR AUTH VERSION
 router.post("/mylibrary/:id", ensureUserExists, async (req, res) => {
   const { bookId } = req.body;
   let uId = res.locals.user;
