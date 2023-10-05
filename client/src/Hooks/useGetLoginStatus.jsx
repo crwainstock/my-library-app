@@ -3,20 +3,14 @@ import { useEffect, useState } from "react";
 export const useGetLoginStatus = () => {
   const [message, setMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  //let {userId, setUserId} = useContext(UserContext);// for multi-user func (WIP!)
-
-  //const changeId = (newId) => {
-  //setUserId(newId)
-  //}
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     requestData();
   }, []);
 
   //sets isLoggedIn based on whether token is present in header or not aka user is logged in
-  //if isLoggedIn = true shows pages nested in PrivateRoute (see App.js) via <Outlet/> + <NavBar/> comp
-  //if false, show error (i.e. unauthorized) on screen
+
   const requestData = async () => {
     let options = {
       headers: {
@@ -44,5 +38,5 @@ export const useGetLoginStatus = () => {
     }
   };
 
-  return { isLoggedIn, setIsLoggedIn, message, setMessage };
+  return { isLoggedIn, setIsLoggedIn, message, setMessage, userId };
 };
