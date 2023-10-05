@@ -37,8 +37,9 @@ export const useGetUserLibrary = () => {
       console.log(userBooks);
       setLoading(false);
       return userBooks;
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
     }
   };
 
