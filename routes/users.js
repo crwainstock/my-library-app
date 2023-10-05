@@ -136,15 +136,29 @@ router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
   // get book data via LEFT JOIN to junction user_books and mylibrary table
   try {
     let user = res.locals.user;
-    let sql = `SELECT users.*, books.*, 
-        users.id AS userId,
-        books.id AS libraryId
-        FROM users
-        LEFT JOIN user_books
-        ON users.id = user_books.user_id
-        LEFT JOIN books
-        ON user_books.book_id = books.id
-        WHERE users.id = ${user};`;
+    let sql = `SELECT users.*, books.*, reviews.*,
+    users.id AS userId,
+    books.id AS libraryId,
+    reviews.text AS review
+    FROM users
+    LEFT JOIN user_books
+    ON users.id = user_books.user_id
+    LEFT JOIN books
+    ON user_books.book_id = books.id
+    LEFT JOIN reviews
+    ON users.id = reviews.user_id AND user_books.book_id
+    WHERE users.id = ${user}`;
+
+    // ORIGINAL MYSQL FOR TABLES WITHOUT REVIEWS
+    // let sql = `SELECT users.*, books.*,
+    //         users.id AS userId,
+    //         books.id AS libraryId
+    //         FROM users
+    //         LEFT JOIN user_books
+    //         ON users.id = user_books.user_id
+    //         LEFT JOIN books
+    //         ON user_books.book_id = books.id
+    //         WHERE users.id = ${user};`;
 
     let results = await db(sql);
     userlib = joinToJson(results);
