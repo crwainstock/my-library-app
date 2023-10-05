@@ -16,6 +16,7 @@ export const useGetUserLibrary = () => {
 
   useEffect(() => {
     getUserLibrary(userId); //Get all book from specific user
+
     // searchUserBooksById(); // Get book details based on book ids in user library
   }, []);
 
@@ -26,6 +27,7 @@ export const useGetUserLibrary = () => {
       let id = userId;
       let results = await fetch(`users/mylibrary/${id}`);
       let data = await results.json();
+      console.log(data.books);
       let books = data.books;
       console.log(books); //returns array of books objects
       //Loop through books and search using bookId with the searchMyBooks function
@@ -90,7 +92,7 @@ export const useGetUserLibrary = () => {
       console.log(data); //individual objects with book details
       setUserBooks((book) => [...book, data]); // Adding object of data to books array
       //Could add something here to alphabatize the books?
-      console.log(userBooks);
+      // console.log(userBooks);
       setLoading(false);
     } catch (error) {
       console.error("An error occurred during the request:", error);

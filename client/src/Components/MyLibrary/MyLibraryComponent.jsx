@@ -13,8 +13,8 @@ export default function MyLibraryComponent() {
   const { bookAdded, setBookAdded } = useGetSearchResults();
   const { userBooks, setUserBooks, loading, userId } = useGetUserLibrary();
 
-  console.log(userId);
   // console.log(bookAdded);
+  console.log(userBooks);
   //I need the MyLibrary component to re-render with new book data if a new book is added.
   // So far, it's not working.
   // if (bookAdded == true) {
@@ -32,7 +32,7 @@ export default function MyLibraryComponent() {
           </Link>
         </div>
       ) : (
-        books.map((book) => (
+        userBooks.map((book) => (
           <div
             className="book-card"
             id="book"
