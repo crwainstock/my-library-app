@@ -173,7 +173,7 @@ router.post("/mylibrary/searchByTitle", async (req, res) => {
   }
 });
 
-// SEARCH GOOGLE BOOKS API BY ID -- getting error: "error": "ER_BAD_FIELD_ERROR: Unknown column 'searchById' in 'where clause'"
+// SEARCH GOOGLE BOOKS API BY ID -- working in postman
 router.post("/mylibrary/searchById", async (req, res) => {
   try {
     searchGoogleById(req, res);

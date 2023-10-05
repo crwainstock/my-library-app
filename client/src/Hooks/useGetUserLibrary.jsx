@@ -27,9 +27,9 @@ export const useGetUserLibrary = () => {
       let id = userId;
       let results = await fetch(`users/userlibrary/${id}`);
       let data = await results.json();
-      console.log(data.books);
+      console.log(data.books); //undefined
       let books = data.books;
-      console.log(books); //returns array of books objects
+      console.log(books); //undefined
       //Loop through books and search using bookId with the searchMyBooks function
       //Should return full book data from Google & set books as that data
       for (let i = 0; i < books.length; i++) {
