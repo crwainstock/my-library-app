@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetUserData } from "../Hooks/useGetUserData";
+import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 
 function Login() {
   const {
@@ -11,9 +12,11 @@ function Login() {
     handleChange,
     navigate,
   } = useGetUserData();
+  const { isLoggedIn } = useGetLoginStatus();
 
   return (
     <div>
+      {isLoggedIn == true ? <h2>You are already logged in.</h2> : <div></div>}
       <div className="login-input-container">
         <input
           value={credentials.username}
