@@ -95,6 +95,7 @@ router.post("/login", async (req, res) => {
 router.get("/mylibrary", ensureUserLoggedIn, (req, res) => {
   res.status(200).send({
     message: "Here is the PROTECTED data for user " + req.user_id,
+    data: req.user_id,
   });
 });
 
