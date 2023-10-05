@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const useGetLoginStatus = () => {
   const [message, setMessage] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState();
 
   useEffect(() => {
@@ -20,7 +20,8 @@ export const useGetLoginStatus = () => {
     try {
       const result = await fetch("/users/mylibrary", options);
       const data = await result.json();
-
+      setUserId(data.id);
+      console.log(userId);
       if (!result.ok) {
         console.log(data.error);
         setIsLoggedIn(false);
