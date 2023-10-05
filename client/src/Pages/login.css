@@ -12,7 +12,8 @@
 .login-input-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 80%;
+  width: 140%;
+  margin: 0 auto;
 }
 #input-1 {
   grid-column: 1 / 2;
@@ -45,3 +46,11 @@
 .input:focus {
   border: 2px solid grey;
 }
+
+/* Add media query for larger screens here. */
+/* .login-input-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 140%;
+  margin: 0 auto;
+} */
