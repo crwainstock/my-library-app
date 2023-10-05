@@ -13,6 +13,7 @@ export const useGetLoginStatus = () => {
 
   const requestData = async () => {
     let options = {
+      method: "GET",
       headers: {
         authorization: "Bearer " + localStorage.getItem("token"),
       },

@@ -95,21 +95,22 @@ const searchGoogleByTopic = async (req, res) => {
 };
 
 // Get all items from database -- used in other router functions to update database content in front end
-const getItems = async (req, res) => {
-  try {
-    const result = await db(`SELECT * FROM mylibrary`);
-    console.log(result);
-    const items = result.data;
-    res.send(items);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-};
+// This function is for the non-auth version of the app
+// const getItems = async (req, res) => {
+//   try {
+//     const result = await db(`SELECT * FROM mylibrary`);
+//     console.log(result);
+//     const items = result.data;
+//     res.send(items);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// };
 
-/*GET all info from junction table books_users.*/
+/*GET all info from junction table user_books.*/
 const getUserItems = async (req, res) => {
   try {
-    const results = await db("SELECT * FROM books_users;");
+    const results = await db("SELECT * FROM user_books;");
     res.status(200).send(results.data);
   } catch (err) {
     res.status(500).send({ err: err.message });
@@ -119,16 +120,17 @@ const getUserItems = async (req, res) => {
 // 💡💡 ROUTER FUNCTIONS
 
 // GET ALL LIBRARY ITEMS FROM DATABASE -- working in postman
-router.get("/mylibrary", async (req, res) => {
-  try {
-    let results = await db(`SELECT * FROM mylibrary;`);
-    // await getItems(req, res);
-    console.log(results);
-    res.send(results.data);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+// This function is for the non-auth version of the app
+// router.get("/mylibrary", async (req, res) => {
+//   try {
+//     let results = await db(`SELECT * FROM mylibrary;`);
+//     // await getItems(req, res);
+//     console.log(results);
+//     res.send(results.data);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
 
 // ADD ITEMS TO LIBRARY PER USER. Move to Users.js?
 
