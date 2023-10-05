@@ -12,7 +12,7 @@ import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 // }
 
 function MyLibrary() {
-  const { loading } = useGetUserLibrary();
+  const { loading, userId } = useGetUserLibrary();
   const { isLoggedIn } = useGetLoginStatus();
   console.log(isLoggedIn);
 
@@ -23,7 +23,6 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
-      <h2>{isLoggedIn}</h2>
       <MyLibraryComponent />
     </div>
   );

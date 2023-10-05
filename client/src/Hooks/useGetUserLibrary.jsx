@@ -13,6 +13,7 @@ export const useGetUserLibrary = () => {
   const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
 
   useEffect(() => {
+    getUserId(); //Get user id
     getUserLibrary(); //Get all book from specific user
     searchUserBooksById(); // Get book details based on book ids in user library
     console.log(userBooks, userId);
@@ -35,6 +36,7 @@ export const useGetUserLibrary = () => {
         setError(data.error);
       } else {
         setUserId(data.user_id);
+        console.log(userId);
       }
     } catch (error) {
       console.error("An error occurred during the request:", error);
@@ -122,6 +124,8 @@ export const useGetUserLibrary = () => {
   return {
     userBooks,
     setUserBooks,
+    userId,
+    setUserId,
     loading,
     setLoading,
   };
