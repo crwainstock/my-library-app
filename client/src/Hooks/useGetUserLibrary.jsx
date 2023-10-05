@@ -38,7 +38,7 @@ export const useGetUserLibrary = () => {
       } else {
         localStorage.setItem("token", data.token);
         console.log(localStorage.token);
-        navigate("/mylibrary");
+        navigate("/mylibrary/:userId"); //This needs to navigate to specific user library page
       }
     } catch (error) {
       console.error("An error occurred during the request:", error);
