@@ -12,8 +12,17 @@
 .login-input-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 80%;
 }
-
+#input-1 {
+  grid-column: 1 / 2;
+}
+#input-2 {
+  grid-column: 2 / 3;
+}
+#login-submit-button {
+  /* Need to center the button */
+}
 /* Input styling from https://uiverse.io/ErzenXz/horrible-rattlesnake-14 */
 .input {
   width: 100%;

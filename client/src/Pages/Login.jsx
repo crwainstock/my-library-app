@@ -1,6 +1,7 @@
 import React from "react";
 import { useGetUserData } from "../Hooks/useGetUserData";
 import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
+import "./login.css";
 
 function Login() {
   const {
@@ -24,6 +25,7 @@ function Login() {
           name="username"
           type="text"
           className="input"
+          id="input-1"
         />
         <input
           value={credentials.password}
@@ -31,6 +33,7 @@ function Login() {
           name="password"
           type="password"
           className="input"
+          id="input-2"
         />
         <button id="login-submit-button" onClick={login}>
           Log in
