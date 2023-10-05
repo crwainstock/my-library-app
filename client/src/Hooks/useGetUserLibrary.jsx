@@ -15,9 +15,9 @@ export const useGetUserLibrary = () => {
 
   // Is there a better way to call this function? Maybe when someone navigates to the MyLibrary page?
   // Maybe I can do that in router.
-  // useEffect(() => {
-  //   getUserLibrary(); //Get all book from specific user
-  // }, []);
+  useEffect(() => {
+    getUserLibrary(); //Get all book from specific user
+  }, []);
 
   // GET ALL BOOKS FROM USER'S LIBRARY -- this function works in Postman (the backend part),
   // but it's returning undefined here.
@@ -27,9 +27,8 @@ export const useGetUserLibrary = () => {
       //Get books from database for userId
       let id = userId; // from useGetLoginStatus
       let results = await fetch(`users/userlibrary/${id}`);
-      // console.log(results);
       let data = await results.json();
-      // console.log(data.books); //undefined sometimes
+      console.log(data.books); //undefined sometimes
       let books = data.books;
       // console.log(books); //undefined sometimes
       //Loop through books and search using bookId with the searchMyBooks function
@@ -45,7 +44,7 @@ export const useGetUserLibrary = () => {
         for (let i = 0; i < books.length; i++) {
           //console.log(books[i].bookId); //Seems to be accessing the bookId here
           await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-          // console.log(books[i].bookId); //working!
+          console.log(books[i].bookId); //working!
         }
       }
       // console.log(userBooks);
