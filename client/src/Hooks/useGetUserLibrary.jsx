@@ -38,7 +38,7 @@ export const useGetUserLibrary = () => {
 
       // Adding this if/else statement here made the data rendering more predictable. Without it,
       // sometimes the data was loading and other times it was returning undefined. I'm not sure why exactly,
-      // but this seems to have resolved the issue for now.
+      // but this seems to have resolved the issue for now. Just kidding. The same thing is happening.
       if (books.length == 0) {
         return <p>Your library is empty.</p>;
       } else {
