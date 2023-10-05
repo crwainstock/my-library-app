@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGetUserData } from "./useGetUserData";
 import { useGetLoginStatus } from "./useGetLoginStatus";
@@ -8,14 +8,14 @@ export const useGetUserLibrary = () => {
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
   //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
-  const { userId } = useGetLoginStatus();
+  const { userId, setUserId } = useGetLoginStatus();
   const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
 
   useEffect(() => {
-    getUserLibrary(); //Get all book from specific user
-    searchUserBooksById(); // Get book details based on book ids in user library
+    // getUserLibrary(); //Get all book from specific user
+    // searchUserBooksById(); // Get book details based on book ids in user library
     console.log(userBooks, userId);
   }, []);
 
@@ -99,8 +99,6 @@ export const useGetUserLibrary = () => {
   return {
     userBooks,
     setUserBooks,
-    userId,
-    setUserId,
     loading,
     setLoading,
   };
