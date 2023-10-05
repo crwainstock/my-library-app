@@ -132,7 +132,7 @@ function joinToJson(results) {
 router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
   // check user exists via ensureUserExists guard
   // & store user id in res.locals.user
-  // get book data via LEFT JOIN to junction books_users and mylibrary table
+  // get book data via LEFT JOIN to junction user_books and mylibrary table
   try {
     let user = res.locals.user;
     let sql = `SELECT users.*, books.*, 
@@ -159,48 +159,57 @@ router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
     });
   }
 });
-
 // ADD ITEMS TO LIBRARY PER USER.
 // Used in Search component.
 // Adds books to overal mylibrary and books_users, but only for 1 user.
 // if another user wants to add, shows duplicate entry error. How avoid?
 // NB - Need to pass userId when calling function on front-end
-// router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
-//   const { bookId } = req.body;
-//   let uId = res.locals.user;
-//   const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
-//   SELECT LAST_INSERT_ID();`;
-//   try {
-//     let results = await db(sql);
-//     let newBookId = results.data[0].insertId;
-//     if (uId) {
-//       let vals = [];
-//       vals.push(`(${newBookId}, ${uId})`);
-//       let sql = `INSERT INTO books_users (bId, uId)
-//       VALUES ${vals.join(",")}`;
-//       await db(sql);
-//     }
-//     await getUserItems(req, res);
-//   } catch (err) {
-//     res.status(500).send({ error: err.message });
-//   }
-// });
+router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
+  const { bookId } = req.body;
+  let uId = res.locals.user;
+  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
+  SELECT LAST_INSERT_ID();`;
+  try {
+    let results = await db(sql);
+    let newBookId = results.data[0].insertId;
+    if (uId) {
+      let vals = [];
+      vals.push(`(${newBookId}, ${uId})`);
+      let sql = `INSERT INTO books_users (bId, uId)
+      VALUES ${vals.join(",")}`;
+      await db(sql);
+    }
+    await getUserItems(req, res);
+  } catch (err) {
+    console.error("Error occurred in /userlibrary/:id post route:", err);
+    res.status(500).send({
+      error: "An error occurred while processing your request.",
+      errorMessage: err.message,
+      errorStack: err.stack,
+    });
+  }
+});
 
-// // DELETE ITEM BY ID PER USER -- Used in MyUsersLibrary page.
-// // Working on postman. Removing book via libraryId. NotGoogleBookId.
-// // NB - Need to pass uId on front-end
-// router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
-//   let uId = res.locals.user;
-//   //const { bookToDelete } = req.body;
-//   let bookToDelete = 31;
-//   try {
-//     await db(
-//       `DELETE FROM books_users WHERE bId = ${bookToDelete} AND uId = ${uId};`
-//     );
-//     await getUserItems(req, res);
-//   } catch (err) {
-//     res.status(500).send(err);
-//   }
-// });
+// DELETE ITEM BY ID PER USER -- Used in MyUsersLibrary page.
+// Working on postman. Removing book via libraryId. NotGoogleBookId.
+// NB - Need to pass uId on front-end
+router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
+  let uId = res.locals.user;
+  //const { bookToDelete } = req.body;
+  let bookToDelete = 31;
+  try {
+    await db(
+      `DELETE FROM user_books WHERE bId = ${bookToDelete} AND uId = ${uId};`
+    );
+    await getUserItems(req, res);
+  } catch (err) {
+    console.error("Error occurred in /userlibrary/:id delete route:", err);
+    res.status(500).send({
+      error: "An error occurred while processing your request.",
+      errorMessage: err.message,
+      errorStack: err.stack,
+    });
+  }
+});
 
 module.exports = router;
