@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useGetUserData } from "./useGetUserData";
 
 export const useGetUserLibrary = () => {
   const params = useParams(); //A part of react-router
@@ -7,16 +8,42 @@ export const useGetUserLibrary = () => {
   //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(true); //For loading spinner
-  const [success, setSuccess] = useState(false); //For success message upon deletion
-  const [message, setMessage] = useState("");
 
-  let { userId } = useContext(UserContext);
+  const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
+  let userId;
 
   useEffect(() => {
-    fetchUserBooks(); //Get all book from specific user
+    getUserLibrary(); //Get all book from specific user
     fetchUserBooksbyID();
     console.log(userBooks, userId);
   }, []);
+
+  const getUserLibrary = async () => {
+    try {
+      let options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      };
+      const result = await fetch("/users/userlibrary/:id", options);
+
+      const data = await result.json();
+      if (!result.ok) {
+        console.error(
+          `Error in request to ${url}: ${result.status} - ${result.statusText}`
+        );
+        const data = await result.json();
+        setError(data.error);
+      } else {
+        localStorage.setItem("token", data.token);
+        console.log(localStorage.token);
+        // navigate("/mylibrary");
+      }
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
+    }
+  };
 
   const searchUserBooksById = async (bookId) => {
     setLoading(true);

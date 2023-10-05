@@ -22,7 +22,7 @@ export default function MyLibraryComponent() {
 
   return (
     <div className="my-library-container">
-      {books.length === 0 ? (
+      {userBooks.length === 0 ? (
         <div className="empty-library-container">
           <h3>Your library is empty.</h3>
           <Link to="/" className="link-button">
