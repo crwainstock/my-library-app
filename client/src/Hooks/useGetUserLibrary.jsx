@@ -15,7 +15,7 @@ export const useGetUserLibrary = () => {
   const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
 
   useEffect(() => {
-    getUserLibrary(userId); //Get all book from specific user
+    getUserLibrary(); //Get all book from specific user
 
     // searchUserBooksById(); // Get book details based on book ids in user library
   }, []);

@@ -11,7 +11,7 @@ export default function MyLibraryComponent() {
   // const { books, loading } = useDataContext(); // This can be used in version of app without multiple users
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
-  const { userBooks, setUserBooks, loading, userId } = useGetUserLibrary();
+  const { userBooks } = useGetUserLibrary();
 
   // console.log(bookAdded);
   console.log(userBooks);
