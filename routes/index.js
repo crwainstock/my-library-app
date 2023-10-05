@@ -134,7 +134,7 @@ const getUserItems = async (req, res) => {
 
 // ADD ITEMS TO LIBRARY PER USER.
 // NEEDS TO BE UPDATED FOR AUTH VERSION
-router.post("/mylibrary/:id", ensureUserExists, async (req, res) => {
+router.post("/addmylibrary/:id", ensureUserExists, async (req, res) => {
   const { bookId } = req.body;
   let uId = res.locals.user;
   const sql = `INSERT INTO books (bookId) VALUES ("${bookId}");
