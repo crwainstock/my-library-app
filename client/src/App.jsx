@@ -31,9 +31,9 @@ const router = createBrowserRouter(
       <Route
         path="mylibrary"
         element={<MyLibrary />}
-        loader={({ req }) => {
-          ensureUserLoggedIn(req);
-        }}
+        // loader={({ req }) => {
+        //   ensureUserLoggedIn(req);
+        // }}
         errorElement={<Error />}
       />
       <Route

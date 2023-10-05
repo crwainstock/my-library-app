@@ -129,7 +129,7 @@ function joinToJson(results) {
 //
 
 // GET user-specific library info
-router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
+router.get("/mylibrary/:id", ensureUserExists, async function (req, res) {
   // check user exists via ensureUserExists guard
   // & store user id in res.locals.user
   // get book data via LEFT JOIN to junction user_books and mylibrary table
