@@ -15,6 +15,7 @@ import BookDetail from "./Pages/BookDetail";
 // , { loader as detailLoader }
 import Login from "./Pages/Login"; // action as loginAction, // loader as loginLoader,
 import Error from "./Components/Error";
+
 import "./App.css";
 
 const router = createBrowserRouter(
@@ -31,9 +32,6 @@ const router = createBrowserRouter(
       <Route
         path="mylibrary"
         element={<MyLibrary />}
-        // loader={({ req }) => {
-        //   ensureUserLoggedIn(req);
-        // }}
         errorElement={<Error />}
       />
       <Route

@@ -6,16 +6,18 @@ import { useGetLoginStatus } from "./useGetLoginStatus";
 export const useGetUserLibrary = () => {
   const params = useParams(); //A part of react-router
   const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
-  //   // this bookId is also used in the URL for this page
+  // //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus();
 
-  useEffect(() => {
-    getUserLibrary(); //Get all book from specific user
-  }, []);
+  // Is there a better way to call this function? Maybe when someone navigates to the MyLibrary page?
+  // Maybe I can do that in router.
+  // useEffect(() => {
+  //   getUserLibrary(); //Get all book from specific user
+  // }, []);
 
   // GET ALL BOOKS FROM USER'S LIBRARY -- this function works in Postman (the backend part),
   // but it's returning undefined here.
@@ -117,5 +119,7 @@ export const useGetUserLibrary = () => {
     setLoading,
     error,
     setError,
+    getUserLibrary,
+    searchUserBooksById,
   };
 };

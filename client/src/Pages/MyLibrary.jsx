@@ -4,16 +4,9 @@ import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
 import Loading from "../Components/Loading/Loading";
 import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 
-// export async function loader({ req }) {
-//   await ensureUserLoggedIn(req);
-//   const hostVansPromise = getHostVans();
-//   console.log(hostVansPromise);
-//   return defer({ vans: hostVansPromise });
-// }
-
 function MyLibrary() {
-  const { loading, userId } = useGetUserLibrary();
   const { isLoggedIn } = useGetLoginStatus();
+  const { loading } = useGetUserLibrary();
 
   return (
     <div>
