@@ -37,7 +37,7 @@ export const useGetUserData = () => {
       } else {
         localStorage.setItem("token", data.token);
         console.log(localStorage.token);
-        navigate("/mylibrary");
+        // navigate("/mylibrary");
       }
     } catch (error) {
       console.error("An error occurred during the request:", error);
@@ -52,7 +52,7 @@ export const useGetUserData = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
       };
-      const result = await fetch("/users/mylibrary", options);
+      const result = await fetch("/users/userlibrary/:id", options);
 
       const data = await result.json();
       if (!result.ok) {
