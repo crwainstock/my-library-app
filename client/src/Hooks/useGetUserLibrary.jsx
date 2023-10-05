@@ -8,15 +8,39 @@ export const useGetUserLibrary = () => {
   //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(true); //For loading spinner
+  const [userId, setUserId] = useState();
 
   const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
-  let userId;
 
   useEffect(() => {
     getUserLibrary(); //Get all book from specific user
     searchUserBooksById(); // Get book details based on book ids in user library
     console.log(userBooks, userId);
   }, []);
+
+  const getUserId = async () => {
+    try {
+      let options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(credentials),
+      };
+      const result = await fetch("/users/mylibrary", options);
+      const data = await result.json();
+      if (!result.ok) {
+        console.error(
+          `Error in request to ${url}: ${result.status} - ${result.statusText}`
+        );
+        const data = await result.json();
+        setError(data.error);
+      } else {
+        setUserId(data.user_id);
+      }
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
+    }
+  };
 
   const getUserLibrary = async () => {
     try {
