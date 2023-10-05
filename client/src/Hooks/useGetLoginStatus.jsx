@@ -24,7 +24,7 @@ export const useGetLoginStatus = () => {
       },
     };
     try {
-      const result = await fetch("/users/mylibrary", options);
+      const result = await fetch("/users/userlibrary", options);
       const data = await result.json();
       setUserId(data.data);
       console.log(data);

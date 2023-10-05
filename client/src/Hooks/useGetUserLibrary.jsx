@@ -25,7 +25,7 @@ export const useGetUserLibrary = () => {
     try {
       //Get books from database for userId
       let id = userId;
-      let results = await fetch(`users/mylibrary/${id}`);
+      let results = await fetch(`users/userlibrary/${id}`);
       let data = await results.json();
       console.log(data.books);
       let books = data.books;

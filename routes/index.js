@@ -76,23 +76,23 @@ const searchGoogleById = async (req, res) => {
   }
 };
 
-// Not quite working yet. Not sure it's necessary for the app at this time.
-const searchGoogleByTopic = async (req, res) => {
-  try {
-    const { topic } = req.body;
-    const result = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=subject:${topic}&key=${apiKey}`
-    );
-    if (!result.ok) {
-      setError(`An error has occured: ${response.status}`);
-    } else {
-      let data = await result.json();
-      res.send(data);
-    }
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-};
+// // Not quite working yet. Not sure it's necessary for the app at this time.
+// const searchGoogleByTopic = async (req, res) => {
+//   try {
+//     const { topic } = req.body;
+//     const result = await fetch(
+//       `https://www.googleapis.com/books/v1/volumes?q=subject:${topic}&key=${apiKey}`
+//     );
+//     if (!result.ok) {
+//       setError(`An error has occured: ${response.status}`);
+//     } else {
+//       let data = await result.json();
+//       res.send(data);
+//     }
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// };
 
 // Get all items from database -- used in other router functions to update database content in front end
 // This function is for the non-auth version of the app
@@ -216,43 +216,46 @@ router.post("/mylibrary", async (req, res) => {
   }
 });
 
+// FOR NON-AUTH VERSION OF APP
 //UPDATE REVIEW -- Used in BookDetailView page -- working in postman
-router.put("/mylibrary/:id", async (req, res) => {
-  const { review } = req.body;
-  const id = req.params.id;
-  const sql = `UPDATE mylibrary SET review = "${review}" WHERE id = ${id}`;
+// router.put("/mylibrary/:id", async (req, res) => {
+//   const { review } = req.body;
+//   const id = req.params.id;
+//   const sql = `UPDATE mylibrary SET review = "${review}" WHERE id = ${id}`;
 
-  try {
-    await db(sql);
-    getItems(req, res);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+//   try {
+//     await db(sql);
+//     getItems(req, res);
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
+// FOR NON-AUTH VERSION OF APP
 //UPDATE RATING -- used in BookDetail page -- working in postman
-router.post("/mylibrary/:id", async (req, res) => {
-  const { rating } = req.body;
-  const id = req.params.id;
-  const sql = `UPDATE mylibrary SET rating = ${rating} WHERE id = ${id}`;
+// router.post("/mylibrary/:id", async (req, res) => {
+//   const { rating } = req.body;
+//   const id = req.params.id;
+//   const sql = `UPDATE mylibrary SET rating = ${rating} WHERE id = ${id}`;
 
-  try {
-    await db(sql);
-    getItems(req, res);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+//   try {
+//     await db(sql);
+//     getItems(req, res);
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
+// THIS WORKS IN THE NON-AUTH VERSION OF THE APP
 // DELETE ITEM BY ID -- Used in MyLibrary page -- working in postman
-router.delete("/mylibrary/:id", async (req, res) => {
-  let id = Number(req.params.id);
-  try {
-    await db(`DELETE FROM mylibrary WHERE id = ${id}`);
-    await getItems(req, res);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
+// router.delete("/mylibrary/:id", async (req, res) => {
+//   let id = Number(req.params.id);
+//   try {
+//     await db(`DELETE FROM mylibrary WHERE id = ${id}`);
+//     await getItems(req, res);
+//   } catch (err) {
+//     res.status(500).send(err);
+//   }
+// });
 
 module.exports = router;
