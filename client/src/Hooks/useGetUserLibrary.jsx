@@ -10,42 +10,66 @@ export const useGetUserLibrary = () => {
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(false);
 
-  const { userId, setUserId } = useGetLoginStatus();
+  const { userId } = useGetLoginStatus();
   const { credentials } = useGetUserData(); //Get credentials from login to use in getUserLibrary
 
   useEffect(() => {
-    // getUserLibrary(); //Get all book from specific user
+    getUserLibrary(userId); //Get all book from specific user
     // searchUserBooksById(); // Get book details based on book ids in user library
-    console.log(userBooks, userId);
   }, []);
 
   const getUserLibrary = async () => {
+    setLoading(true);
     try {
-      let options = {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(credentials),
-      };
-      const result = await fetch("/users/userlibrary/:id", options);
-
-      const data = await result.json();
-      console.log(data);
-      if (!result.ok) {
-        console.error(
-          `Error in request to ${url}: ${result.status} - ${result.statusText}`
-        );
-        const data = await result.json();
-        setError(data.error);
-      } else {
-        localStorage.setItem("token", data.token);
-        console.log(localStorage.token);
-        navigate("/mylibrary/:userId"); //This needs to navigate to specific user library page
+      //Get books from database for userId
+      let id = userId;
+      let results = await fetch(`users/mylibrary/${id}`);
+      let data = await results.json();
+      let books = data.books;
+      console.log(books); //returns array of books objects
+      //Loop through books and search using bookId with the searchMyBooks function
+      //Should return full book data from Google & set books as that data
+      for (let i = 0; i < books.length; i++) {
+        //console.log(books[i].bookId); //Seems to be accessing the bookId here
+        await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
+        console.log(books[i].bookId);
       }
-    } catch (error) {
-      console.error("An error occurred during the request:", error);
-      setError("An error occurred during the request.");
+      console.log(userBooks);
+      setLoading(false);
+      return userBooks;
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  // OLDER WORKING VERSION -- NOT WORKING AS IS
+  // const getUserLibrary = async (userId) => {
+  //   try {
+  //     let options = {
+  //       method: "GET",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(credentials),
+  //     };
+  //     const result = await fetch("/users/mylibrary/:id", options);
+
+  //     const data = await result.json();
+  //     console.log(data);
+  //     if (!result.ok) {
+  //       console.error(
+  //         `Error in request to ${url}: ${result.status} - ${result.statusText}`
+  //       );
+  //       const data = await result.json();
+  //       setError(data.error);
+  //     } else {
+  //       localStorage.setItem("token", data.token);
+  //       console.log(localStorage.token);
+  //       navigate("/mylibrary/:userId"); //This needs to navigate to specific user library page
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred during the request:", error);
+  //     setError("An error occurred during the request.");
+  //   }
+  // };
 
   const searchUserBooksById = async (bookId) => {
     setLoading(true);
@@ -70,32 +94,6 @@ export const useGetUserLibrary = () => {
     }
   };
 
-  // WORKING
-  // This function gets books FROM DATABASE for specific user via users_books juntion table
-  // and loops through them, using the bookId to search the GOOGLE BOOKS API and return all book data
-  const fetchUserBooks = async () => {
-    setLoading(true);
-    try {
-      //Get books from database for userId
-      let id = userId;
-      let results = await fetch(`users/userlibrary/${id}`);
-      let data = await results.json();
-      let books = data.books;
-      console.log(books); //returns array of books objects
-      //Loop through books and search using bookId with the searchMyBooks function
-      //Should return full book data from Google & set books as that data
-      for (let i = 0; i < books.length; i++) {
-        //console.log(books[i].bookId); //Seems to be accessing the bookId here
-        await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-        console.log(books[i].bookId);
-      }
-      console.log(userBooks);
-      setLoading(false);
-      return userBooks;
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return {
     userBooks,
     setUserBooks,
