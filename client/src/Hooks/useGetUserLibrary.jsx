@@ -4,17 +4,18 @@ import { useGetUserData } from "./useGetUserData";
 import { useGetLoginStatus } from "./useGetLoginStatus";
 
 export const useGetUserLibrary = () => {
-  const params = useParams(); //A part of react-router
-  const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
-  // //   // this bookId is also used in the URL for this page
+  // I don't think params are needed here...
+  // const params = useParams(); //A part of react-router
+  // const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
+  // // //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus();
 
-  // Is there a better way to call this function? Maybe when someone navigates to the MyLibrary page?
-  // Maybe I can do that in router.
+  // The functions are defined inside the useEffect because that's how it was in the non-auth version when
+  // rendering mylibrary was happening without a delay. But this doesn't seem to resolve the issue.
   useEffect(() => {
     const searchUserBooksById = async (bookId) => {
       setLoading(true);
@@ -89,7 +90,5 @@ export const useGetUserLibrary = () => {
     setLoading,
     error,
     setError,
-    getUserLibrary,
-    searchUserBooksById,
   };
 };
