@@ -1,3 +1,5 @@
+// This custom hook has the login function for users to access their personal libraries.
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
