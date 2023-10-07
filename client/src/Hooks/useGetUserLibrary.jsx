@@ -42,7 +42,7 @@ export const useGetUserLibrary = () => {
       }
     };
 
-    // GET ALL BOOKS FROM USER'S LIBRARY -- this function works in Postman (the backend part),
+    // GET ALL BOOKS FROM USER'S LIBRARY -- this function works in Postman,
     // but it's returning undefined here.
     const getUserLibrary = async () => {
       setLoading(true);

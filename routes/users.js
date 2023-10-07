@@ -79,9 +79,14 @@ router.post("/login", async (req, res) => {
 
       //else, create and send token
       const token = jwt.sign({ user_id: user.id }, supersecret);
+      const userId = user.id;
       res
         .status(200)
-        .send({ message: "Login successful, here is your token", token });
+        .send({
+          message: "Login successful, here is your token",
+          token,
+          userId,
+        });
     } else {
       throw new Error("User not found");
     }
