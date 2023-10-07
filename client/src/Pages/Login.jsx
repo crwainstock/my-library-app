@@ -12,9 +12,11 @@ function Login() {
     login,
     handleChange,
     navigate,
+    userId,
   } = useGetUserData();
   const { isLoggedIn } = useGetLoginStatus();
 
+  console.log(userId);
   return (
     <div>
       {isLoggedIn == true ? <h2>You are already logged in.</h2> : <div></div>}

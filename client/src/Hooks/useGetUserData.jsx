@@ -36,6 +36,7 @@ export const useGetUserData = () => {
       } else {
         localStorage.setItem("token", data.token);
         setUserId(data.userId);
+        console.log(userId);
         console.log(localStorage.token);
 
         navigate("/mylibrary");
