@@ -1,3 +1,6 @@
+// This hook checks whether or not a user is logged in based on whether their jwt token matches
+// Pairs with the get router function in users.js for /userlibrary, includes guard ensureUserLoggedIn function
+
 import { useEffect, useState } from "react";
 
 export const useGetLoginStatus = () => {
