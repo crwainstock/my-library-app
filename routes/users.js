@@ -80,13 +80,11 @@ router.post("/login", async (req, res) => {
       //else, create and send token
       const token = jwt.sign({ user_id: user.id }, supersecret);
       const userId = user.id;
-      res
-        .status(200)
-        .send({
-          message: "Login successful, here is your token",
-          token,
-          userId,
-        });
+      res.status(200).send({
+        message: "Login successful, here is your token",
+        token,
+        userId,
+      });
     } else {
       throw new Error("User not found");
     }
@@ -100,7 +98,7 @@ router.post("/login", async (req, res) => {
 router.get("/userlibrary", ensureUserLoggedIn, (req, res) => {
   res.status(200).send({
     message: "Here is the PROTECTED data for user " + req.user_id,
-    data: req.user_id,
+    userId: req.user_id,
   });
 });
 

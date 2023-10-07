@@ -12,13 +12,7 @@ export const useGetLoginStatus = () => {
     requestData();
   }, []);
 
-  // useEffect(() => {
-  //   // Log the updated userId when it changes
-  //   // console.log("userId updated:", userId);
-  // }, [userId]);
-
   //sets isLoggedIn based on whether token is present in header or not aka user is logged in
-
   const requestData = async () => {
     let options = {
       method: "GET",
@@ -38,9 +32,6 @@ export const useGetLoginStatus = () => {
       } else {
         console.log(data.message);
         setIsLoggedIn(true);
-        //console.log(isLoggedIn)
-        //changeId(data.id)
-        // console.log("user_id:", userId); //undefined
       }
     } catch (error) {
       console.log(error);
