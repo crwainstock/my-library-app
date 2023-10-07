@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 export const useGetLoginStatus = () => {
   const [message, setMessage] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(null);
+  // const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     requestData();
   }, []);
 
-  useEffect(() => {
-    // Log the updated userId when it changes
-    console.log("userId updated:", userId);
-  }, [userId]);
+  // useEffect(() => {
+  //   // Log the updated userId when it changes
+  //   // console.log("userId updated:", userId);
+  // }, [userId]);
 
   //sets isLoggedIn based on whether token is present in header or not aka user is logged in
 
@@ -26,7 +26,6 @@ export const useGetLoginStatus = () => {
     try {
       const result = await fetch("/users/userlibrary", options);
       const data = await result.json();
-      setUserId(data.data);
       console.log(data);
       if (!result.ok) {
         console.log(data.error);
@@ -45,5 +44,5 @@ export const useGetLoginStatus = () => {
     }
   };
 
-  return { isLoggedIn, setIsLoggedIn, message, setMessage, userId };
+  return { isLoggedIn, setIsLoggedIn, message, setMessage };
 };

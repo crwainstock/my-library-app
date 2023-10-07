@@ -12,11 +12,12 @@ export const useGetUserLibrary = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-  const { userId } = useGetLoginStatus();
+  const { userId } = useGetUserData();
 
   // The functions are defined inside the useEffect because that's how it was in the non-auth version when
   // rendering mylibrary was happening without a delay. But this doesn't seem to resolve the issue.
   useEffect(() => {
+    console.log(userId);
     const searchUserBooksById = async (bookId) => {
       setLoading(true);
       let options = {
@@ -48,8 +49,8 @@ export const useGetUserLibrary = () => {
       setLoading(true);
       try {
         //Get books from database for userId
-        let id = userId; // from useGetLoginStatus
-        let results = await fetch(`users/userlibrary/${id}`);
+        // let id = userId; // from useGetLoginStatus
+        let results = await fetch(`users/userlibrary/${userId}`);
         let data = await results.json();
         console.log(data.books); //undefined sometimes
         let books = data.books;
