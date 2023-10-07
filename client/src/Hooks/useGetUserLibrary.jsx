@@ -4,10 +4,6 @@ import { useGetUserData } from "./useGetUserData";
 import { useGetLoginStatus } from "./useGetLoginStatus";
 
 export const useGetUserLibrary = () => {
-  // I don't think params are needed here...
-  // const params = useParams(); //A part of react-router
-  // const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
-  // // //   // this bookId is also used in the URL for this page
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
