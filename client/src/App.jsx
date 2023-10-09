@@ -10,7 +10,6 @@ import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
 import NotFound from "./Pages/NotFound";
 import MyLibrary from "./Pages/MyLibrary";
-// , { loader as booksLoader }
 import BookDetail from "./Pages/BookDetail";
 // , { loader as detailLoader }
 import Login from "./Pages/Login"; // action as loginAction, // loader as loginLoader,

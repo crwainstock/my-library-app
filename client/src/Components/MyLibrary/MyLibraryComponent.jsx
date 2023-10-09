@@ -12,7 +12,7 @@ export default function MyLibraryComponent() {
   // const { books, loading } = useDataContext(); // This can be used in version of app without multiple users
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
-  const { userBooks } = useGetUserLibrary();
+  const { userBooks, fetchUserBooks } = useGetUserLibrary();
   const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
 
   return (

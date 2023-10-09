@@ -9,7 +9,7 @@ export const useGetUserLibrary = () => {
   const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus(); // accessible immediately
-  console.log(userId); //userId is working here.
+  // console.log(userId); //userId is working here.
 
   // There's still something weird happening with the user book data rendering. It doesn't render initally,
   // and when vscode reloads, the books render. I think it has something to do with a lag in setting
@@ -18,7 +18,7 @@ export const useGetUserLibrary = () => {
   useEffect(() => {
     fetchUserBooks(); //Get all book from specific user
     // fetchUserBooksbyID();
-    console.log(userBooks, userId);
+    // console.log(userBooks, userId);
   }, []);
 
   const searchUserBooksById = async (bookId) => {
@@ -141,5 +141,6 @@ export const useGetUserLibrary = () => {
     setLoading,
     error,
     setError,
+    fetchUserBooks,
   };
 };
