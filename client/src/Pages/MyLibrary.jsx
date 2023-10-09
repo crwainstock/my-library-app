@@ -16,7 +16,7 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
-      {isLoggedIn ? <MyLibraryComponent /> : <Navigate replace to="/login" />}
+      {!isLoggedIn ? <Navigate replace to="/login" /> : <MyLibraryComponent />}
     </div>
   );
 }
