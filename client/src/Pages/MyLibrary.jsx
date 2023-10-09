@@ -7,6 +7,7 @@ import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 
 function MyLibrary() {
   const { isLoggedIn } = useGetLoginStatus();
+  console.log(isLoggedIn);
   const { loading } = useGetUserLibrary();
 
   return (
@@ -16,7 +17,9 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
+      {/* This isn't working as planned, so revisit later. Keeps loading the login page even if the user is logged in. */}
       {/* {!isLoggedIn ? <Navigate replace to="/login" /> : <MyLibraryComponent />} */}
+
       <MyLibraryComponent />
     </div>
   );
