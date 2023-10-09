@@ -8,7 +8,7 @@ export const useGetUserLibrary = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-  const { userId } = useGetLoginStatus();
+  const { userId } = useGetLoginStatus(); // accessible immediately
   console.log(userId); //userId is working here.
 
   // There's still something weird happening with the user book data rendering. It doesn't render initally,

@@ -3,8 +3,9 @@ import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import "./BookDetailInfo.css";
 
 export default function BookDetailInfo() {
-  const { book, loading, error, success, review, bookData } =
-    useGetBookDetails();
+  // From non-auth version of the app
+  // const { book, loading, error, success, review, bookData } =
+  //   useGetBookDetails();
 
   return (
     <div id="bookDetails" className="">
