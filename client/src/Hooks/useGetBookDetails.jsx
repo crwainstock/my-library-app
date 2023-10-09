@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useGetUserLibrary } from "./useGetUserLibrary";
 
 export const useGetBookDetails = () => {
+  const { userBooks, setUserBooks } = useGetUserLibrary();
+  console.log(userBooks);
+
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database
   const [review, setReview] = useState("");
@@ -10,9 +14,8 @@ export const useGetBookDetails = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
-  const params = useParams(); //A part of react-router
-  const ID = params.id; //Pulls the id from the react-router data to be used in the functions below --
-  // this bookId is also used in the URL for this page
+  const params = useParams();
+  const ID = params.id;
 
   const searchMyBooksById = async (ID) => {
     setLoading(true);
@@ -27,7 +30,7 @@ export const useGetBookDetails = () => {
       //Search Google using bookId from database
       let results = await fetch(`/mylibrary/searchById`, options);
       let data = await results.json();
-      // console.log(data); //returning full object of book data from Google
+      console.log(data); //returning full object of book data from Google -- working
 
       setBook(data);
 
@@ -39,7 +42,7 @@ export const useGetBookDetails = () => {
     }
   };
 
-  // FUNCTION WORKS WITH NON-AUTH VERSION OF THE APP
+  // FUNCTION WORKS WITH NON-AUTH VERSION OF THE APP -- for adding new book
   // const fetchDBBooks = async (bookId) => {
   //   // console.log(bookId); //bookId
   //   setLoading(true);

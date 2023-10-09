@@ -1,21 +1,24 @@
 import React from "react";
 import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import "./BookDetailInfo.css";
+import { useGetUserLibrary } from "../../Hooks/useGetUserLibrary";
 
 export default function BookDetailInfo() {
   // From non-auth version of the app
   // const { book, loading, error, success, review, bookData } =
   //   useGetBookDetails();
 
+  const { userBooks } = useGetBookDetails();
+
   return (
     <div id="bookDetails" className="">
-      {success ? (
+      {/* {success ? (
         <div id="success" className="">
           <h3>Your review has been updated!</h3>
         </div>
       ) : (
         <div></div>
-      )}
+      )} */}
       <div className="book-detail-info">
         <div className="">
           <img className="" src={book.volumeInfo?.imageLinks?.thumbnail} />
