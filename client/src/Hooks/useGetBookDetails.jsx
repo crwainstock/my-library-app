@@ -165,9 +165,9 @@ export const useGetBookDetails = () => {
   }, []);
 
   return {
-    // book,
-    // loading,
-    // error,
+    book,
+    loading,
+    error,
     // success,
     // review,
     // rating,

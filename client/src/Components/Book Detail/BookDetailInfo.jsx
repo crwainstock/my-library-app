@@ -8,7 +8,7 @@ export default function BookDetailInfo() {
   // const { book, loading, error, success, review, bookData } =
   //   useGetBookDetails();
 
-  const { userBooks } = useGetBookDetails();
+  const { book } = useGetBookDetails();
 
   return (
     <div id="bookDetails" className="">
