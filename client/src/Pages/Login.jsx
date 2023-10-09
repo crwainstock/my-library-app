@@ -18,6 +18,7 @@ function Login() {
   return (
     <div>
       {isLoggedIn == true ? <h2>You are already logged in.</h2> : <div></div>}
+      {/* Add option to log out here? */}
       {message ? <h2>{message}</h2> : <div></div>}
       <div className="login-input-container">
         <input

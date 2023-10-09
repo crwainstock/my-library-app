@@ -23,19 +23,29 @@ export const useGetLoginStatus = () => {
     try {
       const result = await fetch("/users/userlibrary", options);
       const data = await result.json();
-      console.log(data);
+      // console.log(data);
       if (!result.ok) {
-        console.log(data.error);
-        setIsLoggedIn(false);
-        setMessage(data.error);
-        //console.log(isLoggenIn)
+        console.log(result);
+        if (result.statusText === "Unauthorized") {
+          setIsLoggedIn(false);
+          setMessage("You need to log into your account to see your library.");
+        } else {
+          console.log("An error occurred during the request:", error);
+          setMessage("An error occurred during the request.");
+        }
       } else {
         console.log(data.message);
         setIsLoggedIn(true);
         setUserId(data.userId);
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.name);
+      if (error.name === "Unauthorized") {
+        setMessage("You need to log into your account to see your library.");
+      } else {
+        console.error("An error occurred during the request:", error);
+        setMessage("An error occurred during the request.");
+      }
     }
   };
 
