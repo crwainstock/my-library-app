@@ -12,11 +12,13 @@ export default function MyLibraryComponent() {
   // const { books, loading } = useDataContext(); // This can be used in version of app without multiple users
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
-  const { userBooks, fetchUserBooks } = useGetUserLibrary();
+  const { userBooks, loading, fetchUserBooks } = useGetUserLibrary();
   const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
 
   return (
     <div className="my-library-container">
+      {/* Add something here to not render this first bit if the app is loading. 
+      If it's not loading but still empty, then render this. */}
       {userBooks.length === 0 ? (
         <div className="empty-library-container">
           <h3>Your library is empty.</h3>
