@@ -12,14 +12,13 @@ function Login() {
     login,
     handleChange,
     navigate,
-    userId,
   } = useGetUserData();
-  const { isLoggedIn } = useGetLoginStatus();
+  const { isLoggedIn, message, userId } = useGetLoginStatus();
 
-  console.log(userId);
   return (
     <div>
       {isLoggedIn == true ? <h2>You are already logged in.</h2> : <div></div>}
+      {message ? <h2>{message}</h2> : <div></div>}
       <div className="login-input-container">
         <input
           value={credentials.username}

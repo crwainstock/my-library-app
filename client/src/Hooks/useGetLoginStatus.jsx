@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 
 export const useGetLoginStatus = () => {
   const [message, setMessage] = useState("");
+  const [userId, setUserId] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     requestData();
@@ -32,11 +32,12 @@ export const useGetLoginStatus = () => {
       } else {
         console.log(data.message);
         setIsLoggedIn(true);
+        setUserId(data.userId);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  return { isLoggedIn, setIsLoggedIn, message, setMessage };
+  return { isLoggedIn, setIsLoggedIn, message, setMessage, userId };
 };

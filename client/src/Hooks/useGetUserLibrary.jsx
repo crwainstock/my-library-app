@@ -8,8 +8,8 @@ export const useGetUserLibrary = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-  const { userId } = useGetUserData();
-  console.log(userId);
+  const { userId } = useGetLoginStatus();
+  console.log(userId); //userId is working here.
 
   useEffect(() => {
     fetchUserBooks(); //Get all book from specific user

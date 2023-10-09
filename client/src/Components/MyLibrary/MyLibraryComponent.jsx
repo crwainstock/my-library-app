@@ -13,7 +13,7 @@ export default function MyLibraryComponent() {
   const { deleteBook } = useGetBookDetails();
   const { bookAdded, setBookAdded } = useGetSearchResults();
   const { userBooks } = useGetUserLibrary();
-  const { isLoggedIn } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
+  const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
 
   return (
     <div className="my-library-container">
