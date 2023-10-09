@@ -39,13 +39,8 @@ export const useGetLoginStatus = () => {
         setUserId(data.userId);
       }
     } catch (error) {
-      console.log(error.name);
-      if (error.name === "Unauthorized") {
-        setMessage("You need to log into your account to see your library.");
-      } else {
-        console.error("An error occurred during the request:", error);
-        setMessage("An error occurred during the request.");
-      }
+      console.error("An error occurred during the request:", error);
+      setMessage("An error occurred during the request.");
     }
   };
 
