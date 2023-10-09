@@ -5,7 +5,7 @@ import { useGetLoginStatus } from "./useGetLoginStatus";
 
 export const useGetUserLibrary = () => {
   const [userBooks, setUserBooks] = useState([]); //All books to be rendered for specific user
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus(); // accessible immediately
@@ -19,7 +19,7 @@ export const useGetUserLibrary = () => {
     fetchUserBooks(); //Get all book from specific user
     // fetchUserBooksbyID();
     // console.log(userBooks, userId);
-  }, []);
+  }, [userId]);
 
   const searchUserBooksById = async (bookId) => {
     setLoading(true);
@@ -52,6 +52,7 @@ export const useGetUserLibrary = () => {
       //Get books from database for userId
       let results = await fetch(`users/userlibrary/${userId}`);
       let data = await results.json();
+      console.log(data);
       let books = data.books;
       console.log(books); //returns array of books objects
       //Loop through books and search using bookId with the searchMyBooks function
@@ -64,10 +65,19 @@ export const useGetUserLibrary = () => {
       console.log(userBooks);
       setLoading(false);
       return userBooks;
+      // const fetchPromises = books.map(async (book) => {
+      //   const bookData = await searchUserBooksById(book.bookId);
+      //   return bookData;
+      // });
+
+      // const bookDataArray = await Promise.all(fetchPromises);
+      // setUserBooks(bookDataArray);
+      // setLoading(false);
     } catch (error) {
       console.error("An error occurred during the request:", error);
       setError("An error occurred during the request.");
       setLoading(false);
+      return null;
     }
   };
 

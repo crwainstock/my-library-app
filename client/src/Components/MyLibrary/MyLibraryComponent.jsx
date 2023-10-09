@@ -31,7 +31,7 @@ export default function MyLibraryComponent() {
             id="book"
             key={book.id + book.volumeInfo.title}
           >
-            <h5>{book.volumeInfo.title}</h5>
+            <h5>{book?.volumeInfo.title}</h5>
             <p>
               {book.volumeInfo?.authors?.[0]} {book.volumeInfo.authors?.[1]}{" "}
             </p>
