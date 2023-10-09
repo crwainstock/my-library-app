@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useGetUserLibrary } from "../Hooks/useGetUserLibrary";
 import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
 import Loading from "../Components/Loading/Loading";
@@ -8,7 +8,6 @@ import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 function MyLibrary() {
   const { isLoggedIn } = useGetLoginStatus();
   const { loading } = useGetUserLibrary();
-  const { navigate } = useNavigate();
 
   return (
     <div>
@@ -17,7 +16,7 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
-      {!isLoggedIn && <Redirect to="/login" />}
+      {!isLoggedIn && <Navigate replace to="/login" />}
       <MyLibraryComponent />
     </div>
   );
