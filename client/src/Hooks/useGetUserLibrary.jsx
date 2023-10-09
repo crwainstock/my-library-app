@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useGetUserData } from "./useGetUserData";
+// import { useParams } from "react-router-dom";
+// import { useGetUserData } from "./useGetUserData";
 import { useGetLoginStatus } from "./useGetLoginStatus";
 
 export const useGetUserLibrary = () => {
@@ -10,6 +10,10 @@ export const useGetUserLibrary = () => {
 
   const { userId } = useGetLoginStatus();
   console.log(userId); //userId is working here.
+
+  // There's still something weird happening with the user book data rendering. It doesn't render initally,
+  // and when vscode reloads, the books render. I think it has something to do with a lag in setting
+  // the state variable userBooks.
 
   useEffect(() => {
     fetchUserBooks(); //Get all book from specific user
