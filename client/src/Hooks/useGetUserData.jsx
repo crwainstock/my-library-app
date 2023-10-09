@@ -8,7 +8,6 @@ export const useGetUserData = () => {
     username: "",
     password: "",
   });
-  const [userId, setUserId] = useState(null);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -35,8 +34,6 @@ export const useGetUserData = () => {
         setError(data.error);
       } else {
         localStorage.setItem("token", data.token);
-        setUserId(data.userId);
-        console.log(userId); //undefined
         console.log(localStorage.token);
 
         navigate("/mylibrary");
@@ -55,6 +52,5 @@ export const useGetUserData = () => {
     login,
     handleChange,
     navigate,
-    userId,
   };
 };
