@@ -17,6 +17,7 @@ export const useGetBookDetails = () => {
   const params = useParams();
   const ID = params.id;
 
+  // Uses ID from params (bookId) and searches Google for book details
   const searchMyBooksById = async (ID) => {
     setLoading(true);
     let options = {
@@ -169,12 +170,12 @@ export const useGetBookDetails = () => {
     book,
     loading,
     error,
-    // success,
-    // review,
-    // rating,
-    // bookData,
+    success,
+    review,
+    rating,
+    bookData,
     // deleteBook,
-    // handleReviewChange,
-    // handleReviewSubmit,
+    handleReviewChange,
+    handleReviewSubmit,
   };
 };
