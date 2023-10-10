@@ -25,6 +25,7 @@ function Login() {
           value={credentials.username}
           onChange={handleChange}
           name="username"
+          placeholder="username"
           type="text"
           className="input"
           id="input-1"
@@ -33,6 +34,7 @@ function Login() {
           value={credentials.password}
           onChange={handleChange}
           name="password"
+          placeholder="password"
           type="password"
           className="input"
           id="input-2"
