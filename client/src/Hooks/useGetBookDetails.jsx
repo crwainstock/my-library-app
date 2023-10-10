@@ -34,10 +34,11 @@ export const useGetBookDetails = () => {
 
       setBook(data);
 
-      // console.log(book);
+      console.log(book);
       setLoading(false);
-    } catch (err) {
-      setError(err);
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
       setLoading(false);
     }
   };

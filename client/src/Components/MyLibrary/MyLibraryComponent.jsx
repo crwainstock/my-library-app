@@ -15,6 +15,7 @@ export default function MyLibraryComponent() {
   const { userBooks, loading, fetchUserBooks } = useGetUserLibrary();
   const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
 
+  console.log(isLoggedIn);
   return (
     <div className="my-library-container">
       {/* Add something here to not render this first bit if the app is loading. 
