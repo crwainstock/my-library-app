@@ -161,10 +161,10 @@ export const useGetBookDetails = () => {
   //   }
   // };
 
-  // useEffect(() => {
-  //   searchMyBooksById(ID);
-  //   // fetchDBBooks(ID);
-  // }, []);
+  useEffect(() => {
+    searchMyBooksById(ID);
+    // fetchDBBooks(ID);
+  }, []);
 
   return {
     book,
