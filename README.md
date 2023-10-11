@@ -22,4 +22,4 @@ Other tech notes:
 ## 🤔 Reflection
 
 - Updating functions from non-auth to multi-user versions of the app
-- - [Adding book to library](https://docs.google.com/document/d/1ngVcPB2SWkWXQUasi5kP_nFRyTU-YciLwX4t4YHQDMc/edit?usp=sharing)
+  - [Adding book to library](https://docs.google.com/document/d/1ngVcPB2SWkWXQUasi5kP_nFRyTU-YciLwX4t4YHQDMc/edit?usp=sharing)
