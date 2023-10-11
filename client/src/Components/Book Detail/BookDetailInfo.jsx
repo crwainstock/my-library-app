@@ -9,7 +9,7 @@ export default function BookDetailInfo() {
   //   useGetBookDetails();
 
   const { book, bookData } = useGetBookDetails();
-  console.log(book); //empty array
+  console.log(book);
 
   return (
     <div id="bookDetails" className="">

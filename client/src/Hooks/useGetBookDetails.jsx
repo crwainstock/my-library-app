@@ -4,7 +4,7 @@ import { useGetUserLibrary } from "./useGetUserLibrary";
 
 export const useGetBookDetails = () => {
   const { userBooks, setUserBooks } = useGetUserLibrary();
-  console.log(userBooks); //empty
+  console.log(userBooks);
 
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database

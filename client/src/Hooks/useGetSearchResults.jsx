@@ -83,30 +83,30 @@ export const useGetSearchResults = () => {
     return searchResults;
   };
 
-  // Function to add book to database
-  // This function works, but the part that tries to set the bookAdded state variable (so the component will know
-  // to reload if a book has been added) isn't working as planned. Needs more work.
-  const addBook = async (e) => {
-    setLoading(true);
-    let options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ bookId: e }),
-    };
-    try {
-      let results = await fetch(`/mylibrary`, options);
-      let data = await results.json();
-      // console.log(data);
-      setLoading(false);
+  // // Function to add book to database -- FOR NON-AUTH VERSION OF THE APP
+  // // This function works, but the part that tries to set the bookAdded state variable (so the component will know
+  // // to reload if a book has been added) isn't working as planned. Needs more work.
+  // const addBook = async (e) => {
+  //   setLoading(true);
+  //   let options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ bookId: e }),
+  //   };
+  //   try {
+  //     let results = await fetch(`/mylibrary`, options);
+  //     let data = await results.json();
+  //     // console.log(data);
+  //     setLoading(false);
 
-      setSuccess(true);
-      setBookAdded(true);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     setSuccess(true);
+  //     setBookAdded(true);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   return {
     searchTerm,
     setSearchTerm,
