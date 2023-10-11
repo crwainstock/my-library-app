@@ -132,29 +132,6 @@ const getUserItems = async (req, res) => {
 //   }
 // });
 
-// ADD ITEMS TO LIBRARY PER USER.
-// NEEDS TO BE UPDATED FOR AUTH VERSION
-router.post("/addmylibrary/:id", ensureUserExists, async (req, res) => {
-  const { bookId } = req.body;
-  let uId = res.locals.user;
-  const sql = `INSERT INTO books (bookId) VALUES ("${bookId}");
-  SELECT LAST_INSERT_ID();`;
-  try {
-    let results = await db(sql);
-    let newBookId = results.data[0].insertId;
-    if (uId) {
-      let vals = [];
-      vals.push(`(${newBookId}, ${uId})`);
-      let sql = `INSERT INTO user_books (bId, uId)
-      VALUES ${vals.join(",")}`;
-      await db(sql);
-    }
-    await getUserItems(req, res);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
-
 // SEARCH GOOGLE BOOKS API BY AUTHOR -- working in postman
 router.post("/mylibrary/searchByAuthor", async (req, res) => {
   try {
