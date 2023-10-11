@@ -203,18 +203,19 @@ router.get("/mylibrary/:id", async (req, res) => {
   }
 });
 
-// ADD ITEMS TO LIBRARY BY BOOKID -- Used in Search component -- working in postman
-router.post("/mylibrary", async (req, res) => {
-  const { bookId } = req.body;
-  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}")`;
+// // ADD ITEMS TO LIBRARY BY BOOKID -- Used in Search component -- working in postman
+// // FOR NON-AUTH VERSION OF THE APP
+// router.post("/mylibrary", async (req, res) => {
+//   const { bookId } = req.body;
+//   const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}")`;
 
-  try {
-    await db(sql);
-    await getItems(req, res);
-  } catch (err) {
-    res.status(500).send({ error: err.message });
-  }
-});
+//   try {
+//     await db(sql);
+//     await getItems(req, res);
+//   } catch (err) {
+//     res.status(500).send({ error: err.message });
+//   }
+// });
 
 // FOR NON-AUTH VERSION OF APP
 //UPDATE REVIEW -- Used in BookDetailView page -- working in postman
