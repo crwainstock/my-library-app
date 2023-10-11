@@ -3,20 +3,22 @@ import React from "react";
 import { useDataContext } from "../../Hooks/useDataContext";
 import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
-import { useGetUserLibrary } from "../../Hooks/useGetUserLibrary";
+// import { useGetUserLibrary } from "../../Hooks/useGetUserLibrary";
 import { useGetLoginStatus } from "../../Hooks/useGetLoginStatus";
 import { Link } from "react-router-dom";
 import "./MyLibrary.css";
 
 export default function MyLibraryComponent() {
   // const { books, loading } = useDataContext(); // This can be used in version of app without multiple users
-  const { deleteBook } = useGetBookDetails();
-  const { bookAdded, setBookAdded } = useGetSearchResults();
+
   // userBooks can also be accessed directly through the useGetUserLibrary hook below. I was just
   // testing out whether it would work the same if accessing the variable through the data provider
   // const { userBooks, loading, fetchUserBooks } = useGetUserLibrary();
+
   const { userBooks } = useDataContext();
   const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
+  const { deleteBook } = useGetBookDetails();
+  const { bookAdded, setBookAdded } = useGetSearchResults();
 
   console.log(isLoggedIn);
   return (

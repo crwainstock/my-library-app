@@ -10,6 +10,8 @@ export function DataProvider({ children }) {
   // const { books, loading, error } = useGetLibraryData();
   // const value = { books, loading, error };
 
+  // Currently, only the userBooks is used from here. The other data is accessed through the hooks
+  // directly in each component.
   const { userBooks } = useGetUserLibrary();
   const { isLoggedIn, userId } = useGetLoginStatus();
   const value = { userBooks, isLoggedIn, userId };
