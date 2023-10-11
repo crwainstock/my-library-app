@@ -12,6 +12,15 @@ const bcrypt = require("bcrypt");
 const saltRounds = 7;
 const supersecret = process.env.SUPER_SECRET;
 
+const getUserItems = async (req, res) => {
+  try {
+    const results = await db("SELECT * FROM user_books;");
+    res.status(200).send(results.data);
+  } catch (err) {
+    res.status(500).send({ err: err.message });
+  }
+};
+
 // To get all users for testing
 async function sendAllUsers(res) {
   let results = await db("SELECT * FROM users ORDER BY id");
@@ -178,14 +187,11 @@ router.get("/userlibrary/:id", ensureUserExists, async function (req, res) {
   }
 });
 // ADD ITEMS TO LIBRARY PER USER.
-// Used in Search component.
-// Adds books to overal mylibrary and books_users, but only for 1 user.
-// if another user wants to add, shows duplicate entry error. How avoid?
-// NB - Need to pass userId when calling function on front-end
+// Used in Search component. Needs something to make sure duplicate books aren't added to the books table
 router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
   const { bookId } = req.body;
   let uId = res.locals.user;
-  const sql = `INSERT INTO mylibrary (bookId) VALUES ("${bookId}");
+  const sql = `INSERT INTO books (bookId) VALUES ("${bookId}");
   SELECT LAST_INSERT_ID();`;
   try {
     let results = await db(sql);
@@ -193,7 +199,7 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
     if (uId) {
       let vals = [];
       vals.push(`(${newBookId}, ${uId})`);
-      let sql = `INSERT INTO user_books (bId, uId)
+      let sql = `INSERT INTO user_books (book_id, user_id)
       VALUES ${vals.join(",")}`;
       await db(sql);
     }
