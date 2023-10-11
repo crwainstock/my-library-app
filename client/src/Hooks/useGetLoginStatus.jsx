@@ -46,3 +46,5 @@ export const useGetLoginStatus = () => {
 
   return { isLoggedIn, setIsLoggedIn, message, setMessage, userId };
 };
+
+export default useGetLoginStatus;
