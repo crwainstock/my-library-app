@@ -1,11 +1,13 @@
 import React from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
+import { useGetAddBook } from "../../Hooks/useGetAddBook";
 import Loading from "../../Components/Loading/Loading";
-import "./search.css";
-import Google from "../../Assets/poweredby.png";
 
-import { useEffect, useState, useRef } from "react";
+import Google from "../../Assets/poweredby.png";
+import "./search.css";
+
 import * as Toast from "@radix-ui/react-toast";
 import "../Toast/toast.css";
 
@@ -20,8 +22,9 @@ export default function Search() {
     success,
     searchPerformed,
     handleSubmit,
-    addBook,
+    // addBook,
   } = useGetSearchResults();
+  const { addBook } = useGetAddBook();
 
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);

@@ -117,7 +117,6 @@ export const useGetSearchResults = () => {
     success,
     searchPerformed,
     handleSubmit,
-    addBook,
     bookAdded,
     setBookAdded,
   };
