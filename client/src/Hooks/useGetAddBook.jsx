@@ -20,4 +20,6 @@ export const useGetAddBook = () => {
       console.log(err);
     }
   };
+
+  return { addBook };
 };
