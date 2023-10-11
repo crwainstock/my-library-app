@@ -18,3 +18,8 @@ Other dependencies include:
 Other tech notes:
 
 - [Truncating text with CSS](https://benmarshall.me/css-limit-text-length/)
+
+## 🤔 Reflection
+
+- Updating functions from non-auth to multi-user versions of the app
+- - [Adding book to library](https://docs.google.com/document/d/1ngVcPB2SWkWXQUasi5kP_nFRyTU-YciLwX4t4YHQDMc/edit?usp=sharing)
