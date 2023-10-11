@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { useDataContext } from "./useDataContext";
 
 export const useGetAddBook = () => {
   const { userId } = useDataContext();
+  const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   // TO ADD A BOOK TO USER LIBRARY
   const addBook = async (e) => {
@@ -14,14 +18,15 @@ export const useGetAddBook = () => {
       body: JSON.stringify({ bookId: e }),
     };
     try {
-      let results = await fetch(`/userlibrary/${userId}`, options);
+      let results = await fetch(`users/userlibrary/${userId}`, options);
       let data = await results.json();
-      // console.log(data);
+      console.log(data);
       setLoading(false);
       setSuccess(true);
       setBookAdded(true);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
     }
   };
 

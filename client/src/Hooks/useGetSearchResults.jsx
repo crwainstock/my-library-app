@@ -8,6 +8,7 @@ export const useGetSearchResults = () => {
   const [success, setSuccess] = useState(false);
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [bookAdded, setBookAdded] = useState(false);
+  const [error, setError] = useState();
 
   // I need this to limit results to books for kids,
   // but it's creating problems with search results (other categories exist that might be relevant)
@@ -41,8 +42,9 @@ export const useGetSearchResults = () => {
       // console.log(searchResults); //returning array of objects
 
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
     }
   };
 
@@ -63,8 +65,9 @@ export const useGetSearchResults = () => {
       getJuvenileBooks(data.items);
 
       setLoading(false);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.error("An error occurred during the request:", error);
+      setError("An error occurred during the request.");
     }
   };
 
