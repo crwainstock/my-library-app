@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
+import Login from "./Login";
 import { useGetUserLibrary } from "../Hooks/useGetUserLibrary";
 import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
 import Loading from "../Components/Loading/Loading";
@@ -17,9 +18,11 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
-      {/* This isn't working as planned, so revisit later. Keeps loading the login page even if the user is logged in. */}
-      {/* {!isLoggedIn ? <Navigate replace to="/login" /> : <MyLibraryComponent />} */}
-
+      {isLoggedIn == false && (
+        <div className="need-to-login">
+          <Login />
+        </div>
+      )}
       <MyLibraryComponent />
     </div>
   );
