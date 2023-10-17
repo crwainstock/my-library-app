@@ -35,7 +35,7 @@ export const useGetUserData = () => {
       } else {
         localStorage.setItem("token", data.token);
         console.log(localStorage.token);
-
+        location.reload();
         navigate("/mylibrary");
       }
     } catch (error) {
