@@ -18,12 +18,13 @@ function MyLibrary() {
           <Loading />
         </div>
       )}
-      {isLoggedIn == false && (
+      {isLoggedIn == false ? (
         <div className="need-to-login">
           <Login />
         </div>
+      ) : (
+        <MyLibraryComponent />
       )}
-      <MyLibraryComponent />
     </div>
   );
 }
