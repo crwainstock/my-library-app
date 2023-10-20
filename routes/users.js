@@ -215,6 +215,7 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
 });
 
 // DELETE ITEM BY ID PER USER
+// deletes book from user_books table, but not books table...not sure if that needs to happen, too. we'll see.
 router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
   let uId = res.locals.user;
   const { bookToDelete } = req.body;
