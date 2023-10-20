@@ -48,9 +48,9 @@ export const useGetUserLibrary = () => {
       //Get books from database for userId
       let results = await fetch(`users/userlibrary/${userId}`);
       let data = await results.json();
-      console.log(data);
+      // console.log(data);
       let books = data.books;
-      console.log(books); //returns array of books objects
+      // console.log(books); //returns array of books objects
       //Loop through books and search using bookId with the searchMyBooks function
       //Should return full book data from Google & set books as that data
       for (let i = 0; i < books.length; i++) {
@@ -61,14 +61,6 @@ export const useGetUserLibrary = () => {
       // console.log(userBooks);
       setLoading(false);
       return userBooks;
-      // const fetchPromises = books.map(async (book) => {
-      //   const bookData = await searchUserBooksById(book.bookId);
-      //   return bookData;
-      // });
-
-      // const bookDataArray = await Promise.all(fetchPromises);
-      // setUserBooks(bookDataArray);
-      // setLoading(false);
     } catch (error) {
       console.error("An error occurred during the request:", error);
       setError("An error occurred during the request.");

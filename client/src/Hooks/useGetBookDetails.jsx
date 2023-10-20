@@ -4,7 +4,7 @@ import { useGetUserLibrary } from "./useGetUserLibrary";
 
 export const useGetBookDetails = () => {
   const { userBooks, setUserBooks } = useGetUserLibrary();
-  console.log(userBooks);
+  // console.log(userBooks);
 
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database
@@ -35,7 +35,7 @@ export const useGetBookDetails = () => {
 
       setBook(data);
 
-      console.log(book);
+      // console.log(book);
       setLoading(false);
     } catch (error) {
       console.error("An error occurred during the request:", error);

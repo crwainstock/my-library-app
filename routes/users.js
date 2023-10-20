@@ -203,6 +203,9 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
       VALUES ${vals.join(",")}`;
       await db(sql);
     }
+    await db(
+      `INSERT INTO reviews (user_id, book_id, text) VALUES (${uId}, ${newBookId}, '');`
+    );
     await getUserItems(req, res);
   } catch (err) {
     console.error("Error occurred in /userlibrary/:id post route:", err);
@@ -224,7 +227,31 @@ router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
     await db(
       `DELETE FROM user_books WHERE book_id = ${bookToDelete} AND user_id = ${uId};`
     );
+    await db(
+      `DELETE FROM reviews WHERE book_id = ${bookToDelete} AND user_id = ${uId};`
+    );
     await db(`DELETE FROM books WHERE id = ${bookToDelete};`);
+    await getUserItems(req, res);
+  } catch (err) {
+    console.error("Error occurred in /userlibrary/:id delete route:", err);
+    res.status(500).send({
+      error: "An error occurred while processing your request.",
+      errorMessage: err.message,
+      errorStack: err.stack,
+    });
+  }
+});
+
+//UPDATE BOOK REVIEWS/NOTES
+router.put("/userlibrary/:id", async (req, res) => {
+  const { review, bookId } = req.body;
+  const id = req.params.id;
+
+  try {
+    await db(
+      `UPDATE reviews SET text = "${review}" WHERE user_id = ${id} AND book_id = ${bookId};`
+    );
+
     await getUserItems(req, res);
   } catch (err) {
     console.error("Error occurred in /userlibrary/:id delete route:", err);
