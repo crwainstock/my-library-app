@@ -8,22 +8,23 @@ export const useGetDeleteBook = () => {
   const [error, setError] = useState();
 
   const fetchDBBooks = async (bookId) => {
-    console.log(bookId); //bookId
+    console.log(bookId);
     setLoading(true);
     try {
       //Get all database books
       let results = await fetch(`users/userlibrary/${userId}`);
       let data = await results.json();
-      console.log(data); //Showing books & id for specific user; books is an array with bookId, libraryId, review
+      let bookData = data.books;
+      console.log(bookData); //Showing books & id for specific user; books is an array with bookId, libraryId, review
 
       //Loop through books, look for bookId
       for (let i = 0; i < data.length; i++) {
-        if (bookId === data[i].bookId) {
-          let bookToDeleteId = data[i].libraryId;
+        if (bookId === bookData[i].bookId) {
+          let bookToDeleteId = bookData[i].libraryId;
           console.log(bookToDeleteId);
-          let bookData = data[i]; //individual book data from database
-          setBookData(bookData); //individual book data from database -- used in rendering review
-          // console.log(bookData);
+          //   let bookData = data[i]; //individual book data from database
+          //   setBookData(bookData); //individual book data from database -- used in rendering review
+          //   // console.log(bookData);
 
           return bookToDeleteId; //id of book to update for DELETE function below
         }
