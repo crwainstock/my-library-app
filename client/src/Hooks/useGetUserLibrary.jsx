@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import { useGetUserData } from "./useGetUserData";
 import { useGetLoginStatus } from "./useGetLoginStatus";
 
 export const useGetUserLibrary = () => {
@@ -27,11 +25,8 @@ export const useGetUserLibrary = () => {
       //Search Google using bookId from database
       let results = await fetch(`/mylibrary/searchById`, options);
       let data = await results.json();
-      // setUserBooks((book) => [...book, data]); // Adding object of data to books array
-      //Could add something here to alphabatize the books?
-
-      const newData = [...userBooks, data];
-      setUserBooks(newData);
+      setUserBooks((book) => [...book, data]); // Adding object of data to books array
+      //Could add something here to alphabatize the books?;
 
       setLoading(false);
     } catch (error) {
@@ -49,21 +44,10 @@ export const useGetUserLibrary = () => {
       let data = await results.json();
       // console.log(data);
       let books = data.books;
+      console.log(books);
 
-      // Create an array of promises for searching user books
-      // const searchPromises = books.map((book) =>
-      //   searchUserBooksById(book.bookId)
-      // );
-
-      // // Wait for all searchUserBooksById calls to finish
-      // await Promise.all(searchPromises);
-
-      for (let i = 0; i < books.length; i++) {
-        //console.log(books[i].bookId); //Seems to be accessing the bookId here
-        await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-        // console.log(books[i].bookId);
-      }
-      // console.log(userBooks);
+      // REMOVED LOGIC FOR LOOPING THROUGH THE BOOKS AND ADDING THEM TO userBook ARRAY.
+      // NEED TO REVISIT LATER. UGH.
       setLoading(false);
       return userBooks;
     } catch (error) {
