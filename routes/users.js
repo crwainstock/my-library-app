@@ -202,8 +202,12 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
       let sql = `INSERT INTO user_books (book_id, user_id)
       VALUES ${vals.join(",")}`;
       await db(sql);
+      // await db(
+      //   `INSERT INTO reviews (user_id, book_id, text) VALUES (${uId}, ${newBookId}, '');`
+      // );
     }
-    await getUserItems(req, res);
+
+    getUserItems(req, res);
   } catch (err) {
     console.error("Error occurred in /userlibrary/:id post route:", err);
     res.status(500).send({
@@ -237,14 +241,16 @@ router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
 });
 
 //UPDATE BOOK REVIEWS/NOTES
-router.put("/mylibrary/:id", async (req, res) => {
+router.put("/userlibrary/:id", async (req, res) => {
   const { review } = req.body;
   const id = req.params.id;
-  const sql = `UPDATE mylibrary SET review = "${review}" WHERE id = ${id}`;
 
   try {
-    await db(sql);
-    getItems(req, res);
+    await db(
+      `UPDATE reviews SET text = "${review}" WHERE user_id = ${id} AND ;`
+    );
+
+    await getItems(req, res);
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
