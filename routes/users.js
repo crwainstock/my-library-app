@@ -206,7 +206,7 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
     await db(
       `INSERT INTO reviews (user_id, book_id, text) VALUES (${uId}, ${newBookId}, '');`
     );
-    getUserItems(req, res);
+    await getUserItems(req, res);
   } catch (err) {
     console.error("Error occurred in /userlibrary/:id post route:", err);
     res.status(500).send({
