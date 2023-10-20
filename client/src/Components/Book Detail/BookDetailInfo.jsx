@@ -13,13 +13,6 @@ export default function BookDetailInfo() {
 
   return (
     <div id="bookDetails" className="">
-      {/* {success ? (
-        <div id="success" className="">
-          <h3>Your review has been updated!</h3>
-        </div>
-      ) : (
-        <div></div>
-      )} */}
       <div className="book-detail-info">
         <div className="">
           <img className="" src={book.volumeInfo?.imageLinks?.thumbnail} />
