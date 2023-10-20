@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import { useGetAddBook } from "../../Hooks/useGetAddBook";
 import { useGetLoginStatus } from "../../Hooks/useGetLoginStatus";
 import Loading from "../../Components/Loading/Loading";
+import Login from "../../Pages/Login";
 //Google search image
 import Google from "../../Assets/poweredby.png";
 import "./search.css";
