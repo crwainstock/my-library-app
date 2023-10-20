@@ -120,8 +120,8 @@ export default function Search() {
                       className="add-to-library-button"
                       onClick={(e) => {
                         // Toast function
-                        if (bookAdded == false) {
-                          console.log("book not added");
+                        if (isLoggedIn == false) {
+                          console.log("user not logged in");
                           return;
                         } else {
                           setOpen(false);
