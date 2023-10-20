@@ -14,16 +14,18 @@ export const useGetDeleteBook = () => {
       //Get all database books
       let results = await fetch(`users/userlibrary/${userId}`);
       let data = await results.json();
+      console.log(data); //Showing books & id for specific user; books is an array with bookId, libraryId, review
 
       //Loop through books, look for bookId
       for (let i = 0; i < data.length; i++) {
         if (bookId === data[i].bookId) {
-          let bookToDelete = data[i].id;
+          let bookToDeleteId = data[i].libraryId;
+          console.log(bookToDeleteId);
           let bookData = data[i]; //individual book data from database
           setBookData(bookData); //individual book data from database -- used in rendering review
           // console.log(bookData);
 
-          return bookToDelete; //id of book to update for DELETE function below
+          return bookToDeleteId; //id of book to update for DELETE function below
         }
       }
       setLoading(false);
@@ -36,7 +38,7 @@ export const useGetDeleteBook = () => {
   const deleteBook = async (e) => {
     setLoading(true);
     let bookToDelete = await fetchDBBooks(e); //id of book to delete
-    // console.log(bookToDelete);
+    console.log(bookToDelete);
     let options = {
       method: "DELETE",
     };
