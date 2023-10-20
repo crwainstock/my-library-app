@@ -15,10 +15,10 @@ export const useGetDeleteBook = () => {
       let results = await fetch(`users/userlibrary/${userId}`);
       let data = await results.json();
       let bookData = data.books;
-      console.log(bookData); //Showing books & id for specific user; books is an array with bookId, libraryId, review
+      console.log(bookData); //Showing books for specific user; books is an array with bookId, libraryId, review
 
       //Loop through books, look for bookId
-      for (let i = 0; i < data.length; i++) {
+      for (let i = 0; i < bookData.length; i++) {
         if (bookId === bookData[i].bookId) {
           let bookToDeleteId = bookData[i].libraryId;
           console.log(bookToDeleteId);
