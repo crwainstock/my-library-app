@@ -14,17 +14,16 @@ function MyLibrary() {
 
   return (
     <div className="mylibrary-container">
-      {loading == true && (
+      {loading ? (
         <div className="loading">
           <Loading />
         </div>
-      )}
-      {isLoggedIn == false ? (
+      ) : isLoggedIn ? (
+        <MyLibraryComponent />
+      ) : (
         <div className="need-to-login">
           <Login />
         </div>
-      ) : (
-        <MyLibraryComponent />
       )}
     </div>
   );
