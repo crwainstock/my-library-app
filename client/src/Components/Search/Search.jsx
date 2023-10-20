@@ -19,10 +19,8 @@ export default function Search() {
     setSelected,
     searchResults,
     loading,
-    success,
     searchPerformed,
     handleSubmit,
-    // addBook,
   } = useGetSearchResults();
   const { addBook, bookAdded } = useGetAddBook();
 
