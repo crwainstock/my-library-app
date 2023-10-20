@@ -202,11 +202,10 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
       let sql = `INSERT INTO user_books (book_id, user_id)
       VALUES ${vals.join(",")}`;
       await db(sql);
-      // await db(
-      //   `INSERT INTO reviews (user_id, book_id, text) VALUES (${uId}, ${newBookId}, '');`
-      // );
     }
-
+    await db(
+      `INSERT INTO reviews (user_id, book_id, text) VALUES (${uId}, ${newBookId}, '');`
+    );
     getUserItems(req, res);
   } catch (err) {
     console.error("Error occurred in /userlibrary/:id post route:", err);
@@ -227,6 +226,9 @@ router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
   try {
     await db(
       `DELETE FROM user_books WHERE book_id = ${bookToDelete} AND user_id = ${uId};`
+    );
+    await db(
+      `DELETE FROM reviews WHERE book_id = ${bookToDelete} AND user_id = ${uId};`
     );
     await db(`DELETE FROM books WHERE id = ${bookToDelete};`);
     await getUserItems(req, res);
