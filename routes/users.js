@@ -214,16 +214,14 @@ router.post("/userlibrary/:id", ensureUserExists, async (req, res) => {
   }
 });
 
-// DELETE ITEM BY ID PER USER -- Used in MyUsersLibrary page.
-// Working on postman. Removing book via libraryId. NotGoogleBookId.
-// NB - Need to pass uId on front-end
+// DELETE ITEM BY ID PER USER
 router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
   let uId = res.locals.user;
-  //const { bookToDelete } = req.body;
-  let bookToDelete = 31;
+  const { bookToDelete } = req.body;
+
   try {
     await db(
-      `DELETE FROM user_books WHERE bId = ${bookToDelete} AND uId = ${uId};`
+      `DELETE FROM user_books WHERE book_id = ${bookToDelete} AND user_id = ${uId};`
     );
     await getUserItems(req, res);
   } catch (err) {
