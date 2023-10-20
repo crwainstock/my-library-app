@@ -236,4 +236,18 @@ router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
   }
 });
 
+//UPDATE BOOK REVIEWS/NOTES
+router.put("/mylibrary/:id", async (req, res) => {
+  const { review } = req.body;
+  const id = req.params.id;
+  const sql = `UPDATE mylibrary SET review = "${review}" WHERE id = ${id}`;
+
+  try {
+    await db(sql);
+    getItems(req, res);
+  } catch (err) {
+    res.status(500).send({ error: err.message });
+  }
+});
+
 module.exports = router;
