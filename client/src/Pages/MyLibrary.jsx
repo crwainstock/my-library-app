@@ -5,6 +5,7 @@ import { useGetUserLibrary } from "../Hooks/useGetUserLibrary";
 import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
 import Loading from "../Components/Loading/Loading";
 import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
+import "../Components/MyLibrary/MyLibrary.css";
 
 function MyLibrary() {
   const { isLoggedIn } = useGetLoginStatus();
@@ -12,7 +13,7 @@ function MyLibrary() {
   const { loading } = useGetUserLibrary();
 
   return (
-    <div>
+    <div className="mylibrary-container">
       {loading == true && (
         <div className="loading">
           <Loading />
