@@ -21,8 +21,8 @@ function Home() {
           <h1>My Library</h1>
           <p>Explore and collect your favorite children's books.</p>
         </div>
-        <Search />
       </div>
+      <Search />
     </div>
   );
 }
