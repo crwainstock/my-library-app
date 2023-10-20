@@ -17,6 +17,7 @@ export default function MyLibraryComponent() {
   // const { userBooks, loading, fetchUserBooks } = useGetUserLibrary();
 
   const { userBooks } = useDataContext();
+  console.log(userBooks);
   const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
   // const { deleteBook } = useGetBookDetails(); // for non-auth app version
   const { bookAdded, setBookAdded } = useGetSearchResults();
