@@ -224,6 +224,7 @@ router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
     await db(
       `DELETE FROM user_books WHERE book_id = ${bookToDelete} AND user_id = ${uId};`
     );
+    await db(`DELETE FROM books WHERE id = ${bookToDelete};`);
     await getUserItems(req, res);
   } catch (err) {
     console.error("Error occurred in /userlibrary/:id delete route:", err);

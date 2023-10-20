@@ -28,7 +28,7 @@ con.connect(function (err) {
      rating int,
      review varchar(255),
      PRIMARY KEY (id),
-     UNIQUE KEY unique_bookid (bookId)
+     bookid (bookId)
      );
 
      DROP TABLE IF EXISTS users; 
