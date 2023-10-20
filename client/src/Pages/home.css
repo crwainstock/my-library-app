@@ -1,0 +1,6 @@
+/* Default styling is for mobile */
+
+.home-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
