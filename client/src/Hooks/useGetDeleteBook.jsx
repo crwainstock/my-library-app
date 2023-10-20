@@ -4,9 +4,10 @@ import { useDataContext } from "./useDataContext";
 export const useGetDeleteBook = () => {
   const { userId } = useDataContext();
   const [bookData, setBookData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchDBBooks = async (bookId) => {
-    // console.log(bookId); //bookId
+    console.log(bookId); //bookId
     setLoading(true);
     try {
       //Get all database books
@@ -16,12 +17,12 @@ export const useGetDeleteBook = () => {
       //Loop through books, look for bookId
       for (let i = 0; i < data.length; i++) {
         if (bookId === data[i].bookId) {
-          let bookToUpdate = data[i].id;
+          let bookToDelete = data[i].id;
           let bookData = data[i]; //individual book data from database
           setBookData(bookData); //individual book data from database -- used in rendering review
           // console.log(bookData);
 
-          return bookToUpdate; //id of book to update for PUT function below
+          return bookToDelete; //id of book to update for DELETE function below
         }
       }
       setLoading(false);

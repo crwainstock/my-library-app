@@ -5,6 +5,7 @@ import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 // import { useGetUserLibrary } from "../../Hooks/useGetUserLibrary";
 import { useGetLoginStatus } from "../../Hooks/useGetLoginStatus";
+import { useGetDeleteBook } from "../../Hooks/useGetDeleteBook";
 import { Link } from "react-router-dom";
 import "./MyLibrary.css";
 
@@ -17,10 +18,11 @@ export default function MyLibraryComponent() {
 
   const { userBooks } = useDataContext();
   const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
-  const { deleteBook } = useGetBookDetails();
+  // const { deleteBook } = useGetBookDetails(); // for non-auth app version
   const { bookAdded, setBookAdded } = useGetSearchResults();
+  const { deleteBook } = useGetDeleteBook();
 
-  console.log(isLoggedIn);
+  // console.log(isLoggedIn);
   return (
     <div className="my-library-container">
       {/* Add something here to not render this first bit if the app is loading. 
