@@ -119,11 +119,16 @@ export default function Search() {
                       className="add-to-library-button"
                       onClick={(e) => {
                         // Toast function
-                        setOpen(false);
-                        window.clearTimeout(timerRef.current);
-                        timerRef.current = window.setTimeout(() => {
-                          setOpen(true);
-                        }, 100);
+                        if (bookAdded == false) {
+                          console.log("book not added");
+                          return;
+                        } else {
+                          setOpen(false);
+                          window.clearTimeout(timerRef.current);
+                          timerRef.current = window.setTimeout(() => {
+                            setOpen(true);
+                          }, 100);
+                        }
 
                         //Adds book to database
                         addBook(result.id);
