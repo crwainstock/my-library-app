@@ -24,7 +24,7 @@ export default function Search() {
     handleSubmit,
     // addBook,
   } = useGetSearchResults();
-  const { addBook } = useGetAddBook();
+  const { addBook, bookAdded } = useGetAddBook();
 
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
