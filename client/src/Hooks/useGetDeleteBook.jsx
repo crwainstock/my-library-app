@@ -24,7 +24,7 @@ export const useGetDeleteBook = () => {
           console.log(bookToDeleteId);
           //   let bookData = data[i]; //individual book data from database
           //   setBookData(bookData); //individual book data from database -- used in rendering review
-          console.log(bookData);
+          // console.log(bookData);
 
           return bookToDeleteId; //id of book to update for DELETE function below
         }
