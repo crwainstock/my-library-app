@@ -244,17 +244,22 @@ router.delete("/userlibrary/:id", ensureUserExists, async (req, res) => {
 
 //UPDATE BOOK REVIEWS/NOTES
 router.put("/userlibrary/:id", async (req, res) => {
-  const { review } = req.body;
+  const { review, bookId } = req.body;
   const id = req.params.id;
 
   try {
     await db(
-      `UPDATE reviews SET text = "${review}" WHERE user_id = ${id} AND ;`
+      `UPDATE reviews SET text = "${review}" WHERE user_id = ${id} AND book_id = ${bookId};`
     );
 
-    await getItems(req, res);
+    await getUserItems(req, res);
   } catch (err) {
-    res.status(500).send({ error: err.message });
+    console.error("Error occurred in /userlibrary/:id delete route:", err);
+    res.status(500).send({
+      error: "An error occurred while processing your request.",
+      errorMessage: err.message,
+      errorStack: err.stack,
+    });
   }
 });
 
