@@ -8,7 +8,7 @@ import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 
 function MyLibrary() {
   const { isLoggedIn } = useGetLoginStatus();
-  console.log(isLoggedIn);
+  // console.log(isLoggedIn);
   const { loading } = useGetUserLibrary();
 
   return (

@@ -5,6 +5,7 @@ export const useGetDeleteBook = () => {
   const { userId } = useDataContext();
   const [bookData, setBookData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const fetchDBBooks = async (bookId) => {
     console.log(bookId); //bookId
@@ -44,7 +45,7 @@ export const useGetDeleteBook = () => {
       let data = await results.json();
 
       setLoading(false);
-      window.location.reload(); //To manually refresh the page & update data -- idk why it wasn't working through the fetch functions
+      //   window.location.reload(); //To manually refresh the page & update data -- idk why it wasn't working through the fetch functions
       setSuccess(true); //For success message upon delete
       // setTimeout(function () {
       //   setSuccess(false); //To remove success message after a few seconds -- not necessary with page refresh, though. Could be smoother.
