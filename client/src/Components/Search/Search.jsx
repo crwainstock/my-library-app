@@ -3,11 +3,12 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
 import { useGetAddBook } from "../../Hooks/useGetAddBook";
+import { useGetLoginStatus } from "../../Hooks/useGetLoginStatus";
 import Loading from "../../Components/Loading/Loading";
-
+//Google search image
 import Google from "../../Assets/poweredby.png";
 import "./search.css";
-
+//Add book toast
 import * as Toast from "@radix-ui/react-toast";
 import "../Toast/toast.css";
 
@@ -23,7 +24,9 @@ export default function Search() {
     handleSubmit,
   } = useGetSearchResults();
   const { addBook, bookAdded } = useGetAddBook();
+  const { isLoggedIn } = useGetLoginStatus();
 
+  //For addBook toast
   const [open, setOpen] = useState(false);
   const timerRef = useRef(0);
 
