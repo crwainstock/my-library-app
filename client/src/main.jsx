@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import { DataProvider } from "./Context/DataProvider";
@@ -9,11 +9,11 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <DataProvider>
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
+  <QueryClientProvider client={queryClient}>
+    <DataProvider>
+      <React.StrictMode>
         <App />
-      </QueryClientProvider>
-    </React.StrictMode>
-  </DataProvider>
+      </React.StrictMode>
+    </DataProvider>
+  </QueryClientProvider>
 );

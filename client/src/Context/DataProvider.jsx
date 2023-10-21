@@ -2,6 +2,7 @@ import { createContext } from "react";
 import useGetLibraryData from "../Hooks/useGetLibraryData";
 import useGetLoginStatus from "../Hooks/useGetLoginStatus";
 import useGetUserLibrary from "../Hooks/useGetUserLibrary";
+import useGetUserLibraryQuery from "../Hooks/useGetUserLibraryQuery";
 
 export const DataContext = createContext();
 
@@ -12,7 +13,8 @@ export function DataProvider({ children }) {
 
   // Currently, only the userBooks is used from here. The other data is accessed through the hooks
   // directly in each component.
-  const { userBooks } = useGetUserLibrary();
+  // const { userBooks } = useGetUserLibrary();
+  const { userBooks } = useGetUserLibraryQuery();
   const { isLoggedIn, userId } = useGetLoginStatus();
   const value = { userBooks, isLoggedIn, userId };
 
