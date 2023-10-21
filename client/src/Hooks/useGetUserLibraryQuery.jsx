@@ -15,6 +15,7 @@ export const useGetUserLibraryQuery = () => {
     error: booksError,
   } = useQuery(userBooksQueryKey, async () => {
     const response = await fetch(`users/userlibrary/${userId}`);
+    console.log(response); // not getting this far
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
