@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { DataProvider } from "./Context/DataProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <QueryClientProvider client={queryClient}>
-    <DataProvider>
-      <React.StrictMode>
+  <DataProvider>
+    <React.StrictMode>
+      <QueryClientProvider client={queryClient}>
         <App />
-      </React.StrictMode>
-    </DataProvider>
-  </QueryClientProvider>
+      </QueryClientProvider>
+    </React.StrictMode>
+  </DataProvider>
 );

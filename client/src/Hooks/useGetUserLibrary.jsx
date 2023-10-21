@@ -9,12 +9,9 @@ export const useGetUserLibrary = () => {
   const [error, setError] = useState();
 
   const { userId } = useGetLoginStatus(); // accessible immediately
-  // console.log(userId); //userId is working here.
 
   useEffect(() => {
-    fetchUserBooks(); //Get all book from specific user
-    // fetchUserBooksbyID();
-    // console.log(userBooks, userId);
+    fetchUserBooks();
   }, [userId]);
 
   const searchUserBooksById = async (bookId) => {
