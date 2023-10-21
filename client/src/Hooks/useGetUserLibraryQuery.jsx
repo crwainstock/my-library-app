@@ -40,7 +40,9 @@ export const useGetUserLibraryQuery = () => {
   });
 
   const searchUserBooksById = (bookId) => {
-    searchUserBooksByIdMutation.mutate(bookId);
+    searchUserBooksByIdMutation.mutate(bookId, {
+      enabled: Boolean(bookId),
+    });
   };
 
   return {

@@ -51,7 +51,7 @@ export const useGetUserLibrary = () => {
       for (let i = 0; i < books.length; i++) {
         //console.log(books[i].bookId); //Seems to be accessing the bookId here
         await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
-        console.log(books[i].bookId);
+        // console.log(books[i].bookId);
       }
       // console.log(userBooks);
       setLoading(false);
@@ -75,4 +75,4 @@ export const useGetUserLibrary = () => {
   };
 };
 
-export default useGetUserLibrary;
+// export default useGetUserLibrary;

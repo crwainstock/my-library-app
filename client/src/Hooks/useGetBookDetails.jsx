@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetUserLibrary } from "./useGetUserLibrary";
+// import { useGetUserLibrary } from "./useGetUserLibrary";
+import useGetUserLibraryQuery from "./useGetUserLibraryQuery";
 
 export const useGetBookDetails = () => {
-  const { userBooks, setUserBooks } = useGetUserLibrary();
-  // console.log(userBooks);
+  const { userBooks } = useGetUserLibraryQuery();
+  console.log(userBooks);
 
   const [book, setBook] = useState([]); //Book info from Google
   const [bookData, setBookData] = useState([]); //Book info from database

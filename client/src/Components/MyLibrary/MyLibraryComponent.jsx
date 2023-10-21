@@ -1,13 +1,10 @@
 import React from "react";
-// import { useEffect } from "react";
-import { useDataContext } from "../../Hooks/useDataContext";
-import { useGetBookDetails } from "../../Hooks/useGetBookDetails";
 import { useGetSearchResults } from "../../Hooks/useGetSearchResults";
-// import { useGetUserLibrary } from "../../Hooks/useGetUserLibrary";
-import { useGetLoginStatus } from "../../Hooks/useGetLoginStatus";
 import { useGetDeleteBook } from "../../Hooks/useGetDeleteBook";
 import { Link } from "react-router-dom";
 import "./MyLibrary.css";
+import useGetUserLibraryQuery from "../../Hooks/useGetUserLibraryQuery";
+import { useQuery, useMutation } from "@tanstack/react-query";
 
 export default function MyLibraryComponent() {
   // const { books, loading } = useDataContext(); // This can be used in version of app without multiple users
@@ -16,9 +13,10 @@ export default function MyLibraryComponent() {
   // testing out whether it would work the same if accessing the variable through the data provider
   // const { userBooks, loading, fetchUserBooks } = useGetUserLibrary();
 
-  const { userBooks } = useDataContext();
+  const { userBooks } = useGetUserLibraryQuery();
   console.log(userBooks);
-  const { isLoggedIn, userId } = useGetLoginStatus(); // eventually use this to prompt login if not logged in
+  console.log(booksError);
+  // eventually use this to prompt login if not logged in
   // const { deleteBook } = useGetBookDetails(); // for non-auth app version
   const { bookAdded, setBookAdded } = useGetSearchResults();
   const { deleteBook } = useGetDeleteBook();

@@ -1,16 +1,16 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import Login from "./Login";
-import { useGetUserLibrary } from "../Hooks/useGetUserLibrary";
+// import { useGetUserLibrary } from "../Hooks/useGetUserLibrary";
 import MyLibraryComponent from "../Components/MyLibrary/MyLibraryComponent";
 import Loading from "../Components/Loading/Loading";
 import { useGetLoginStatus } from "../Hooks/useGetLoginStatus";
 import "../Components/MyLibrary/MyLibrary.css";
+import { useDataContext } from "../Hooks/useDataContext";
 
 function MyLibrary() {
   const { isLoggedIn } = useGetLoginStatus();
-  // console.log(isLoggedIn);
-  const { loading } = useGetUserLibrary();
+  const { loading } = useDataContext();
 
   return (
     <div className="mylibrary-container">
