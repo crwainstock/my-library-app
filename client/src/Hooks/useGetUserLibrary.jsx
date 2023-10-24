@@ -53,7 +53,7 @@ export const useGetUserLibrary = () => {
         await searchUserBooksById(books[i].bookId); //Use search function to look up book details using bookId
         // console.log(books[i].bookId);
       }
-      // console.log(userBooks);
+      console.log(userBooks);
       setLoading(false);
       return userBooks;
     } catch (error) {
