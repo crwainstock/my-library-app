@@ -24,7 +24,7 @@ export const useGetAddBook = () => {
       try {
         let results = await fetch(`users/userlibrary/${userId}`, options);
         let data = await results.json();
-        console.log(data);
+        console.log(data); // All books for all users for some reason.
         setLoading(false);
         setSuccess(true);
         setBookAdded(true);
