@@ -10,8 +10,6 @@ export const useGetUserLibrary = () => {
 
   useEffect(() => {
     fetchUserBooks(); //Get all book from specific user
-    // fetchUserBooksbyID();
-    // console.log(userBooks, userId);
   }, [userId]);
 
   const searchUserBooksById = async (bookId) => {

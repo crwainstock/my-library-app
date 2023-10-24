@@ -4,10 +4,11 @@ import Loading from "../Components/Loading/Loading";
 import NavBar from "../Components/NavBar/NavBar";
 import Search from "../Components/Search/Search";
 import "./home.css";
+import useGetUserLibrary from "../Hooks/useGetUserLibrary";
 
 function Home() {
   //This is needed so it knows whether the data is loading or not.
-  const { books, loading } = useDataContext();
+  const { books, loading } = useGetUserLibrary();
   // console.log(books);
   return (
     <div className="App">
